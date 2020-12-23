@@ -1,5 +1,6 @@
 import express from "express"
 import co2eq from "@tmrow/bloom-contrib/co2eq"
+import bodyParser from "body-parser"
 
 const [
   ingredientsCarbonModel,
@@ -20,8 +21,14 @@ const emissions = flightCarbonModel.carbonEmissions({
   isRoundtrip: false,
 })
 
-const app = express()
+console.log(emissions)
 
+const app = express()
+// Express configuration
+
+app.set("port", process.env.PORT || 3000)
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}))
 const flyingRouter = express.Router()
 flyingRouter.post("/shorthaul", (req, res) => {
   res.json({estimatedEmission: 1, unit: "kg co2e"})
@@ -36,13 +43,9 @@ flyingRouter.post("/longhaul", (req, res) => {
 })
 
 app.get("/", (req, res) => {
-  res.send("The sedulous hyena ate the antelope!")
+  res.json({message: "The sedulous hyena ate the antelope!"})
 })
 
 app.use("/estimation/flying", flyingRouter)
 
-const port = 3000
-
-app.listen(port, () => {
-  return console.log(`server is listening on ${port}`)
-})
+export default app

@@ -1,8 +1,16 @@
+interface SourceSchema<T> {
+  value: T
+  url: URL
+  description: string
+  isStale: boolean
+}
+
 export interface Source<T> {
   readonly value: T
   readonly url: URL
   readonly description: string
   isValid(): boolean
+  toJson(): SourceSchema<T>
 }
 
 export class ValidUntilSource<T> implements Source<T> {
@@ -19,7 +27,7 @@ export class ValidUntilSource<T> implements Source<T> {
   }
 
   isValid(): boolean {
-    return new Date() > this.validUntil
+    return new Date() < this.validUntil
   }
 
   get value(): T {
@@ -28,5 +36,14 @@ export class ValidUntilSource<T> implements Source<T> {
     }
 
     return this._value
+  }
+
+  toJson(): SourceSchema<T> {
+    return {
+      value: this._value,
+      url: this.url,
+      description: this.description,
+      isStale: !this.isValid(),
+    }
   }
 }

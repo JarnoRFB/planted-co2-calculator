@@ -19,9 +19,16 @@ describe("POST /estimation/flying", () => {
       nLongHauls: 3,
     })
 
-    expect(res.body).toEqual({
+    expect(res.body).toMatchObject({
       estimatedEmission: 2098.332512596066,
       unit: "kg co2e",
+    })
+
+    expect(res.body.sources[0]).toMatchObject({
+      value: 1250,
+      url: new URL("https://en.wikipedia.org/wiki/Flight_length"),
+      description: "average distance of short haul flight in kilometers",
+      isStale: false,
     })
   })
 
@@ -32,7 +39,7 @@ describe("POST /estimation/flying", () => {
       nLongHauls: 0,
     })
 
-    expect(res.body).toEqual({
+    expect(res.body).toMatchObject({
       estimatedEmission: 0,
       unit: "kg co2e",
     })

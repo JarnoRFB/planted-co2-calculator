@@ -81,5 +81,10 @@ export const estimateEmissions = (req: FlyingEstimationParams) => {
       averageMediumHaulEmissions * req.nMediumHauls +
       averageLongHaulEmissions * req.nLongHauls,
     unit: "kg co2e",
+    sources: [
+      averageShortHaulFlightDistance.toJson(),
+      averageMediumHaulFlightDistance.toJson(),
+      averageLongHaulFlightDistance.toJson(),
+    ],
   }
 }

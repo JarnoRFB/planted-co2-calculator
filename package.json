@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run serve",
     "serve": "tsc && node dist/server.js",
-    "test": "jest --forceExit --coverage --verbose",
+    "test": "jest --coverage --verbose",
     "clean": "rm -rf dist/"
   },
   "repository": {
@@ -45,7 +45,7 @@
   "jest": {
     "globals": {
       "ts-jest": {
-        "tsConfig": "tsconfig.json"
+        "tsconfig": "tsconfig.json"
       }
     },
     "moduleFileExtensions": [

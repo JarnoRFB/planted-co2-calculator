@@ -1,6 +1,7 @@
 import express from "express"
 import co2eq from "@tmrow/bloom-contrib/co2eq"
 import bodyParser from "body-parser"
+import {FlyingEstimationParams, estimateEmissions} from "./estimation/flying"
 
 const [
   ingredientsCarbonModel,
@@ -30,16 +31,10 @@ app.set("port", process.env.PORT || 3000)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 const flyingRouter = express.Router()
-flyingRouter.post("/shorthaul", (req, res) => {
-  res.json({estimatedEmission: 1, unit: "kg co2e"})
-})
 
-flyingRouter.post("/mediumhaul", (req, res) => {
-  res.json({estimatedEmission: 2, unit: "kg co2e"})
-})
-
-flyingRouter.post("/longhaul", (req, res) => {
-  res.json({estimatedEmission: 3, unit: "kg co2e"})
+flyingRouter.post("/", (req, res) => {
+  const body: FlyingEstimationParams = req.body
+  res.json(estimateEmissions(body))
 })
 
 app.get("/", (req, res) => {

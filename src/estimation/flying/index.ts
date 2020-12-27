@@ -1,6 +1,6 @@
 import co2eq from "@tmrow/bloom-contrib/co2eq"
 import {ValidUntilSource} from "../sources"
-
+import {EstimationResponse, Units} from ".."
 const [
   ingredientsCarbonModel,
   mealCarbonModel,
@@ -41,25 +41,30 @@ const durationOfLongHaulFlight = new ValidUntilSource<string>(
 )
 
 const averageShortHaulFlightDistance = new ValidUntilSource<number>(
-  1250,
+  (1100 + 1500) / 2,
   new URL("https://en.wikipedia.org/wiki/Flight_length"),
   "average distance of short haul flight in kilometers",
   new Date("2021/12/25")
 )
 
+const averageLongHaulFlightDistance = new ValidUntilSource<number>(
+  (4100 + 4800) / 2,
+  new URL("https://en.wikipedia.org/wiki/Flight_length"),
+  "average distance of long haul flight in kilometers",
+  new Date("2021/12/25")
+)
+
 const averageMediumHaulFlightDistance = new ValidUntilSource<number>(
-  1825,
+  averageShortHaulFlightDistance.value +
+    (averageLongHaulFlightDistance.value - averageShortHaulFlightDistance.value) / 2,
   new URL("https://en.wikipedia.org/wiki/Flight_length"),
   "average distance of medium haul flight in kilometers",
   new Date("2021/12/25")
 )
 
-const averageLongHaulFlightDistance = new ValidUntilSource<number>(
-  2400,
-  new URL("https://en.wikipedia.org/wiki/Flight_length"),
-  "average distance of long haul flight in kilometers",
-  new Date("2021/12/25")
-)
+// TODO Are these vales to low? E.g. at atmosfair.de a flight from
+// Hannover to New York (6.210 km ) has 1520 kg co2e, whereas it would here have
+// only 948 kg co2e.
 
 const averageShortHaulEmissions = flightCarbonModel.carbonEmissions({
   distanceKilometers: averageShortHaulFlightDistance.value,
@@ -69,22 +74,24 @@ const averageMediumHaulEmissions = flightCarbonModel.carbonEmissions({
   distanceKilometers: averageMediumHaulFlightDistance.value,
   isRoundtrip: false,
 })
+
 const averageLongHaulEmissions = flightCarbonModel.carbonEmissions({
   distanceKilometers: averageLongHaulFlightDistance.value,
   isRoundtrip: false,
 })
 
-export const estimateEmissions = (req: FlyingEstimationParams) => {
+export const estimateEmissions = (req: FlyingEstimationParams): EstimationResponse => {
   return {
-    estimatedEmission:
+    estimatedEmissions:
       averageShortHaulEmissions * req.nShortHauls +
       averageMediumHaulEmissions * req.nMediumHauls +
       averageLongHaulEmissions * req.nLongHauls,
-    unit: "kg co2e",
+    unit: Units.KG_CO2E,
     sources: [
       averageShortHaulFlightDistance.toJson(),
       averageMediumHaulFlightDistance.toJson(),
       averageLongHaulFlightDistance.toJson(),
+      // TODO add and convert flightCarbonModel.explanation
     ],
   }
 }

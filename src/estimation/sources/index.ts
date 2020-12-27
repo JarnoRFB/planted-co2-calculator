@@ -1,4 +1,4 @@
-interface SourceSchema<T> {
+export interface SourceSchema<T> {
   value: T
   url: URL
   description: string

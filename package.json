@@ -27,6 +27,9 @@
     "body-parser": "^1.19.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
+    "fp-ts": "^2.9.3",
+    "io-ts": "^2.2.13",
+    "io-ts-reporters": "^1.2.2",
     "lodash": "^4.17.20"
   },
   "devDependencies": {

@@ -1,6 +1,8 @@
 import co2eq from "@tmrow/bloom-contrib/co2eq"
 import {ValidUntilSource} from "../sources"
 import {EstimationResponse, Units} from ".."
+import * as t from "io-ts"
+
 const [
   ingredientsCarbonModel,
   mealCarbonModel,
@@ -13,11 +15,25 @@ const [
   electricityWorldAverageCarbonModel,
 ] = co2eq
 
-export interface FlyingEstimationParams {
-  readonly nShortHauls: number
-  readonly nMediumHauls: number
-  readonly nLongHauls: number
+export const FlyingEstimationParams = t.type({
+  nShortHauls: t.readonly(t.number),
+  nMediumHauls: t.readonly(t.number),
+  nLongHauls: t.readonly(t.number),
+})
+
+interface PositiveBrand {
+  readonly Positive: unique symbol // use `unique symbol` here to ensure uniqueness across modules / packages
 }
+
+// const Positive = t.brand(
+//   t.number, // a codec representing the type to be refined
+//   (n): n is t.Branded<number, PositiveBrand> => n >= 0, // a custom type guard using the build-in helper `Branded`
+//   "Positive" // the name must match the readonly field in the brand
+// )
+
+// type Positive = t.TypeOf<typeof Positive>
+
+export type FlyingEstimationParams = t.TypeOf<typeof FlyingEstimationParams>
 
 const durationOfShortHaulFlight = new ValidUntilSource<string>(
   "<3 h",

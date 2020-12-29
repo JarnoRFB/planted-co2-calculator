@@ -38,6 +38,14 @@ describe("POST /estimation/flying", () => {
       unit: "kg co2e",
     })
   })
+
+  it("should error on invalid request body", async () => {
+    const res = await server.post("/estimation/flying").send({
+      nShortHauls: 1,
+    })
+
+    expect(res.status).toBe(400)
+  })
 })
 
 describe("POST /estimation/base", () => {
@@ -51,5 +59,12 @@ describe("POST /estimation/base", () => {
       estimatedEmissions: 10030,
       unit: "kg co2e / year",
     })
+  })
+
+  it("should error on unknown country", async () => {
+    const res = await server.post("/estimation/base").send({
+      country: "Taka-Tuka Land",
+    })
+    expect(res.status).toBe(400)
   })
 })

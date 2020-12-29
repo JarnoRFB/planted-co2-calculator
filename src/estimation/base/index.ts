@@ -2,31 +2,21 @@
 import {EstimationResponse, Units} from ".."
 import {ValidUntilSource} from "../sources"
 import _ from "lodash"
-export interface BaseEstimationParams {
-  readonly country: string
-}
+import * as t from "io-ts"
 
 enum Countries {
   GERMANY = "Germany",
 }
 
-let cleanData = new Map()
+const CountriesType: {
+  [key: string]: null
+} = Object.values(Countries).reduce((acc, x) => Object.assign(acc, {[x]: null}), {})
 
-new Map([
-  ["Heizung", "1.668,4"],
-  ["Baden und Duschen", "237,9"],
-  ["Waschen und Trocknen von Wäsche", "65,7"],
-  ["Kühlen/ Gefrieren, Kochen und Geschirrspülen", "787,5"],
-  ["Beleuchtung", "106,0"],
-  ["Mediennutzung", "48,5"],
-  ["Sauna", "7,8"],
-  ["Alltagsmobilität", "1.143,3"],
-  ["Urlaubsreisen", "256,5"],
-  ["Nahrungsmittel", "511,9"],
-  ["Kleidung", "152,1"],
-  ["Betrieb von Aquarien", "2,5"],
-  ["Haustierfutter", "139,0"],
-]).forEach((v, k) => cleanData.set(k, Number(v.replace(".", "").replace(",", "."))))
+export const BaseEstimationParams = t.type({
+  country: t.readonly(t.keyof(CountriesType)),
+})
+
+export type BaseEstimationParams = t.TypeOf<typeof BaseEstimationParams>
 
 const averageWeightedEmissionsPerPerson = new ValidUntilSource<Map<string, number>>(
   new Map([

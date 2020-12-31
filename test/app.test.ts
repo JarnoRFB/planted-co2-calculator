@@ -68,3 +68,16 @@ describe("POST /estimation/base", () => {
     expect(res.status).toBe(400)
   })
 })
+
+describe("POST /estimation/nutrition", () => {
+  it("should estimate correctly", async () => {
+    const res = await server.post("/estimation/nutrition").send({
+      diet: "FLEXITARIAN",
+    })
+    expect(res.status).toBe(200)
+    expect(res.body).toMatchObject({
+      estimatedEmissions: 1741,
+      unit: "kg co2e / year",
+    })
+  })
+})

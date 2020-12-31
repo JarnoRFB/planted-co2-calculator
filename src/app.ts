@@ -7,6 +7,7 @@ import * as t from "io-ts"
 import {formatValidationErrors} from "io-ts-reporters"
 import * as base from "./estimation/base"
 import * as flying from "./estimation/flying"
+import * as nutrition from "./estimation/nutrition"
 
 const app = express()
 
@@ -50,12 +51,25 @@ baseRouter.post("/base", (req, res) => {
   )
 })
 
-app.get("/", (req, res) => {
-  res.json({message: "Welcome to the planted carbon estimator"})
+const nutritionRouter = express.Router()
+nutritionRouter.post("/nutrition", (req, res) => {
+  pipe(
+    nutrition.NutritionEstimationParams.decode(req.body),
+    fold(
+      errors => sendErrorMessage(req, res, errors),
+      params => res.json(nutrition.estimateEmissions(params))
+    )
+  )
 })
 
-app.use("/estimation", flyingRouter)
-app.use("/estimation", baseRouter)
+app.get("/", (req, res) => {
+  res.json({message: "Welcome to the planted carbon footprint estimator"})
+})
+
+const estimationRoute = "/estimation"
+app.use(estimationRoute, flyingRouter)
+app.use(estimationRoute, baseRouter)
+app.use(estimationRoute, nutritionRouter)
 
 if (process.env.NODE_ENV === "development") {
   app.use(errorHandler({log: true}))

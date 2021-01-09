@@ -8,6 +8,8 @@ import {formatValidationErrors} from "io-ts-reporters"
 import * as base from "./estimation/base"
 import * as flying from "./estimation/flying"
 import * as nutrition from "./estimation/nutrition"
+import * as driving from "./estimation/driving"
+import * as electricity from "./estimation/electricity"
 
 const app = express()
 
@@ -17,7 +19,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
 // Routes
-const flyingRouter = express.Router()
+const estimationRouter = express.Router()
 
 const sendErrorMessage = (req: express.Request, res: express.Response, errors: t.Errors) => {
   res
@@ -27,7 +29,7 @@ const sendErrorMessage = (req: express.Request, res: express.Response, errors: t
   return res
 }
 
-flyingRouter.post("/flying", (req, res) => {
+estimationRouter.post("/flying", (req, res) => {
   pipe(
     flying.FlyingEstimationParams.decode(req.body),
     fold(
@@ -37,9 +39,7 @@ flyingRouter.post("/flying", (req, res) => {
   )
 })
 
-const baseRouter = express.Router()
-
-baseRouter.post("/base", (req, res) => {
+estimationRouter.post("/base", (req, res) => {
   const body: base.BaseEstimationParams = req.body
 
   pipe(
@@ -51,8 +51,7 @@ baseRouter.post("/base", (req, res) => {
   )
 })
 
-const nutritionRouter = express.Router()
-nutritionRouter.post("/nutrition", (req, res) => {
+estimationRouter.post("/nutrition", (req, res) => {
   pipe(
     nutrition.NutritionEstimationParams.decode(req.body),
     fold(
@@ -62,14 +61,31 @@ nutritionRouter.post("/nutrition", (req, res) => {
   )
 })
 
+estimationRouter.post("/driving", (req, res) => {
+  pipe(
+    driving.DrivingEstimationParams.decode(req.body),
+    fold(
+      errors => sendErrorMessage(req, res, errors),
+      params => res.json(driving.estimateEmissions(params))
+    )
+  )
+})
+
+estimationRouter.post("/electricity", (req, res) => {
+  pipe(
+    electricity.ElectricityEstimationParams.decode(req.body),
+    fold(
+      errors => sendErrorMessage(req, res, errors),
+      params => res.json(electricity.estimateEmissions(params))
+    )
+  )
+})
+
 app.get("/", (req, res) => {
   res.json({message: "Welcome to the planted carbon footprint estimator"})
 })
 
-const estimationRoute = "/estimation"
-app.use(estimationRoute, flyingRouter)
-app.use(estimationRoute, baseRouter)
-app.use(estimationRoute, nutritionRouter)
+app.use("/estimation", estimationRouter)
 
 if (process.env.NODE_ENV === "development") {
   app.use(errorHandler({log: true}))

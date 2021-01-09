@@ -81,3 +81,44 @@ describe("POST /estimation/nutrition", () => {
     })
   })
 })
+
+describe("POST /estimation/driving", () => {
+  it("should estimate correctly", async () => {
+    const res = await server.post("/estimation/driving").send({
+      weeklyAverageDistance: 200,
+    })
+    expect(res.status).toBe(200)
+    expect(res.body).toMatchObject({
+      estimatedEmissions: 1842,
+      unit: "kg co2e / year",
+    })
+  })
+})
+
+describe("POST /estimation/electricity", () => {
+  it("should estimate correctly", async () => {
+    const res = await server.post("/estimation/electricity").send({
+      housing: "apartment",
+      householdSize: 2,
+      greenEnergy: false,
+    })
+    expect(res.status).toBe(200)
+    expect(res.body).toMatchObject({
+      estimatedEmissions: 897,
+      unit: "kg co2e / year",
+    })
+  })
+
+  it("should estimate lower with green enery", async () => {
+    const res = await server.post("/estimation/electricity").send({
+      housing: "apartment",
+      householdSize: 2,
+      greenEnergy: true,
+    })
+    expect(res.status).toBe(200)
+    expect(res.body).toMatchObject({
+      estimatedEmissions: 0,
+      unit: "kg co2e / year",
+    })
+  })
+})

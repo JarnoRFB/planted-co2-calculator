@@ -1,4 +1,3 @@
-import {isInteger} from "lodash"
 import {SourceSchema} from "./sources"
 
 export interface EstimationResponse {

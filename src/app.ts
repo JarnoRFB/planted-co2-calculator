@@ -10,6 +10,7 @@ import * as flying from "./estimation/flying"
 import * as nutrition from "./estimation/nutrition"
 import * as driving from "./estimation/driving"
 import * as electricity from "./estimation/electricity"
+import * as heating from "./estimation/heating"
 
 const app = express()
 
@@ -77,6 +78,16 @@ estimationRouter.post("/electricity", (req, res) => {
     fold(
       errors => sendErrorMessage(req, res, errors),
       params => res.json(electricity.estimateEmissions(params))
+    )
+  )
+})
+
+estimationRouter.post("/heating", (req, res) => {
+  pipe(
+    heating.HeatingEstimationParams.decode(req.body),
+    fold(
+      errors => sendErrorMessage(req, res, errors),
+      params => res.json(heating.estimateEmissions(params))
     )
   )
 })

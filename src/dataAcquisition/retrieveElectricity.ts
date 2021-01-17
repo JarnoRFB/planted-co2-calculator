@@ -27,8 +27,6 @@ const retrieveData = async () => {
   const parseHouseholdSize = (s: string) => parseInt(s.slice(0, 1))
   const parseConsumption = (s: string) => parseFloat(s.replace(" kWh/Jahr", "").replace(".", ""))
 
-  const rx: cheerio.Cheerio = $("div#c120959 tbody tr")
-
   const parseTable = (node: cheerio.Cheerio): ElectricityConsumption[] =>
     $("tbody tr", node)
       .toArray()
@@ -51,7 +49,7 @@ const retrieveData = async () => {
         })
       )
 
-  const addHousingEntry = (housing: string) => <T>(data: Array<T>) =>
+  const addHousingEntry = (housing: string) => <T>(data: T[]) =>
     data.map(row => ({housing, ...row}))
 
   const houseConsumption: ElectricityConsumptionEntry[] = pipe(

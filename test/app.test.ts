@@ -3,6 +3,10 @@ import request from "supertest"
 
 const server = request(app)
 
+const closeTo = (expected: number, precision: number = 2) => ({
+  asymmetricMatch: (actual: number) => Math.abs(expected - actual) < Math.pow(10, -precision) / 2,
+})
+
 describe("POST /estimation/flying", () => {
   it("should estimate correctly", async () => {
     const res = await server.post("/estimation/flying").send({
@@ -104,20 +108,23 @@ describe("POST /estimation/electricity", () => {
     })
     expect(res.status).toBe(200)
     expect(res.body).toMatchObject({
-      estimatedEmissions: 897,
+      estimatedEmissions: closeTo(448.35),
       unit: "kg co2e / year",
     })
   })
+})
 
-  it("should estimate lower with green enery", async () => {
-    const res = await server.post("/estimation/electricity").send({
-      housing: "apartment",
+describe("POST /estimation/heating", () => {
+  it("should estimate correctly", async () => {
+    const res = await server.post("/estimation/heating").send({
       householdSize: 2,
-      greenEnergy: true,
+      apartmentSize: 100,
+      apartmentAge: 1995,
+      energySource: "naturalGas",
     })
     expect(res.status).toBe(200)
     expect(res.body).toMatchObject({
-      estimatedEmissions: 0,
+      estimatedEmissions: closeTo(1375),
       unit: "kg co2e / year",
     })
   })

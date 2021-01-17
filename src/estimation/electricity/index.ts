@@ -53,7 +53,8 @@ export const estimateEmissions = (req: ElectricityEstimationParams): EstimationR
   if (estimatedConsumptionPerYear === undefined) {
     throw new Error("No consumption could be estimated")
   } else {
-    const estimatedEmissions = Math.round(estimatedConsumptionPerYear * applicableCarbonIntensity)
+    const estimatedEmissions =
+      (estimatedConsumptionPerYear * applicableCarbonIntensity) / req.householdSize
     return {estimatedEmissions, unit: Units.KG_CO2E_PER_YEAR, sources: []}
   }
 }

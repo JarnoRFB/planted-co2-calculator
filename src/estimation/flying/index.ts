@@ -37,45 +37,45 @@ export type FlyingEstimationParams = t.TypeOf<typeof FlyingEstimationParams>
 
 const durationOfShortHaulFlight = new ValidUntilSource<string>(
   "<3 h",
-  new URL("https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/"),
+  "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
   "durations which count as short haul flights",
-  new Date("2021/12/25")
+  new Date("2021-12-25"),
 )
 
 const durationOfMediumHaulFlight = new ValidUntilSource<string>(
   "3-6 h",
-  new URL("https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/"),
+  "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
   "durations which count as medium haul flights",
-  new Date("2021/12/25")
+  new Date("2021-12-25"),
 )
 
 const durationOfLongHaulFlight = new ValidUntilSource<string>(
   "6 - 12 h",
-  new URL("https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/"),
+  "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
   "durations which count as long haul flights",
-  new Date("2021/12/25")
+  new Date("2021-12-25"),
 )
 
 const averageShortHaulFlightDistance = new ValidUntilSource<number>(
   (1100 + 1500) / 2,
-  new URL("https://en.wikipedia.org/wiki/Flight_length"),
+  "https://en.wikipedia.org/wiki/Flight_length",
   "average distance of short haul flight in kilometers",
-  new Date("2021/12/25")
+  new Date("2021-12-25"),
 )
 
 const averageLongHaulFlightDistance = new ValidUntilSource<number>(
   (4100 + 4800) / 2,
-  new URL("https://en.wikipedia.org/wiki/Flight_length"),
+  "https://en.wikipedia.org/wiki/Flight_length",
   "average distance of long haul flight in kilometers",
-  new Date("2021/12/25")
+  new Date("2021-12-25"),
 )
 
 const averageMediumHaulFlightDistance = new ValidUntilSource<number>(
   averageShortHaulFlightDistance.value +
     (averageLongHaulFlightDistance.value - averageShortHaulFlightDistance.value) / 2,
-  new URL("https://en.wikipedia.org/wiki/Flight_length"),
+  "https://en.wikipedia.org/wiki/Flight_length",
   "average distance of medium haul flight in kilometers",
-  new Date("2021/12/25")
+  new Date("2021/12/25"),
 )
 
 // TODO Are these vales to low? E.g. at atmosfair.de a flight from

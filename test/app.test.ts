@@ -111,6 +111,8 @@ describe("POST /estimation/electricity", () => {
       estimatedEmissions: closeTo(448.35),
       unit: "kg co2e / year",
     })
+
+    expect(res.body.sources.length).toBe(3)
   })
 })
 

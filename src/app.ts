@@ -11,6 +11,7 @@ import * as nutrition from "./estimation/nutrition"
 import * as driving from "./estimation/driving"
 import * as electricity from "./estimation/electricity"
 import * as heating from "./estimation/heating"
+import * as consumerism from "./estimation/consumerism"
 
 const app = express()
 
@@ -35,8 +36,8 @@ estimationRouter.post("/flying", (req, res) => {
     flying.FlyingEstimationParams.decode(req.body),
     fold(
       errors => sendErrorMessage(req, res, errors),
-      params => res.json(flying.estimateEmissions(params))
-    )
+      params => res.json(flying.estimateEmissions(params)),
+    ),
   )
 })
 
@@ -47,8 +48,8 @@ estimationRouter.post("/base", (req, res) => {
     base.BaseEstimationParams.decode(req.body),
     fold(
       errors => sendErrorMessage(req, res, errors),
-      params => res.json(base.estimateEmissions(params))
-    )
+      params => res.json(base.estimateEmissions(params)),
+    ),
   )
 })
 
@@ -57,8 +58,8 @@ estimationRouter.post("/nutrition", (req, res) => {
     nutrition.NutritionEstimationParams.decode(req.body),
     fold(
       errors => sendErrorMessage(req, res, errors),
-      params => res.json(nutrition.estimateEmissions(params))
-    )
+      params => res.json(nutrition.estimateEmissions(params)),
+    ),
   )
 })
 
@@ -67,8 +68,8 @@ estimationRouter.post("/driving", (req, res) => {
     driving.DrivingEstimationParams.decode(req.body),
     fold(
       errors => sendErrorMessage(req, res, errors),
-      params => res.json(driving.estimateEmissions(params))
-    )
+      params => res.json(driving.estimateEmissions(params)),
+    ),
   )
 })
 
@@ -77,8 +78,8 @@ estimationRouter.post("/electricity", (req, res) => {
     electricity.ElectricityEstimationParams.decode(req.body),
     fold(
       errors => sendErrorMessage(req, res, errors),
-      params => res.json(electricity.estimateEmissions(params))
-    )
+      params => res.json(electricity.estimateEmissions(params)),
+    ),
   )
 })
 
@@ -87,8 +88,18 @@ estimationRouter.post("/heating", (req, res) => {
     heating.HeatingEstimationParams.decode(req.body),
     fold(
       errors => sendErrorMessage(req, res, errors),
-      params => res.json(heating.estimateEmissions(params))
-    )
+      params => res.json(heating.estimateEmissions(params)),
+    ),
+  )
+})
+
+estimationRouter.post("/consumerism", (req, res) => {
+  pipe(
+    consumerism.ConsumerismEstimationParams.decode(req.body),
+    fold(
+      errors => sendErrorMessage(req, res, errors),
+      params => res.json(consumerism.estimateEmissions(params)),
+    ),
   )
 })
 

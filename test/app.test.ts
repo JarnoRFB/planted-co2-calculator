@@ -131,3 +131,16 @@ describe("POST /estimation/heating", () => {
     })
   })
 })
+
+describe("POST /estimation/consumerism", () => {
+  it("should estimate correctly", async () => {
+    const res = await server.post("/estimation/consumerism").send({
+      country: "Germany",
+    })
+    expect(res.status).toBe(200)
+    expect(res.body).toMatchObject({
+      estimatedEmissions: closeTo(2407.18),
+      unit: "kg co2e / year",
+    })
+  })
+})

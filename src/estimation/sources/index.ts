@@ -79,7 +79,32 @@ export class Estimate<A> {
     return this.sources.map(x => x.toJson())
   }
 
-  static combine<A, B, C>(a: Estimate<A>, b: Estimate<B>, f: (a: A, b: B) => C): Estimate<C> {
-    return a.map2(b, f)
+  static combine<T, A, B>(
+    ea: Estimate<A>,
+    eb: Estimate<B>,
+  ): <T>(f: (a: A, b: B) => T) => Estimate<T>
+  static combine<T, A, B, C>(
+    ea: Estimate<A>,
+    eb: Estimate<B>,
+    ec: Estimate<C>,
+  ): <T>(f: (a: A, b: B, c: C) => T) => Estimate<T>
+  static combine<T, A, B, C, D>(
+    ea: Estimate<A>,
+    eb: Estimate<B>,
+    ec: Estimate<C>,
+    ed: Estimate<D>,
+  ): <T>(f: (a: A, b: B, c: C, d: D) => T) => Estimate<T>
+
+  static combine<T, A, B, C, D, E>(
+    ea: Estimate<A>,
+    eb: Estimate<B>,
+    ec: Estimate<C>,
+    ed: Estimate<D>,
+    ee: Estimate<E>,
+  ): <T>(f: (a: A, b: B, c: C, d: D, e: E) => T) => Estimate<T>
+
+  static combine<T>(...estimates: Estimate<any>[]): (f: (...xs: any[]) => T) => Estimate<T> {
+    return f =>
+      new Estimate(f(...estimates.map(e => e.value)), estimates.map(e => e.sources).flat())
   }
 }

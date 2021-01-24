@@ -34,22 +34,18 @@ const averageWeightedEmissionsPerPerson = new ValidUntilSource<Map<string, numbe
     ["Betrieb von Aquarien", 2.5],
     ["Haustierfutter", 139],
   ]),
-  new URL(
-    "https://www.umweltbundesamt.de/publikationen/repraesentative-erhebung-von-pro-kopf-verbraeuchen"
-  ),
+  "https://www.umweltbundesamt.de/publikationen/repraesentative-erhebung-von-pro-kopf-verbraeuchen",
   `Die Daten wurden aus den Tablellen in Anhang A entnommen.
 Dabei wurde jeweils der Wert der Spalte "Emissionen [kgCO2e/a] Person, Gewichtet" und der Zeile "Bev. ∅" entnommen.`,
-  new Date("2021-12-25")
+  new Date("2021-12-25"),
 )
 
 const averageEmissionsPerPersonWithoutFlights = new ValidUntilSource<number>(
   Math.round((10.88 - 0.85) * 1000),
-  new URL(
-    "https://www.klimaktiv.de/media/docs/Studien/20642110_uba_die_co2-bilanz_des_buergers.pdf"
-  ),
+  "https://www.klimaktiv.de/media/docs/Studien/20642110_uba_die_co2-bilanz_des_buergers.pdf",
   `Die Daten wurden aus Tabelle 2, S.10 entnommen.
 Dabei wurden die Gesamtemissionen abzüglich der Emissionen für Flüge berechnet.`,
-  new Date("2021-12-25")
+  new Date("2021-12-25"),
 )
 
 const baseRates = new Map()

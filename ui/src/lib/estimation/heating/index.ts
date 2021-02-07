@@ -13,7 +13,7 @@ const EnergySource = t.readonly(
     longDistanceHeating: null,
     heatingPump: null,
     woodPellets: null,
-  })
+  }),
 )
 
 type EnergySource = t.TypeOf<typeof EnergySource>
@@ -25,7 +25,7 @@ export const HeatingEstimationParams = t.type({
   energySource: EnergySource,
 })
 
-export type ElectricityEstimationParams = t.TypeOf<typeof HeatingEstimationParams>
+export type HeatingEstimationParams = t.TypeOf<typeof HeatingEstimationParams>
 
 // https://www.heizspiegel.de/heizkosten-verstehen/brennstoffe-energietraeger-im-vergleich/#c156311
 // g pro kWh
@@ -37,10 +37,10 @@ const carbonIntensityOfEnergySources = {
   woodPellets: 27,
 }
 
-export const estimateEmissions = (req: ElectricityEstimationParams): EstimationResponse => {
+export const estimateEmissions = (req: HeatingEstimationParams): EstimationResponse => {
   // http://energieberatung.ibs-hlk.de/eb_begr.htm
   const specificHeatDemand = specificHeatDemandByYear.find(
-    x => x.yearRange.low <= req.apartmentAge && x.yearRange.high >= req.apartmentAge
+    x => x.yearRange.low <= req.apartmentAge && x.yearRange.high >= req.apartmentAge,
   )?.specificHeatDemand
 
   const carbonIntensity = carbonIntensityOfEnergySources[req.energySource]

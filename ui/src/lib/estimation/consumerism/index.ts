@@ -4,7 +4,6 @@ import * as bloomDefinitions from "@tmrow/bloom-contrib/definitions"
 import {EstimationResponse, Units} from ".."
 import * as t from "io-ts"
 import {Estimate, ValidUntilSource} from "../sources"
-import {EISCONN} from "constants"
 
 enum Countries {
   GERMANY = "Germany",

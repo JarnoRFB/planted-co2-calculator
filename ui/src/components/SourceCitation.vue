@@ -1,7 +1,7 @@
 <template>
   <div class="source-citation">
     <p>{{ description }}</p>
-    <p>Wert {{ value }}</p>
+    <p>Wert <span v-html="jsonValue"></span></p>
     <p>
       Siehe <a :href="url">{{ url }}</a>
     </p>
@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue"
+import {defineComponent} from "vue"
 
 export default defineComponent({
   name: "SourceCitation",
@@ -17,6 +17,15 @@ export default defineComponent({
     value: String,
     description: String,
     url: String,
+  },
+  computed: {
+    jsonValue(): any {
+      if (typeof this.value === "object") {
+        return `<code>${JSON.stringify(this.value, null, 2)} </code>`
+      } else {
+        return this.value
+      }
+    },
   },
 })
 </script>

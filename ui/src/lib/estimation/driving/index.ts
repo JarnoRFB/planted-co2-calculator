@@ -27,8 +27,15 @@ const weeksPerYear = 52
 export type DrivingEstimationParams = t.TypeOf<typeof DrivingEstimationParams>
 
 export const estimateEmissions = (req: DrivingEstimationParams): EstimationResponse => {
-  const estimatedEmissions = Math.round(
-    carCarbonModel.carbonEmissions({distanceKilometers: req.weeklyAverageDistance * weeksPerYear})
-  )
+  let estimatedEmissions
+  if (req.weeklyAverageDistance === 0) {
+    estimatedEmissions = 0
+  } else {
+    estimatedEmissions = Math.round(
+      carCarbonModel.carbonEmissions({
+        distanceKilometers: req.weeklyAverageDistance * weeksPerYear,
+      }),
+    )
+  }
   return {estimatedEmissions, unit: Units.KG_CO2E_PER_YEAR, sources: []}
 }

@@ -6,7 +6,7 @@
         v-for="s in sources"
         :value="s.value"
         :description="s.description"
-        :url="s.url"
+        :url="s.url.toString()"
         :key="s.id"
       />
     </ol>
@@ -14,8 +14,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from "vue"
-import { SourceSchema } from "../lib/estimation/sources"
+import {defineComponent, PropType} from "vue"
+import {SourceSchema} from "../lib/estimation/sources"
 import SourceCitation from "./SourceCitation.vue"
 export default defineComponent({
   name: "SourceCitationList",
@@ -25,7 +25,7 @@ export default defineComponent({
       required: true,
     },
   },
-  components: { SourceCitation },
+  components: {SourceCitation},
 })
 </script>
 

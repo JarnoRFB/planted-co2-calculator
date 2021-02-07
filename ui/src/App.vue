@@ -10,12 +10,21 @@
     </h1>
   </div>
 
+  <el-progress :percentage="100" status="warning"></el-progress>
+
   <div id="total-emissions">Gesamt <span v-html="formatEmissions(totalEmissions)"></span></div>
   <div id="questions">
     <div id="flying" class="topic">
       <h2>Flüge</h2>
       <p class="question">Wie oft bist du letztes Jahr geflogen?</p>
       <div class="options">
+        <el-input-number
+          v-model="flying.nShortHauls"
+          :min="0"
+          :label="Kurzstreckenflüge"
+        ></el-input-number>
+        <br />
+
         <input
           v-model.number="flying.nShortHauls"
           type="number"

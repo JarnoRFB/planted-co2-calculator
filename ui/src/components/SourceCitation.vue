@@ -1,6 +1,6 @@
 <template>
   <div class="source-citation">
-    <p>{{ description }}</p>
+    <p>{{ description.german.title }} <span v-if="valid">✅</span><span v-else>❌</span></p>
     <p>Wert <span v-html="jsonValue"></span></p>
     <p>
       Siehe <a :href="url">{{ url }}</a>
@@ -9,19 +9,21 @@
 </template>
 
 <script lang="ts">
-import {defineComponent} from "vue"
+import {LocalizedDescription} from "@/lib/estimation/sources"
+import {defineComponent, PropType} from "vue"
 
 export default defineComponent({
   name: "SourceCitation",
   props: {
-    value: String,
-    description: String,
+    value: null,
+    description: {type: Object as PropType<LocalizedDescription>},
     url: String,
+    valid: Boolean,
   },
   computed: {
     jsonValue(): any {
       if (typeof this.value === "object") {
-        return `<code>${JSON.stringify(this.value, null, 2)} </code>`
+        return `<code>${JSON.stringify(this.value, null, 2)}</code>`
       } else {
         return this.value
       }

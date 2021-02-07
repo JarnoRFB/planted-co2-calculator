@@ -7,6 +7,7 @@
         :value="s.value"
         :description="s.description"
         :url="s.url.toString()"
+        :valid="s.valid"
         :key="s.id"
       />
     </ol>

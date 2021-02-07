@@ -49,7 +49,7 @@
       <p class="question">Wie ernährst Du Dich?</p>
       <div class="options">
         <select v-model="nutrition.diet">
-          <option value="CARNIVORE">fleischhaltig</option>
+          <option value="CARNIVORE">fleischreich</option>
           <option value="FLEXITARIAN">flexitarisch</option>
           <option value="VEGETARIAN">vegetarisch</option>
           <option value="VEGAN">vegan</option>

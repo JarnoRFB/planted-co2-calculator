@@ -1,14 +1,24 @@
+export interface Description {
+  title: string
+  body?: string
+}
+
+export interface LocalizedDescription {
+  english: Description
+  german: Description
+}
+
 export interface SourceSchema<T> {
   value: T
   url: URL
-  description: string
-  isStale: boolean
+  description: LocalizedDescription
+  valid: boolean
 }
 
 export interface Source<T> {
   readonly value: T
   readonly url: URL
-  readonly description: string
+  readonly description: LocalizedDescription
   isValid(): boolean
   toJson(): SourceSchema<T>
 }
@@ -16,10 +26,10 @@ export interface Source<T> {
 export class ValidUntilSource<T> implements Source<T> {
   _value: T
   url: URL
-  description: string
+  description: LocalizedDescription
   validUntil: Date
 
-  constructor(value: T, url: string, description: string, validUntil: Date) {
+  constructor(value: T, url: string, description: LocalizedDescription, validUntil: Date) {
     this._value = value
     this.url = new URL(url)
     this.description = description
@@ -43,7 +53,7 @@ export class ValidUntilSource<T> implements Source<T> {
       value: this._value,
       url: this.url,
       description: this.description,
-      isStale: !this.isValid(),
+      valid: this.isValid(),
     }
   }
 }
@@ -102,6 +112,15 @@ export class Estimate<A> {
     ed: Estimate<D>,
     ee: Estimate<E>,
   ): <T>(f: (a: A, b: B, c: C, d: D, e: E) => T) => Estimate<T>
+
+  static combine<T, A, B, C, D, E, F>(
+    ea: Estimate<A>,
+    eb: Estimate<B>,
+    ec: Estimate<C>,
+    ed: Estimate<D>,
+    ee: Estimate<E>,
+    ef: Estimate<F>,
+  ): <T>(f: (a: A, b: B, c: C, d: D, e: E, f: F) => T) => Estimate<T>
 
   static combine<T>(...estimates: Estimate<any>[]): (f: (...xs: any[]) => T) => Estimate<T> {
     return f =>

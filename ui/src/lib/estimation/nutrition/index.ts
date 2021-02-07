@@ -47,10 +47,23 @@ const dietToMealType = (diet: Diet): string => {
   }
 }
 
+const dietImpacts = new ValidUntilSource(
+  "",
+  "https://www.nature.com/articles/s41598-017-06466-8",
+  {
+    english: {title: "Environmental impact of omnivorous, ovo-lacto-vegetarian, and vegan diet"},
+    german: {
+      title: "Umweltauswirkungen von omnivorer, ovo-lacto-vegetarischer und veganer Ernährung",
+    },
+  },
+  new Date("2021/12/25"),
+)
+
 export const estimateEmissions = (req: NutritionEstimationParams): EstimationResponse => {
   const mealType = dietToMealType(req.diet as Diet)
   const estimatedEmissions = Math.round(
-    mealCarbonModel.carbonEmissions({mealType, numberOfMeals: 365 * 3})
+    mealCarbonModel.carbonEmissions({mealType, numberOfMeals: 365 * 3}),
   )
-  return {estimatedEmissions, unit: Units.KG_CO2E_PER_YEAR, sources: []}
+
+  return {estimatedEmissions, unit: Units.KG_CO2E_PER_YEAR, sources: [dietImpacts.toJson()]}
 }

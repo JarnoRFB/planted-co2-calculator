@@ -21,52 +21,56 @@ export const FlyingEstimationParams = t.type({
   nLongHauls: t.readonly(t.number),
 })
 
-interface PositiveBrand {
-  readonly Positive: unique symbol // use `unique symbol` here to ensure uniqueness across modules / packages
-}
-
-// const Positive = t.brand(
-//   t.number, // a codec representing the type to be refined
-//   (n): n is t.Branded<number, PositiveBrand> => n >= 0, // a custom type guard using the build-in helper `Branded`
-//   "Positive" // the name must match the readonly field in the brand
-// )
-
-// type Positive = t.TypeOf<typeof Positive>
-
 export type FlyingEstimationParams = t.TypeOf<typeof FlyingEstimationParams>
 
 const durationOfShortHaulFlight = new ValidUntilSource<string>(
   "<3 h",
   "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
-  "durations which count as short haul flights",
+  {
+    english: {title: "durations which count as short haul flights"},
+    german: {title: "Dauer eines Kurzstreckenflugs"},
+  },
   new Date("2021-12-25"),
 )
 
 const durationOfMediumHaulFlight = new ValidUntilSource<string>(
   "3-6 h",
   "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
-  "durations which count as medium haul flights",
+  {
+    english: {title: "durations which count as medium haul flights"},
+    german: {title: "Dauer eines Mittelstreckenflugs"},
+  },
   new Date("2021-12-25"),
 )
 
 const durationOfLongHaulFlight = new ValidUntilSource<string>(
   "6 - 12 h",
   "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
-  "durations which count as long haul flights",
+  {
+    english: {title: "durations which count as long haul flights"},
+    german: {title: "Dauer eines Langstreckenflugs"},
+  },
   new Date("2021-12-25"),
 )
 
 const averageShortHaulFlightDistance = new ValidUntilSource<number>(
   (1100 + 1500) / 2,
   "https://en.wikipedia.org/wiki/Flight_length",
-  "average distance of short haul flight in kilometers",
+
+  {
+    english: {title: "average distance of short haul flight (km)"},
+    german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
+  },
   new Date("2021-12-25"),
 )
 
 const averageLongHaulFlightDistance = new ValidUntilSource<number>(
   (4100 + 4800) / 2,
   "https://en.wikipedia.org/wiki/Flight_length",
-  "average distance of long haul flight in kilometers",
+  {
+    english: {title: "average distance of long haul flight (km)"},
+    german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
+  },
   new Date("2021-12-25"),
 )
 
@@ -74,7 +78,10 @@ const averageMediumHaulFlightDistance = new ValidUntilSource<number>(
   averageShortHaulFlightDistance.value +
     (averageLongHaulFlightDistance.value - averageShortHaulFlightDistance.value) / 2,
   "https://en.wikipedia.org/wiki/Flight_length",
-  "average distance of medium haul flight in kilometers",
+  {
+    english: {title: "average distance of medium haul flight (km)"},
+    german: {title: "Mittlere Distanz eines Mittelstreckenflugs (km)"},
+  },
   new Date("2021/12/25"),
 )
 

@@ -19,35 +19,32 @@
       <p class="question">Wie oft bist du letztes Jahr geflogen?</p>
       <div class="options">
         <el-input-number
+          id="nShortHauls-option"
           v-model="flying.nShortHauls"
           :min="0"
-          :label="Kurzstreckenflüge"
+          :label="'Kurzstreckenflüge'"
         ></el-input-number>
+        <span>Kurzstreckenflüge</span>
         <br />
 
-        <input
-          v-model.number="flying.nShortHauls"
-          type="number"
-          name="nShortHauls"
-          id="nShortHauls-option"
-        />
-        <label for="nShortHauls-option">Kurzstreckenflüge</label>
-        <br />
-        <input
-          v-model.number="flying.nMediumHauls"
-          type="number"
-          name="nMediumHauls"
+        <el-input-number
           id="nMediumHauls-option"
-        />
-        <label for="nMediumHauls-option">Mittelstreckenflüge</label>
+          v-model="flying.nMediumHauls"
+          :min="0"
+          :label="'Mittelstreckenflüge'"
+        ></el-input-number>
+
+        <span>Mittelstreckenflüge</span>
+
         <br />
-        <input
-          v-model.number="flying.nLongHauls"
-          type="number"
-          name="nLongHauls"
+        <el-input-number
           id="nLongHauls-option"
-        />
-        <label for="nLongHauls-option">Langstreckenflüge</label>
+          v-model="flying.nLongHauls"
+          :min="0"
+          :label="'Langstreckenflüge'"
+        ></el-input-number>
+
+        <span>Langstreckenflüge</span>
       </div>
       <div class="emissions" v-html="formatEmissions(flyingEmissions.estimatedEmissions)"></div>
       <source-citation-list :sources="flyingEmissions.sources" />
@@ -57,12 +54,15 @@
       <h2>Ernährung</h2>
       <p class="question">Wie ernährst Du Dich?</p>
       <div class="options">
-        <select v-model="nutrition.diet">
-          <option value="CARNIVORE">fleischreich</option>
-          <option value="FLEXITARIAN">flexitarisch</option>
-          <option value="VEGETARIAN">vegetarisch</option>
-          <option value="VEGAN">vegan</option>
-        </select>
+        <el-select v-model="nutrition.diet">
+          <el-option
+            v-for="item in nutritionOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
+
         <div
           class="emissions"
           v-html="formatEmissions(nutritionEmissions.estimatedEmissions)"
@@ -75,8 +75,14 @@
       <h2>Mobilität</h2>
       <p class="question">Wie viele Kilometer fährst Du im Durchschnitt pro Woche?</p>
       <div class="options">
-        <input v-model.number="driving.weeklyAverageDistance" type="number" id="driving-option" />
-        <label for="driving-option">Kilometer in der Woche</label>
+        <el-input-number
+          v-model.number="driving.weeklyAverageDistance"
+          id="driving-option"
+          :min="0"
+          :label="'Kilometer in der Woche'"
+        ></el-input-number>
+
+        <span>Kilometer in der Woche</span>
         <div class="emissions" v-html="formatEmissions(drivingEmissions.estimatedEmissions)"></div>
         <source-citation-list :sources="drivingEmissions.sources" />
       </div>
@@ -86,39 +92,42 @@
       <h2>Heizung</h2>
       <p class="question">Wie heizt du?</p>
       <div class="options">
-        <input
-          v-model.number="heating.householdSize"
-          type="number"
-          id="heating-household-size-option"
+        <el-input-number
+          v-model.number="housing.householdSize"
+          id="housing-household-size-option"
+          :min="1"
+          :label="'Personen im Haushalt'"
         />
-        <label for="heating-household-size-option">Personen im Haushalt</label>
+        <span>Personen im Haushalt</span>
         <br />
 
-        <input
-          v-model.number="heating.apartmentSize"
-          type="number"
-          id="heating-apartment-size-option"
+        <el-input-number
+          v-model.number="housing.apartmentSize"
+          id="housing-apartment-size-option"
+          :min="0"
+          :label="'Wohnfläche'"
         />
-        <label for="heating-apartment-age-option">Wohnfläche</label>
+        <span>Wohnfläche</span>
         <br />
 
-        <input
-          v-model.number="heating.apartmentAge"
-          type="number"
-          id="heating-apartment-age-option"
-          min="1900"
-          max="2021"
+        <el-input-number
+          v-model.number="housing.apartmentAge"
+          id="housing-apartment-age-option"
+          :min="1900"
+          :max="2021"
+          :label="'Baujahr'"
         />
-        <label for="heating-apartment-age-option">Baujahr</label>
+        <span>Baujahr</span>
         <br />
 
-        <select v-model="heating.energySource">
-          <option value="oil">Heizöl</option>
-          <option value="naturalGas">Gas</option>
-          <option value="longDistanceHeating">Fernwärme</option>
-          <option value="heatingPump">Heizpumpe</option>
-          <option value="woodPellets">Holzpellets</option>
-        </select>
+        <el-select v-model="heating.energySource">
+          <el-option
+            v-for="item in energySourceOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
       </div>
       <div class="emissions" v-html="formatEmissions(heatingEmissions.estimatedEmissions)"></div>
       <source-citation-list :sources="heatingEmissions.sources" />
@@ -128,26 +137,21 @@
       <h2>Strom</h2>
       <p class="question">Wie beziehst du Elektrizität?</p>
       <div class="options">
-        <input
-          v-model.number="electricity.householdSize"
-          type="number"
-          id="electricity-household-size-option"
-        />
-        <label for="electricity-household-size-option">Personen im Haushalt</label>
         <br />
 
-        <input
-          v-model="electricity.greenEnergy"
-          type="checkbox"
-          id="electricity-green-energy-option"
-        />
-        <label for="electricity-green-energy-option">Ökostrom</label>
+        <el-checkbox v-model="electricity.greenEnergy" id="electricity-green-energy-option"
+          >Ökostrom</el-checkbox
+        >
         <br />
 
-        <select v-model="electricity.housing" id="electricity-housing-option">
-          <option value="house">Haus</option>
-          <option value="apartment">Wohnung</option>
-        </select>
+        <el-select v-model="housing.housing" id="housing-housing-option">
+          <el-option
+            v-for="item in housingOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          />
+        </el-select>
         <label for="electricity-green-energy-option">Haushalt</label>
       </div>
       <div
@@ -161,11 +165,14 @@
       <h2>Konsum</h2>
       <p class="question">Wie viel konsumierst du?</p>
       <div class="options">
-        <select v-model="consumerism.intensity">
-          <option value="frugal">sparsam</option>
-          <option value="normal">normal</option>
-          <option value="lush">viel</option>
-        </select>
+        <el-select v-model="consumerism.intensity">
+          <el-option
+            v-for="item in consumerismOptions"
+            :key="item.value"
+            :label="item.label"
+            :value="item.value"
+          ></el-option>
+        </el-select>
         <div
           class="emissions"
           v-html="formatEmissions(consumerismEmissions.estimatedEmissions)"
@@ -196,6 +203,71 @@ export default defineComponent({
   name: "App",
   data() {
     return {
+      energySourceOptions: [
+        {
+          value: "oil",
+          label: "Heizöl",
+        },
+        {
+          value: "naturalGas",
+          label: "Gas",
+        },
+        {
+          value: "longDistanceHeating",
+          label: "Fernwärme",
+        },
+        {
+          value: "heatingPump",
+          label: "Heizpumpe",
+        },
+        {
+          value: "woodPellets",
+          label: "Holzpellets",
+        },
+      ],
+      housingOptions: [
+        {
+          value: "house",
+          label: "Haus",
+        },
+        {
+          value: "apartment",
+          label: "Wohnung",
+        },
+      ],
+      consumerismOptions: [
+        {
+          value: "frugal",
+          label: "sparsam",
+        },
+        {
+          value: "normal",
+          label: "normal",
+        },
+        {
+          value: "lush",
+          label: "viel",
+        },
+      ],
+      nutritionOptions: [
+        {
+          value: "CARNIVORE",
+          label: "fleischreich",
+        },
+        {
+          value: "FLEXITARIAN",
+          label: "flexitarisch",
+        },
+        {
+          value: "VEGETARIAN",
+          label: "vegetarisch",
+        },
+        {
+          value: "VEGAN",
+          label: "vegan",
+        },
+      ],
+
       flying: {
         nShortHauls: 1,
         nMediumHauls: 2,
@@ -207,16 +279,17 @@ export default defineComponent({
       driving: {
         weeklyAverageDistance: 200,
       },
-      heating: {
+      housing: {
         householdSize: 1,
         apartmentSize: 200,
         apartmentAge: 1960,
+        housing: "house",
+      },
+      heating: {
         energySource: "oil",
       } as heating.HeatingEstimationParams,
       electricity: {
-        householdSize: 1,
         greenEnergy: false,
-        housing: "house",
       } as electricity.ElectricityEstimationParams,
       consumerism: {
         country: "Germany",
@@ -245,10 +318,10 @@ export default defineComponent({
       return driving.estimateEmissions(this.driving)
     },
     heatingEmissions(): EstimationResponse {
-      return heating.estimateEmissions(this.heating)
+      return heating.estimateEmissions({...this.housing, ...this.heating})
     },
     electricityEmissions(): EstimationResponse {
-      return electricity.estimateEmissions(this.electricity)
+      return electricity.estimateEmissions({...this.housing, ...this.electricity})
     },
     consumerismEmissions(): EstimationResponse {
       return consumerism.estimateEmissions(this.consumerism)

@@ -1,0 +1,62 @@
+[
+  {
+    "housing": "house",
+    "householdSize": 1,
+    "consumptionInkWhPerYear": 2300,
+    "consumptionInkWhPerYearWithElectricWarmWater": 2500
+  },
+  {
+    "housing": "house",
+    "householdSize": 2,
+    "consumptionInkWhPerYear": 3000,
+    "consumptionInkWhPerYearWithElectricWarmWater": 3600
+  },
+  {
+    "housing": "house",
+    "householdSize": 3,
+    "consumptionInkWhPerYear": 3600,
+    "consumptionInkWhPerYearWithElectricWarmWater": 4500
+  },
+  {
+    "housing": "house",
+    "householdSize": 4,
+    "consumptionInkWhPerYear": 4000,
+    "consumptionInkWhPerYearWithElectricWarmWater": 5000
+  },
+  {
+    "housing": "house",
+    "householdSize": 5,
+    "consumptionInkWhPerYear": 5000,
+    "consumptionInkWhPerYearWithElectricWarmWater": 6500
+  },
+  {
+    "housing": "apartment",
+    "householdSize": 1,
+    "consumptionInkWhPerYear": 1500,
+    "consumptionInkWhPerYearWithElectricWarmWater": 2000
+  },
+  {
+    "housing": "apartment",
+    "householdSize": 2,
+    "consumptionInkWhPerYear": 2100,
+    "consumptionInkWhPerYearWithElectricWarmWater": 3000
+  },
+  {
+    "housing": "apartment",
+    "householdSize": 3,
+    "consumptionInkWhPerYear": 2600,
+    "consumptionInkWhPerYearWithElectricWarmWater": 3900
+  },
+  {
+    "housing": "apartment",
+    "householdSize": 4,
+    "consumptionInkWhPerYear": 3000,
+    "consumptionInkWhPerYearWithElectricWarmWater": 4500
+  },
+  {
+    "housing": "apartment",
+    "householdSize": 5,
+    "consumptionInkWhPerYear": 3600,
+    "consumptionInkWhPerYearWithElectricWarmWater": 5500
+  }
+]

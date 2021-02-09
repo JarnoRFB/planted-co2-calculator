@@ -1,0 +1,5 @@
+printWidth: 100
+semi: false
+bracketSpacing: false
+arrowParens: "avoid"
+trailingComma: all

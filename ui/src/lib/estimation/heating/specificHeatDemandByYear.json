@@ -1,0 +1,37 @@
+[
+  {
+    "yearRange": {
+      "low": 0,
+      "high": 1977
+    },
+    "specificHeatDemand": 320
+  },
+  {
+    "yearRange": {
+      "low": 1977,
+      "high": 1983
+    },
+    "specificHeatDemand": 230
+  },
+  {
+    "yearRange": {
+      "low": 1984,
+      "high": 1994
+    },
+    "specificHeatDemand": 160
+  },
+  {
+    "yearRange": {
+      "low": 1995,
+      "high": 2001
+    },
+    "specificHeatDemand": 110
+  },
+  {
+    "yearRange": {
+      "low": 2002,
+      "high": 2030
+    },
+    "specificHeatDemand": 75
+  }
+]

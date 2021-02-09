@@ -1,0 +1,43 @@
+{
+  "name": "carbon-savings-calculator-ui",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@tmrow/bloom-contrib": "^0.0.27",
+    "core-js": "^3.6.5",
+    "element-plus": "^1.0.2-beta.28",
+    "fp-ts": "^2.9.5",
+    "io-ts": "^2.2.14",
+    "vue": "^3.0.0",
+    "vue-class-component": "^8.0.0-0"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.168",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-only-warn": "^1.0.2",
+    "eslint-plugin-vue": "^7.0.0-0",
+    "sass": "^1.32.6",
+    "sass-loader": "^10.1.1",
+    "typescript": "~3.9.3",
+    "vue-cli-plugin-element-plus": "~0.0.13"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

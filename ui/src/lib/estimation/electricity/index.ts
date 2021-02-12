@@ -90,7 +90,9 @@ export const estimateEmissions = (req: ElectricityEstimationParams): EstimationR
   const estimatedEmissions0 = applicableCarbonIntensity0.map2(
     estimatedConsumptionPerYear0,
     (carbonIntensity, consumptionPerYear) => {
-      if (consumptionPerYear === undefined) {
+      if (req.householdSize <= 0) {
+        return 0
+      } else if (consumptionPerYear === undefined) {
         throw new Error("No consumption could be estimated")
       } else {
         return (consumptionPerYear * carbonIntensity) / req.householdSize

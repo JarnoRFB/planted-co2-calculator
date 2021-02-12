@@ -9,10 +9,16 @@
       C0<sub>2</sub> Recher
     </h1>
   </div>
+  <el-progress
+    :text-inside="true"
+    :show-text="true"
+    :stroke-width="50"
+    :percentage="percentageOfReferenceEmissions"
+    :color="colorGradient"
+  >
+    <span v-html="formatEmissions(totalEmissions)"> </span>
+  </el-progress>
 
-  <el-progress :percentage="100" status="warning"></el-progress>
-
-  <div id="total-emissions">Gesamt <span v-html="formatEmissions(totalEmissions)"></span></div>
   <div id="questions">
     <div id="flying" class="topic">
       <h2>Flüge</h2>
@@ -95,7 +101,7 @@
         <el-input-number
           v-model.number="housing.householdSize"
           id="housing-household-size-option"
-          :min="1"
+          :min="0"
           :label="'Personen im Haushalt'"
         />
         <span>Personen im Haushalt</span>
@@ -197,7 +203,11 @@ import * as heating from "./lib/estimation/heating"
 import * as consumerism from "./lib/estimation/consumerism"
 
 import SourceCitationList from "./components/SourceCitationList.vue"
-import {formatEmissions} from "./lib/utils"
+
+const numberFormat = new Intl.NumberFormat("de-DE", {
+  minimumFractionDigits: 2,
+  maximumFractionDigits: 2,
+})
 
 export default defineComponent({
   name: "App",
@@ -269,9 +279,9 @@ export default defineComponent({
       ],
 
       flying: {
-        nShortHauls: 1,
+        nShortHauls: 4,
         nMediumHauls: 2,
-        nLongHauls: 3,
+        nLongHauls: 2,
       },
       nutrition: {
         diet: "CARNIVORE",
@@ -282,7 +292,7 @@ export default defineComponent({
       housing: {
         householdSize: 1,
         apartmentSize: 200,
-        apartmentAge: 1960,
+        apartmentAge: 1990,
         housing: "house",
       },
       heating: {
@@ -295,6 +305,30 @@ export default defineComponent({
         country: "Germany",
         intensity: "lush",
       } as consumerism.ConsumerismEstimationParams,
+      referenceEmissions: 22_211,
+      colorGradient: [
+        "#57bb8a",
+        "#63b682",
+        "#73b87e",
+        "#84bb7b",
+        "#94bd77",
+        "#a4c073",
+        "#b0be6e",
+        "#c4c56d",
+        "#d4c86a",
+        "#e2c965",
+        "#f5ce62",
+        "#f3c563",
+        "#e9b861",
+        "#e6ad61",
+        "#ecac67",
+        "#e9a268",
+        "#e79a69",
+        "#e5926b",
+        "#e2886c",
+        "#e0816d",
+        "#dd776e",
+      ],
     }
   },
   computed: {
@@ -326,9 +360,14 @@ export default defineComponent({
     consumerismEmissions(): EstimationResponse {
       return consumerism.estimateEmissions(this.consumerism)
     },
+    percentageOfReferenceEmissions(): number {
+      return _.clamp((this.totalEmissions / this.referenceEmissions) * 100, 0, 100)
+    },
   },
   methods: {
-    formatEmissions,
+    formatEmissions(emissions) {
+      return `${numberFormat.format(emissions / 1000)} Tonnen CO<sub>2</sub>e`
+    },
   },
   components: {
     SourceCitationList,

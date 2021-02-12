@@ -74,6 +74,8 @@ export const estimateEmissions = (req: HeatingEstimationParams): EstimationRespo
 
     if (specificHeatDemand === undefined) {
       throw new Error("Could not estimate emissions")
+    } else if (req.householdSize <= 0) {
+      return 0
     } else {
       return (req.apartmentSize * specificHeatDemand * carbonIntensity) / 1000 / req.householdSize
     }

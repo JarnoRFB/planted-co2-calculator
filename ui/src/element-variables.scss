@@ -9,3 +9,22 @@ $--color-primary: #088a08;
 $--font-path: "~element-plus/lib/theme-chalk/fonts";
 
 @import "~element-plus/packages/theme-chalk/src/index";
+
+@mixin center {
+  margin: auto;
+  width: 75%;
+}
+
+.el-form--label-top .el-form-item__label {
+  padding: 0px;
+}
+
+// .el-form-item {
+//   @include center;
+//   margin-bottom: 22px;
+//   text-align: center;
+// }
+
+// .el-form-item__label-wrap {
+//   float: right;
+// }

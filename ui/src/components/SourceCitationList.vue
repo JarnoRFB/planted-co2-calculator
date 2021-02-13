@@ -1,16 +1,21 @@
 <template>
   <div>
-    <p>Quellen</p>
-    <ol>
-      <source-citation
-        v-for="s in sources"
-        :value="s.value"
-        :description="s.description"
-        :url="s.url.toString()"
-        :valid="s.valid"
-        :key="s.id"
-      />
-    </ol>
+    <p></p>
+    <el-collapse>
+      <el-collapse-item title="Quellen">
+        <ol>
+          <source-citation
+            v-for="(s, index) in sources"
+            :value="s.value"
+            :description="s.description"
+            :url="s.url.toString()"
+            :valid="s.valid"
+            :key="s.id"
+            :index="index"
+          />
+        </ol>
+      </el-collapse-item>
+    </el-collapse>
   </div>
 </template>
 

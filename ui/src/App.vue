@@ -418,6 +418,9 @@ export default defineComponent({
 
 <style lang="sass">
 $color: #2c3e50
+$font-size-1: 2em
+$font-size-2: 1.4em
+$font-size-3: 1.1em
 
 @mixin center
   margin: auto
@@ -480,7 +483,7 @@ body
   width: 100%
 
 .question
-  font-size: 24px
+  font-size: $font-size-1
   font-weight: 700
   margin-left: 2%
   margin-top: 4%
@@ -488,7 +491,7 @@ body
 
 .total
   background-color: rgb(255, 255, 255)
-  padding-top: 1%
+  padding-top: 5%
   padding-bottom: 2%
 
   position: sticky
@@ -506,7 +509,7 @@ body
 
 @mixin text-block
   text-align: justify
-  font-size: 1.4em
+  font-size: $font-size-2
   margin: 1% auto
 
 #introduction

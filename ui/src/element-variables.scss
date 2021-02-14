@@ -8,7 +8,9 @@ $--color-primary: #088a08;
 /* icon font path, required */
 $--font-path: "~element-plus/lib/theme-chalk/fonts";
 
-$font-size: 1.4em;
+$font-size-1: 2em;
+$font-size-2: 1.4em;
+$font-size-3: 1.1em;
 
 @import "~element-plus/packages/theme-chalk/src/index";
 
@@ -22,15 +24,23 @@ $font-size: 1.4em;
 }
 
 .el-divider__text {
-  font-size: 2em;
+  font-size: $font-size-1;
 }
 
 .el-form-item__label {
-  font-size: $font-size;
+  font-size: $font-size-2;
 }
 
 .el-input__inner {
-  font-size: $font-size;
+  font-size: $font-size-2;
+}
+
+.el-progress-bar__innerText {
+  font-size: $font-size-2;
+}
+
+.el-tag {
+  font-size: $font-size-3;
 }
 // .el-form-item {
 //   @include center;

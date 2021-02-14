@@ -8,6 +8,15 @@
       />
       C0<sub>2</sub>&nbsp;Recher
     </h1>
+    <div id="introduction">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </div>
+  </div>
+  <div class="total">
     <el-progress
       :text-inside="true"
       :show-text="true"
@@ -15,17 +24,16 @@
       :percentage="percentageOfReferenceEmissions"
       :color="colorGradient"
     >
-      <b> <span v-html="formatEmissions(totalEmissions)"> </span> </b>
+      <b> <span v-html="formatEmissions(totalEmissions)"> </span> </b>&nbsp;&nbsp;
     </el-progress>
   </div>
 
   <div id="questions">
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
-      <h2>Flüge</h2>
-      <p class="question">Wie oft bist Du letztes Jahr geflogen?</p>
+      <p class="question">Wie oft bist Du in den letzten zwölf Monaten geflogen?</p>
       <div class="options">
-        <el-form :label-position="labelPosition" label-width="auto" size="medium">
+        <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item label="Kurzstreckenflüge">
             <el-input-number
               id="nShortHauls-option"
@@ -62,7 +70,6 @@
     <div id="nutrition" class="topic">
       <el-divider>🍜</el-divider>
 
-      <h2>Ernährung</h2>
       <p class="question">Wie ernährst Du Dich?</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
@@ -88,7 +95,6 @@
 
     <div id="driving" class="topic">
       <el-divider>🚗</el-divider>
-      <h2>Mobilität</h2>
       <p class="question">Wie viele Kilometer fährst Du im Durchschnitt pro Woche mit dem Auto?</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
@@ -109,10 +115,9 @@
       <source-citation-list :sources="drivingEmissions.sources" />
     </div>
 
-    <div id="heating" class="topic">
+    <div id="housing" class="topic">
       <el-divider>🏠</el-divider>
-      <h2>Heizung</h2>
-      <p class="question">Wie heizt Du?</p>
+      <p class="question">Heizung und Strom</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item label="Personen im Haushalt">
@@ -140,31 +145,7 @@
               :label="'Baujahr'"
             />
           </el-form-item>
-          <el-form-item label="Energiequelle">
-            <el-select v-model="heating.energySource">
-              <el-option
-                v-for="item in energySourceOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              />
-            </el-select>
-          </el-form-item>
-        </el-form>
-      </div>
-      <intermediate-emission-display>
-        <span v-html="formatEmissions(heatingEmissions.estimatedEmissions)"
-      /></intermediate-emission-display>
-      <source-citation-list :sources="heatingEmissions.sources" />
-    </div>
 
-    <div id="electricity" class="topic">
-      <el-divider>💡</el-divider>
-
-      <h2>Strom</h2>
-      <p class="question">Wie beziehst Du Elektrizität?</p>
-      <div class="options">
-        <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item label="Art des Haushalts">
             <el-select v-model="housing.housing" id="housing-housing-option">
               <el-option
@@ -175,23 +156,30 @@
               />
             </el-select>
           </el-form-item>
+          <el-form-item label="Energiequelle">
+            <el-select v-model="heating.energySource">
+              <el-option
+                v-for="item in energySourceOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-form-item>
+
           <el-form-item label="Ökostrom" :labelPosition="right">
             <el-switch v-model="electricity.greenEnergy" id="electricity-green-energy-option2">
             </el-switch>
           </el-form-item>
         </el-form>
       </div>
-
       <intermediate-emission-display>
-        <span v-html="formatEmissions(electricityEmissions.estimatedEmissions)"
+        <span v-html="formatEmissions(housingEmissions.estimatedEmissions)"
       /></intermediate-emission-display>
-      <source-citation-list :sources="electricityEmissions.sources" />
+      <source-citation-list :sources="housingEmissions.sources" />
     </div>
-
     <div id="consumerism" class="topic">
       <el-divider>🛍️</el-divider>
-
-      <h2>Konsum</h2>
       <p class="question">Wie schätzt Du Deinen Konsum ein?</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
@@ -214,13 +202,20 @@
       <source-citation-list :sources="consumerismEmissions.sources" />
     </div>
   </div>
+  <div id="result">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+  </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue"
 import _ from "lodash"
 
-import {EstimationResponse} from "./lib/estimation"
+import {EstimationResponse, Units} from "./lib/estimation"
 // import * as base from "./estimation/base"
 import * as flying from "./lib/estimation/flying"
 import * as nutrition from "./lib/estimation/nutrition"
@@ -238,8 +233,14 @@ const numberFormat = new Intl.NumberFormat("de-DE", {
 
 export default defineComponent({
   name: "App",
+  mounted() {
+    window.addEventListener("resize", () => {
+      this.windowWidth = window.innerWidth
+    })
+  },
   data() {
     return {
+      windowWidth: 0,
       energySourceOptions: [
         {
           value: "oil",
@@ -357,7 +358,6 @@ export default defineComponent({
         "#e0816d",
         "#dd776e",
       ],
-      labelPosition: "top",
     }
   },
   computed: {
@@ -386,11 +386,22 @@ export default defineComponent({
     electricityEmissions(): EstimationResponse {
       return electricity.estimateEmissions({...this.housing, ...this.electricity})
     },
+    housingEmissions(): EstimationResponse {
+      return {
+        estimatedEmissions:
+          this.heatingEmissions.estimatedEmissions + this.electricityEmissions.estimatedEmissions,
+        unit: Units.KG_CO2E_PER_YEAR,
+        sources: this.heatingEmissions.sources.concat(this.electricityEmissions.sources),
+      }
+    },
     consumerismEmissions(): EstimationResponse {
       return consumerism.estimateEmissions(this.consumerism)
     },
     percentageOfReferenceEmissions(): number {
       return _.clamp((this.totalEmissions / this.referenceEmissions) * 100, 0, 100)
+    },
+    labelPosition(): string {
+      return this.windowWidth > 800 ? "right" : "top"
     },
   },
   methods: {
@@ -424,7 +435,6 @@ html
 
 body
   margin-top: 0
-  // font-size: 2em
 
 
 #app
@@ -434,11 +444,16 @@ body
   color: $color
   margin: 0 10px
 
+
+@media screen and (min-width: 1100px)
+  #app
+    width: 1100px
+    margin: 10px auto
+
 .title
   div
     display: inline
 .header
-
   h1
     display: inline
     vertical-align: middle
@@ -450,13 +465,13 @@ body
   padding-left: 5%
   padding-right: 5%
   padding-top: 2%
-  padding-bottom: 2%
+  padding-bottom: 0
+
 
   background-color: rgb(255, 255, 255)
-  position: sticky
 
   // top left corner should start at leftmost spot
-  left: 0
+  //left: 0
 
   // top left corner should start at topmost spot
   top: 0
@@ -464,13 +479,38 @@ body
   // take up the full browser width
   width: 100%
 
+.question
+  font-size: 24px
+  font-weight: 700
+  margin-left: 2%
+  margin-top: 4%
+  margin-bottom: 4%
+
+.total
+  background-color: rgb(255, 255, 255)
+  padding-top: 1%
+  padding-bottom: 2%
+
+  position: sticky
+  // take up the full browser width
+  width: 100%
+
   // high z index so other content scrolls underneath
   z-index: 200
-
-
-
+  top: 0
 
 .options
   @include center
   text-align: center
+
+
+@mixin text-block
+  text-align: justify
+  font-size: 1.4em
+  margin: 1% auto
+
+#introduction
+  @include text-block
+#result
+  @include text-block
 </style>

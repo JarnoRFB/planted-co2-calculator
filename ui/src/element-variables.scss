@@ -19,6 +19,9 @@ $--font-path: "~element-plus/lib/theme-chalk/fonts";
   padding: 0px;
 }
 
+.el-divider__text {
+  font-size: 2em;
+}
 // .el-form-item {
 //   @include center;
 //   margin-bottom: 22px;

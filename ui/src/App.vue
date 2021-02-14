@@ -6,7 +6,7 @@
         loading="eager"
         alt=""
       />
-      C0<sub>2</sub> Recher
+      C0<sub>2</sub>&nbsp;Recher
     </h1>
     <el-progress
       :text-inside="true"
@@ -25,7 +25,7 @@
       <h2>Flüge</h2>
       <p class="question">Wie oft bist Du letztes Jahr geflogen?</p>
       <div class="options">
-        <el-form :label-position="labelPosition" label-width="auto">
+        <el-form :label-position="labelPosition" label-width="auto" size="medium">
           <el-form-item label="Kurzstreckenflüge">
             <el-input-number
               id="nShortHauls-option"
@@ -89,7 +89,7 @@
     <div id="driving" class="topic">
       <el-divider>🚗</el-divider>
       <h2>Mobilität</h2>
-      <p class="question">Wie viele Kilometer fährst Du im Durchschnitt pro Woche?</p>
+      <p class="question">Wie viele Kilometer fährst Du im Durchschnitt pro Woche mit dem Auto?</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
           <el-form-item label="Kilometer in der Woche">
@@ -165,10 +165,6 @@
       <p class="question">Wie beziehst Du Elektrizität?</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
-          <el-form-item label="Ökostrom" :labelPosition="right">
-            <el-switch v-model="electricity.greenEnergy" id="electricity-green-energy-option2">
-            </el-switch>
-          </el-form-item>
           <el-form-item label="Art des Haushalts">
             <el-select v-model="housing.housing" id="housing-housing-option">
               <el-option
@@ -178,6 +174,10 @@
                 :value="item.value"
               />
             </el-select>
+          </el-form-item>
+          <el-form-item label="Ökostrom" :labelPosition="right">
+            <el-switch v-model="electricity.greenEnergy" id="electricity-green-energy-option2">
+            </el-switch>
           </el-form-item>
         </el-form>
       </div>
@@ -424,6 +424,8 @@ html
 
 body
   margin-top: 0
+  // font-size: 2em
+
 
 #app
   font-family: Avenir, Helvetica, Arial, sans-serif
@@ -464,7 +466,6 @@ body
 
   // high z index so other content scrolls underneath
   z-index: 200
-
 
 
 

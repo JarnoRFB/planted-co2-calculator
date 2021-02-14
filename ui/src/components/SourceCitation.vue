@@ -1,5 +1,6 @@
 <template>
   <div class="source-citation">
+    <el-divider v-if="index > 0"></el-divider>
     <p>{{ description.german.title }} <span v-if="valid">✅</span><span v-else>❌</span></p>
     <p>Wert <span v-html="jsonValue"></span></p>
     <p>
@@ -19,6 +20,7 @@ export default defineComponent({
     description: {type: Object as PropType<LocalizedDescription>},
     url: String,
     valid: Boolean,
+    index: Number,
   },
   computed: {
     jsonValue(): any {

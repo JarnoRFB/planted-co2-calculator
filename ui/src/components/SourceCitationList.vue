@@ -1,6 +1,5 @@
 <template>
   <div>
-    <p></p>
     <el-collapse>
       <el-collapse-item title="Quellen">
         <ol>

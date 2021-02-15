@@ -509,8 +509,14 @@ body
   font-size: $font-size-1
   font-weight: 700
   margin-left: 2%
+  margin-right: 2%
+
   margin-top: 4%
   margin-bottom: 4%
+
+.el-collapse
+  margin-left: 2%
+  margin-right: 2%
 
 .total
   background-color: rgb(255, 255, 255)

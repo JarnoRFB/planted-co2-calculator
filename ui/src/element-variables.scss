@@ -40,14 +40,10 @@ $font-size-3: 1.1em;
 }
 
 .el-tag {
+  margin: 5% 0;
   font-size: $font-size-3;
 }
-// .el-form-item {
-//   @include center;
-//   margin-bottom: 22px;
-//   text-align: center;
-// }
 
-// .el-form-item__label-wrap {
-//   float: right;
-// }
+.el-collapse-item__header {
+  font-size: $font-size-3;
+}

@@ -2,7 +2,7 @@
   <div class="source-citation">
     <el-divider v-if="index > 0"></el-divider>
     <p>{{ description.german.title }} <span v-if="valid">✅</span><span v-else>❌</span></p>
-    <p>Wert <span v-html="jsonValue"></span></p>
+    <p v-if="value">Wert <span v-html="jsonValue"></span></p>
     <p>
       Siehe <a :href="url">{{ url }}</a>
     </p>

@@ -9,11 +9,16 @@
       C0<sub>2</sub>&nbsp;Recher
     </h1>
     <div id="introduction">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-      non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      Willkommen zum planted CO<sub>2</sub> Rechner! Mit Fragen zu 5 Faktoren kannst du ganz schnell
+      Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen.
+      Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die
+      Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf
+      <a href="https://github.com/JarnoRFB/planted-co2-calculator">GitHub</a> verfügbar.
+      <br />
+      Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub
+        >2</sub
+      >
+      Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!
     </div>
   </div>
   <div class="total">
@@ -67,35 +72,9 @@
       <source-citation-list :sources="flyingEmissions.sources" />
     </div>
 
-    <div id="nutrition" class="topic">
-      <el-divider>🍜</el-divider>
-
-      <p class="question">Wie ernährst Du Dich?</p>
-      <div class="options">
-        <el-form :label-position="labelPosition" label-width="auto">
-          <el-form-item>
-            <el-select v-model="nutrition.diet">
-              <el-option
-                v-for="item in nutritionOptions"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
-              ></el-option>
-            </el-select>
-          </el-form-item>
-        </el-form>
-      </div>
-
-      <intermediate-emission-display>
-        <span v-html="formatEmissions(nutritionEmissions.estimatedEmissions)"
-      /></intermediate-emission-display>
-
-      <source-citation-list :sources="nutritionEmissions.sources" />
-    </div>
-
     <div id="driving" class="topic">
       <el-divider>🚗</el-divider>
-      <p class="question">Wie viele Kilometer fährst Du im Durchschnitt pro Woche mit dem Auto?</p>
+      <p class="question">Wie viele Kilometer fährst Du pro Woche mit dem Auto?</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
           <el-form-item label="Kilometer in der Woche">
@@ -178,6 +157,33 @@
       /></intermediate-emission-display>
       <source-citation-list :sources="housingEmissions.sources" />
     </div>
+
+    <div id="nutrition" class="topic">
+      <el-divider>🍜</el-divider>
+
+      <p class="question">Wie ernährst Du Dich?</p>
+      <div class="options">
+        <el-form :label-position="labelPosition" label-width="auto">
+          <el-form-item>
+            <el-select v-model="nutrition.diet">
+              <el-option
+                v-for="item in nutritionOptions"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
+
+      <intermediate-emission-display>
+        <span v-html="formatEmissions(nutritionEmissions.estimatedEmissions)"
+      /></intermediate-emission-display>
+
+      <source-citation-list :sources="nutritionEmissions.sources" />
+    </div>
+
     <div id="consumerism" class="topic">
       <el-divider>🛍️</el-divider>
       <p class="question">Wie schätzt Du Deinen Konsum ein?</p>
@@ -203,11 +209,9 @@
     </div>
   </div>
   <div id="result">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    Mit einem Fußabdruck von <span v-html="formatEmissions(totalEmissions)"> </span> liegts Du
+    {{ relationToAverage }} dem deutschen Durchschnitt von 11 Tonnen. Kompensiere Deinen Fußabdruck
+    jetzt einfach bei <a href="https://planted.green/">planted.green</a>.
   </div>
 </template>
 
@@ -334,6 +338,7 @@ export default defineComponent({
         intensity: "lush",
       } as consumerism.ConsumerismEstimationParams,
       referenceEmissions: 22_211,
+      referenceAverageEmissions: 11_170,
       // Styling.
       colorGradient: [
         "#57bb8a",
@@ -399,6 +404,24 @@ export default defineComponent({
     },
     percentageOfReferenceEmissions(): number {
       return _.clamp((this.totalEmissions / this.referenceEmissions) * 100, 0, 100)
+    },
+    percentageOfReferenceAverageEmissions(): number {
+      return (this.totalEmissions / this.referenceAverageEmissions) * 100
+    },
+    relationToAverage(): string {
+      console.log(this.percentageOfReferenceAverageEmissions)
+      if (this.percentageOfReferenceAverageEmissions < 65) {
+        return "weit unter"
+      } else if (this.percentageOfReferenceAverageEmissions < 100) {
+        return "unter"
+      } else if (
+        this.percentageOfReferenceAverageEmissions >= 100 &&
+        this.percentageOfReferenceAverageEmissions < 150
+      ) {
+        return "über"
+      } else {
+        return "weit über"
+      }
     },
     labelPosition(): string {
       return this.windowWidth > 800 ? "right" : "top"
@@ -516,4 +539,5 @@ body
   @include text-block
 #result
   @include text-block
+  margin: 5% auto
 </style>

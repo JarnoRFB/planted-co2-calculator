@@ -11,6 +11,7 @@
             :valid="s.valid"
             :key="s.id"
             :index="index"
+            :publicationMetadata="s.publicationMetadata"
           />
         </ol>
       </el-collapse-item>

@@ -3,6 +3,11 @@ export interface Description {
   body?: string
 }
 
+export interface PublicationMetadata {
+  author: string
+  year: number
+}
+
 export interface LocalizedDescription {
   english: Description
   german: Description
@@ -13,6 +18,7 @@ export interface SourceSchema<T> {
   url: URL
   description: LocalizedDescription
   valid: boolean
+  publicationMetadata?: PublicationMetadata
 }
 
 export interface Source<T> {
@@ -28,12 +34,20 @@ export class ValidUntilSource<T> implements Source<T> {
   url: URL
   description: LocalizedDescription
   validUntil: Date
+  publicationMetadata?: PublicationMetadata
 
-  constructor(value: T, url: string, description: LocalizedDescription, validUntil: Date) {
+  constructor(
+    value: T,
+    url: string,
+    description: LocalizedDescription,
+    validUntil: Date,
+    publicationMetaData?,
+  ) {
     this._value = value
     this.url = new URL(url)
     this.description = description
     this.validUntil = validUntil
+    this.publicationMetadata = publicationMetaData
   }
 
   isValid(): boolean {
@@ -54,6 +68,7 @@ export class ValidUntilSource<T> implements Source<T> {
       url: this.url,
       description: this.description,
       valid: this.isValid(),
+      publicationMetadata: this.publicationMetadata,
     }
   }
 }

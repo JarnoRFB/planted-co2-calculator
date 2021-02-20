@@ -26,8 +26,6 @@ export const ElectricityEstimationParams = t.type({
 
 const weeksPerYear = 52
 
-// KG_CO2e_PER_kWh
-
 // TODO find real AIB source
 const carbonIntensityGermany = Estimate.of(
   new ValidUntilSource(
@@ -68,43 +66,33 @@ const sourcedElectricityData = Estimate.of(
 export type ElectricityEstimationParams = t.TypeOf<typeof ElectricityEstimationParams>
 
 export const estimateEmissions = (req: ElectricityEstimationParams): EstimationResponse => {
-  const applicableCarbonIntensity0 = carbonIntensityGermany.map2(
+  const estimatedEmissions = Estimate.combine(
+    carbonIntensityGermany,
     carbonIntensityGermanyGreenEnergy,
-    (a, b) => (req.greenEnergy ? b : a),
-  )
+    sourcedElectricityData,
+  )((carbonIntensityGermany, carbonIntensityGermanyGreenEnergy, electricityData) => {
+    const applicableCarbonIntensity = req.greenEnergy
+      ? carbonIntensityGermanyGreenEnergy
+      : carbonIntensityGermany
 
-  const householdSize = Math.min(req.householdSize, 5)
+    const householdSize = Math.min(req.householdSize, 5)
 
-  const estimatedConsumptionPerYear0 = sourcedElectricityData.map(
-    electricityDataVal =>
-      electricityDataVal.find(x => x.householdSize == householdSize && x.housing == req.housing)
-        ?.consumptionInkWhPerYear,
-  )
+    const consumptionPerYear = electricityData.find(
+      x => x.householdSize == householdSize && x.housing == req.housing,
+    )?.consumptionInkWhPerYear
 
-  // const applicableCarbonIntensity = req.greenEnergy
-  //   ? carbonIntensityGermanyGreenEnergy
-  //   : carbonIntensityGermany
-
-  // const estimatedConsumptionPerYear = electricityData.find(
-  //   x => x.householdSize == req.householdSize && x.housing == req.housing,
-  // )?.consumptionInkWhPerYear
-
-  const estimatedEmissions0 = applicableCarbonIntensity0.map2(
-    estimatedConsumptionPerYear0,
-    (carbonIntensity, consumptionPerYear) => {
-      if (req.householdSize <= 0) {
-        return 0
-      } else if (consumptionPerYear === undefined) {
-        throw new Error("No consumption could be estimated")
-      } else {
-        return (consumptionPerYear * carbonIntensity) / req.householdSize
-      }
-    },
-  )
+    if (req.householdSize <= 0) {
+      return 0
+    } else if (consumptionPerYear === undefined) {
+      throw new Error("No consumption could be estimated")
+    } else {
+      return (consumptionPerYear * applicableCarbonIntensity) / req.householdSize
+    }
+  })
 
   return {
-    estimatedEmissions: estimatedEmissions0.value,
+    estimatedEmissions: estimatedEmissions.value,
     unit: Units.KG_CO2E_PER_YEAR,
-    sources: estimatedEmissions0.exportSources(),
+    sources: estimatedEmissions.exportSources(),
   }
 }

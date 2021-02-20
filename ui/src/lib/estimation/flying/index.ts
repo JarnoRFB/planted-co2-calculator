@@ -1,5 +1,5 @@
 import co2eq from "@tmrow/bloom-contrib/co2eq"
-import {ValidUntilSource} from "../sources"
+import {Estimate, ValidUntilSource} from "../sources"
 import {EstimationResponse, Units} from ".."
 import * as t from "io-ts"
 
@@ -53,68 +53,116 @@ const durationOfLongHaulFlight = new ValidUntilSource<string>(
   new Date("2021-12-25"),
 )
 
-const averageShortHaulFlightDistance = new ValidUntilSource<number>(
-  (1100 + 1500) / 2,
-  "https://en.wikipedia.org/wiki/Flight_length",
+const averageShortHaulFlightDistance = Estimate.of(
+  new ValidUntilSource<number>(
+    (1100 + 1500) / 2,
+    "https://en.wikipedia.org/wiki/Flight_length",
 
-  {
-    english: {title: "average distance of short haul flight (km)"},
-    german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
-  },
-  new Date("2021-12-25"),
+    {
+      english: {title: "average distance of short haul flight (km)"},
+      german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
+    },
+    new Date("2021-12-25"),
+  ),
 )
 
-const averageLongHaulFlightDistance = new ValidUntilSource<number>(
-  (4100 + 4800) / 2,
-  "https://en.wikipedia.org/wiki/Flight_length",
-  {
-    english: {title: "average distance of long haul flight (km)"},
-    german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
-  },
-  new Date("2021-12-25"),
+const averageLongHaulFlightDistance = Estimate.of(
+  new ValidUntilSource<number>(
+    (4100 + 4800) / 2,
+    "https://en.wikipedia.org/wiki/Flight_length",
+    {
+      english: {title: "average distance of long haul flight (km)"},
+      german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
+    },
+    new Date("2021-12-25"),
+  ),
 )
 
-const averageMediumHaulFlightDistance = new ValidUntilSource<number>(
-  averageShortHaulFlightDistance.value +
-    (averageLongHaulFlightDistance.value - averageShortHaulFlightDistance.value) / 2,
-  "https://en.wikipedia.org/wiki/Flight_length",
+const averageMediumHaulFlightDistance = Estimate.of(
+  new ValidUntilSource<number>(
+    averageShortHaulFlightDistance.value +
+      (averageLongHaulFlightDistance.value - averageShortHaulFlightDistance.value) / 2,
+    "https://en.wikipedia.org/wiki/Flight_length",
+    {
+      english: {title: "average distance of medium haul flight (km)"},
+      german: {title: "Mittlere Distanz eines Mittelstreckenflugs (km)"},
+    },
+    new Date("2021/12/25"),
+  ),
+)
+
+const estimationMethods = new ValidUntilSource(
+  null,
+  "https://www.myclimate.org/fileadmin/user_upload/myclimate_-_home/01_Information/01_About_myclimate/09_Calculation_principles/Documents/myclimate-flight-calculator-documentation_EN.pdf",
   {
-    english: {title: "average distance of medium haul flight (km)"},
-    german: {title: "Mittlere Distanz eines Mittelstreckenflugs (km)"},
+    english: {title: "Methods for calculating flight emissions"},
+    german: {title: "Methoden der Flugemissionsberechnung"},
   },
   new Date("2021/12/25"),
+  {
+    author: "myclimate",
+    year: 2019,
+  },
+)
+
+const estimationMethods2 = new ValidUntilSource(
+  null,
+  "https://theicct.org/sites/default/files/publications/ICCT_CO2-commercl-aviation-2018_20190918.pdf",
+  {
+    english: {title: "CO2 emissions from commercial aviation"},
+    german: {title: "CO2-Emissionen aus der kommerziellen Luftfahrt"},
+  },
+  new Date("2021/12/25"),
+  {
+    author: "The International Council on Clean Transportation",
+    year: 2018,
+  },
 )
 
 // TODO Are these vales to low? E.g. at atmosfair.de a flight from
 // Hannover to New York (6.210 km ) has 1520 kg co2e, whereas it would here have
 // only 948 kg co2e.
 
-const averageShortHaulEmissions = flightCarbonModel.carbonEmissions({
-  distanceKilometers: averageShortHaulFlightDistance.value,
-  isRoundtrip: false,
-})
-const averageMediumHaulEmissions = flightCarbonModel.carbonEmissions({
-  distanceKilometers: averageMediumHaulFlightDistance.value,
-  isRoundtrip: false,
-})
+const averageShortHaulEmissions = averageShortHaulFlightDistance.map<number>(distanceKilometers =>
+  flightCarbonModel.carbonEmissions({
+    distanceKilometers,
+    isRoundtrip: false,
+  }),
+)
 
-const averageLongHaulEmissions = flightCarbonModel.carbonEmissions({
-  distanceKilometers: averageLongHaulFlightDistance.value,
-  isRoundtrip: false,
-})
+const averageMediumHaulEmissions = averageMediumHaulFlightDistance.map<number>(distanceKilometers =>
+  flightCarbonModel.carbonEmissions({
+    distanceKilometers,
+    isRoundtrip: false,
+  }),
+)
+
+const averageLongHaulEmissions = averageLongHaulFlightDistance.map<number>(distanceKilometers =>
+  flightCarbonModel.carbonEmissions({
+    distanceKilometers,
+    isRoundtrip: false,
+  }),
+)
 
 export const estimateEmissions = (req: FlyingEstimationParams): EstimationResponse => {
-  return {
-    estimatedEmissions:
+  const estimatedEmissions = Estimate.combine(
+    averageShortHaulEmissions,
+    averageMediumHaulEmissions,
+    averageLongHaulEmissions,
+  )((averageShortHaulEmissions, averageMediumHaulEmissions, averageLongHaulEmissions) => {
+    return (
       averageShortHaulEmissions * req.nShortHauls +
       averageMediumHaulEmissions * req.nMediumHauls +
-      averageLongHaulEmissions * req.nLongHauls,
+      averageLongHaulEmissions * req.nLongHauls
+    )
+  })
+
+  return {
+    estimatedEmissions: estimatedEmissions.value,
     unit: Units.KG_CO2E,
-    sources: [
-      averageShortHaulFlightDistance.toJson(),
-      averageMediumHaulFlightDistance.toJson(),
-      averageLongHaulFlightDistance.toJson(),
-      // TODO add and convert flightCarbonModel.explanation
-    ],
+    sources: estimatedEmissions
+      .exportSources()
+      .concat(estimationMethods.toJson())
+      .concat(estimationMethods2.toJson()),
   }
 }

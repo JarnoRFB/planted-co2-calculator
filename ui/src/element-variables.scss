@@ -8,4 +8,47 @@ $--color-primary: #088a08;
 /* icon font path, required */
 $--font-path: "~element-plus/lib/theme-chalk/fonts";
 
+$font-size-1: 2em;
+$font-size-2: 1.4em;
+$font-size-3: 1.1em;
+
 @import "~element-plus/packages/theme-chalk/src/index";
+
+@mixin center {
+  margin: auto;
+  width: 75%;
+}
+
+.el-form--label-top .el-form-item__label {
+  padding: 0px;
+}
+
+.el-divider__text {
+  font-size: $font-size-1;
+}
+
+.el-form-item__label {
+  font-size: $font-size-2;
+}
+
+.el-input__inner {
+  font-size: $font-size-2;
+}
+
+.el-select-dropdown__item {
+  font-size: $font-size-2;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.el-progress-bar__innerText {
+  font-size: $font-size-2;
+}
+
+.el-tag {
+  margin: 5% 0;
+  font-size: $font-size-3;
+}
+
+.el-collapse-item__header {
+  font-size: $font-size-3;
+}

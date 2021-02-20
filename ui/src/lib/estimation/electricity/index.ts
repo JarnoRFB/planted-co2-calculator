@@ -73,9 +73,11 @@ export const estimateEmissions = (req: ElectricityEstimationParams): EstimationR
     (a, b) => (req.greenEnergy ? b : a),
   )
 
+  const householdSize = Math.min(req.householdSize, 5)
+
   const estimatedConsumptionPerYear0 = sourcedElectricityData.map(
     electricityDataVal =>
-      electricityDataVal.find(x => x.householdSize == req.householdSize && x.housing == req.housing)
+      electricityDataVal.find(x => x.householdSize == householdSize && x.housing == req.housing)
         ?.consumptionInkWhPerYear,
   )
 
@@ -90,7 +92,9 @@ export const estimateEmissions = (req: ElectricityEstimationParams): EstimationR
   const estimatedEmissions0 = applicableCarbonIntensity0.map2(
     estimatedConsumptionPerYear0,
     (carbonIntensity, consumptionPerYear) => {
-      if (consumptionPerYear === undefined) {
+      if (req.householdSize <= 0) {
+        return 0
+      } else if (consumptionPerYear === undefined) {
         throw new Error("No consumption could be estimated")
       } else {
         return (consumptionPerYear * carbonIntensity) / req.householdSize

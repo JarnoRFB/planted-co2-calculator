@@ -1,6 +1,9 @@
 <template>
   <div class="source-citation">
     <el-divider v-if="index > 0"></el-divider>
+    <p v-if="publicationMetadata">
+      <b>{{ publicationMetadata.author }} ({{ publicationMetadata.year }})</b>
+    </p>
     <p>
       {{ description.german.title }}
       <el-tooltip
@@ -9,7 +12,7 @@
         placement="right"
         effect="light"
         :popper-options="popperOptions"
-        auto-close="1500"
+        :auto-close="1500"
         ><span v-if="valid">✅</span><span v-else>❌</span>
       </el-tooltip>
     </p>
@@ -21,17 +24,18 @@
 </template>
 
 <script lang="ts">
-import {LocalizedDescription} from "@/lib/estimation/sources"
+import {LocalizedDescription, PublicationMetadata} from "@/lib/estimation/sources"
 import {defineComponent, PropType} from "vue"
 
 export default defineComponent({
   name: "SourceCitation",
   props: {
     value: null,
-    description: {type: Object as PropType<LocalizedDescription>},
+    description: {type: Object as PropType<LocalizedDescription>, required: true},
     url: String,
     valid: Boolean,
     index: Number,
+    publicationMetadata: {type: Object as PropType<PublicationMetadata>},
   },
   data() {
     return {

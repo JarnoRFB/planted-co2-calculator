@@ -149,7 +149,7 @@
             </el-select>
           </el-form-item>
 
-          <el-form-item label="Ökostrom" :labelPosition="right">
+          <el-form-item label="Ökostrom">
             <el-switch v-model="electricity.greenEnergy" id="electricity-green-energy-option2">
             </el-switch>
           </el-form-item>

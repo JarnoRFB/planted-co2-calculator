@@ -82,6 +82,7 @@
               v-model.number="driving.weeklyAverageDistance"
               id="driving-option"
               :min="0"
+              :step="10"
               :label="'Kilometer in der Woche'"
             ></el-input-number>
           </el-form-item>
@@ -103,7 +104,7 @@
             <el-input-number
               v-model.number="housing.householdSize"
               id="housing-household-size-option"
-              :min="0"
+              :min="1"
               :label="'Personen im Haushalt'"
             />
           </el-form-item>
@@ -112,6 +113,7 @@
               v-model.number="housing.apartmentSize"
               id="housing-apartment-size-option"
               :min="0"
+              :step="10"
               :label="'Wohnfläche'"
             />
           </el-form-item>
@@ -121,6 +123,7 @@
               id="housing-apartment-age-option"
               :min="1900"
               :max="2021"
+              :step="10"
               :label="'Baujahr'"
             />
           </el-form-item>
@@ -238,12 +241,21 @@ const numberFormat = new Intl.NumberFormat("de-DE", {
 export default defineComponent({
   name: "App",
   mounted() {
+    this.windowWidth = window.innerWidth
     window.addEventListener("resize", () => {
       this.windowWidth = window.innerWidth
     })
   },
   data() {
     return {
+      tableData: [
+        {yearRange: {low: 0, high: 1977}, specificHeatDemand: 320},
+        {yearRange: {low: 1977, high: 1983}, specificHeatDemand: 230},
+        {yearRange: {low: 1984, high: 1994}, specificHeatDemand: 160},
+        {yearRange: {low: 1995, high: 2001}, specificHeatDemand: 110},
+        {yearRange: {low: 2002, high: 2030}, specificHeatDemand: 75},
+      ],
+
       windowWidth: 0,
       energySourceOptions: [
         {
@@ -309,7 +321,6 @@ export default defineComponent({
           label: "vegan",
         },
       ],
-
       flying: {
         nShortHauls: 4,
         nMediumHauls: 2,
@@ -409,7 +420,6 @@ export default defineComponent({
       return (this.totalEmissions / this.referenceAverageEmissions) * 100
     },
     relationToAverage(): string {
-      console.log(this.percentageOfReferenceAverageEmissions)
       if (this.percentageOfReferenceAverageEmissions < 65) {
         return "weit unter"
       } else if (this.percentageOfReferenceAverageEmissions < 100) {

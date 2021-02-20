@@ -35,6 +35,11 @@ $font-size-3: 1.1em;
   font-size: $font-size-2;
 }
 
+.el-select-dropdown__item {
+  font-size: $font-size-2;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .el-progress-bar__innerText {
   font-size: $font-size-2;
 }

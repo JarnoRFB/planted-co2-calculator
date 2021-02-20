@@ -73,9 +73,11 @@ export const estimateEmissions = (req: ElectricityEstimationParams): EstimationR
     (a, b) => (req.greenEnergy ? b : a),
   )
 
+  const householdSize = Math.min(req.householdSize, 5)
+
   const estimatedConsumptionPerYear0 = sourcedElectricityData.map(
     electricityDataVal =>
-      electricityDataVal.find(x => x.householdSize == req.householdSize && x.housing == req.housing)
+      electricityDataVal.find(x => x.householdSize == householdSize && x.housing == req.housing)
         ?.consumptionInkWhPerYear,
   )
 

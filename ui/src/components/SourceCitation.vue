@@ -1,8 +1,26 @@
 <template>
   <div class="source-citation">
     <el-divider v-if="index > 0"></el-divider>
-    <p>{{ description.german.title }} <span v-if="valid">✅</span><span v-else>❌</span></p>
-    <p v-if="value">Wert <span v-html="jsonValue"></span></p>
+    <p>
+      {{ description.german.title }}
+      <el-tooltip
+        v-if="valid"
+        class="item"
+        content="Diese Quelle ist auf dem neusten Stand."
+        placement="right"
+        effect="light"
+        ><span>✅</span>
+      </el-tooltip>
+      <el-tooltip
+        v-else
+        class="item"
+        content="Diese Quelle ist nicht mehr auf dem neusten Stand."
+        placement="right"
+        effect="light"
+        ><span>❌</span>
+      </el-tooltip>
+    </p>
+    <p v-if="value">Wert: <span v-html="jsonValue"></span></p>
     <p>
       Siehe <a :href="url">{{ url }}</a>
     </p>
@@ -25,7 +43,8 @@ export default defineComponent({
   computed: {
     jsonValue(): any {
       if (typeof this.value === "object") {
-        return `<code>${JSON.stringify(this.value, null, 2)}</code>`
+        return `<pre><code>${JSON.stringify(this.value, null, 2)}</code></pre>`
+        // return JSON.stringify(this.value, null, 2)
       } else {
         return this.value
       }

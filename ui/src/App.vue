@@ -15,10 +15,9 @@
       Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf
       <a href="https://github.com/JarnoRFB/planted-co2-calculator">GitHub</a> verfügbar.
       <br />
-      Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub
-        >2</sub
-      >
-      Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!
+      Die Optionen sind auf einen durchschnittlichen Fußabdruck voreingestellt. Finde heraus wie
+      viel CO<sub>2</sub>
+      Du bereits sparst und wo noch Verbesserungspotenzial besteht. Viel Spaß!
     </div>
   </div>
   <div class="total">
@@ -322,9 +321,9 @@ export default defineComponent({
         },
       ],
       flying: {
-        nShortHauls: 4,
+        nShortHauls: 0,
         nMediumHauls: 2,
-        nLongHauls: 2,
+        nLongHauls: 0,
       },
       nutrition: {
         diet: "CARNIVORE",
@@ -333,8 +332,8 @@ export default defineComponent({
         weeklyAverageDistance: 200,
       },
       housing: {
-        householdSize: 1,
-        apartmentSize: 200,
+        householdSize: 2,
+        apartmentSize: 100,
         apartmentAge: 1990,
         housing: "house",
       },
@@ -346,7 +345,7 @@ export default defineComponent({
       } as electricity.ElectricityEstimationParams,
       consumerism: {
         country: "Germany",
-        intensity: "lush",
+        intensity: "normal",
       } as consumerism.ConsumerismEstimationParams,
       referenceEmissions: 22_211,
       referenceAverageEmissions: 11_170,

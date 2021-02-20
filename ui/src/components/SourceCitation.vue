@@ -4,20 +4,13 @@
     <p>
       {{ description.german.title }}
       <el-tooltip
-        v-if="valid"
         class="item"
-        content="Diese Quelle ist auf dem neusten Stand."
+        :content="tooltipContent"
         placement="right"
         effect="light"
-        ><span>✅</span>
-      </el-tooltip>
-      <el-tooltip
-        v-else
-        class="item"
-        content="Diese Quelle ist nicht mehr auf dem neusten Stand."
-        placement="right"
-        effect="light"
-        ><span>❌</span>
+        :popper-options="popperOptions"
+        auto-close="1500"
+        ><span v-if="valid">✅</span><span v-else>❌</span>
       </el-tooltip>
     </p>
     <p v-if="value">Wert: <span v-html="jsonValue"></span></p>
@@ -40,6 +33,11 @@ export default defineComponent({
     valid: Boolean,
     index: Number,
   },
+  data() {
+    return {
+      popperOptions: {boundariesElement: "scrollParent"},
+    }
+  },
   computed: {
     jsonValue(): any {
       if (typeof this.value === "object") {
@@ -48,6 +46,11 @@ export default defineComponent({
       } else {
         return this.value
       }
+    },
+    tooltipContent(): string {
+      return this.valid
+        ? "Diese Quelle ist auf dem neusten Stand."
+        : "Diese Quelle ist nicht mehr auf dem neusten Stand."
     },
   },
 })

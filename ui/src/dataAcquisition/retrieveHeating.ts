@@ -1,10 +1,7 @@
-import axios from "axios"
-import cheerio from "cheerio"
 import {pipe} from "fp-ts/function"
 import {promises as fs} from "fs"
 import {resolve} from "path"
-import iconv from "iconv-lite"
-import {Buffer} from "buffer"
+
 import {log} from "console"
 const url = "http://energieberatung.ibs-hlk.de/eb_begr.htm"
 
@@ -64,11 +61,11 @@ const retrieveData = async () => {
   log(data)
 
   await fs.writeFile(
-    resolve(__dirname, "../../src/estimation/heating/specificHeatDemandByYear.json"),
+    resolve(__dirname, "../../src/lib/estimation/heating/specificHeatDemandByYear.json"),
     JSON.stringify(data, null, 2),
     {
       encoding: "utf-8",
-    }
+    },
   )
 }
 

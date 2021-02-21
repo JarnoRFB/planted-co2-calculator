@@ -44,9 +44,9 @@ const retrieveData = async () => {
           householdSize: parseHouseholdSize(householdSizeText),
           consumptionInkWhPerYear: parseConsumption(consumptionInkWhPerYearStr),
           consumptionInkWhPerYearWithElectricWarmWater: parseConsumption(
-            consumptionInkWhPerYearWithElectricWarmWaterStr
+            consumptionInkWhPerYearWithElectricWarmWaterStr,
           ),
-        })
+        }),
       )
 
   const addHousingEntry = (housing: string) => <T>(data: T[]) =>
@@ -55,12 +55,12 @@ const retrieveData = async () => {
   const houseConsumption: ElectricityConsumptionEntry[] = pipe(
     $("div #c120959"),
     parseTable,
-    addHousingEntry("house")
+    addHousingEntry("house"),
   )
   const apartmentConsumption: ElectricityConsumptionEntry[] = pipe(
     $("div #c120961"),
     parseTable,
-    addHousingEntry("apartment")
+    addHousingEntry("apartment"),
   )
 
   const consumptionData = houseConsumption.concat(apartmentConsumption)
@@ -68,11 +68,11 @@ const retrieveData = async () => {
   console.log(consumptionData)
 
   await fs.writeFile(
-    resolve(__dirname, "../../src/estimation/electricity/data.json"),
+    resolve(__dirname, "../../src/lib/estimation/electricity/data.json"),
     JSON.stringify(consumptionData, null, 2),
     {
       encoding: "utf-8",
-    }
+    },
   )
 }
 

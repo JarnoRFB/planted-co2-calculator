@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "dist",
     "noImplicitAny": false,
     "target": "esnext",
     "module": "esnext",
@@ -13,7 +14,6 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["webpack-env"],
     "paths": {
       "@/*": ["src/*"]
     },

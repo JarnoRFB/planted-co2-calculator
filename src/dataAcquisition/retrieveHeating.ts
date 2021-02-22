@@ -32,9 +32,10 @@ const parseYearRange = (s: string): NumberRange => {
   switch (s) {
     case "bis 1977":
       return {low: 0, high: 1977}
-    default:
+    default: {
       const [low, high] = s.split(" - ").map(n => (n.includes("EnEV") ? 2030 : Number(n)))
       return {low, high}
+    }
   }
 }
 

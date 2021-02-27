@@ -15,11 +15,24 @@
             href="#trees-details"
             v-on:click="showTreesDetails = !showTreesDetails"
             class="openclose"
-            >+</a
           >
+            <img
+              src="../assets/add_circle_outline-black-18dp.svg"
+              width="24"
+              height="24"
+              alt="open"
+            />
+          </a>
           <div v-show="showTreesDetails" class="details">
             Kartenausschnit mit Polygon
-            <a v-on:click="showTreesDetails = false" class="openclose">-</a>
+            <a v-on:click="showTreesDetails = false" class="openclose">
+              <img
+                src="../assets/remove_circle_outline-24px.svg"
+                width="24"
+                height="24"
+                alt="close"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -32,12 +45,24 @@
         <h3>8,3</h3>
         CO<sub>2</sub> t
         <div class="details-container">
-          <a href="#trees-details" v-on:click="showTonsDetails = !showTonsetails" class="openclose"
-            >+</a
-          >
+          <a href="#trees-details" v-on:click="showTonsDetails = !showTonsetails" class="openclose">
+            <img
+              src="../assets/add_circle_outline-black-18dp.svg"
+              width="24"
+              height="24"
+              alt="open"
+            />
+          </a>
           <div v-show="showTonsDetails" class="details">
             Details zu Windkraft
-            <a v-on:click="showTonsDetails = false" class="openclose">-</a>
+            <a v-on:click="showTonsDetails = false" class="openclose">
+              <img
+                src="../assets/remove_circle_outline-24px.svg"
+                width="24"
+                height="24"
+                alt="close"
+              />
+            </a>
           </div>
         </div>
       </div>
@@ -104,12 +129,9 @@ $planted-gray: #2b232f;
   a.openclose {
     display: block;
     margin: 0 auto;
-    border: solid 2px black;
-    border-radius: 100%;
-    width: 44px;
-    height: 44px;
     color: black;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .details {

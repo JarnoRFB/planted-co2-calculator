@@ -58,8 +58,6 @@
     "eslint": "^6.7.2",
     "eslint-plugin-only-warn": "^1.0.2",
     "eslint-plugin-vue": "^7.0.0-0",
-    "fp-ts": "^2.9.3",
-    "io-ts": "^2.2.13",
     "jest": "^26.6.3",
     "sass": "^1.32.6",
     "sass-loader": "^10.1.1",

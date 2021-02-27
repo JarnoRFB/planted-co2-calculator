@@ -74,8 +74,18 @@
 
     <div class="card-wrapper">
       <div class="card">
-        <img src="../assets/erde-pointing.svg" alt="cow farts" />
+        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
       </div>
+      <div class="card">
+        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+      </div>
+      <div class="card">
+        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+      </div>
+    </div>
+
+    <div class="earth">
+      <img src="../assets/erde-pointing.svg" alt="earth poiting" />
     </div>
   </section>
 </template>
@@ -106,6 +116,8 @@ $planted-orange: #fe5902;
 $planted-brown: #926c3d;
 $planted-blue: #4a83f3;
 $planted-gray: #2b232f;
+$planted-green: #00904e;
+$maxmobile: 640px;
 
 .planterpage {
   background-color: $planted-background;
@@ -136,7 +148,7 @@ $planted-gray: #2b232f;
     margin: 0 auto;
   }
 
-  @media screen and (max-width: 640px) {
+  @media screen and (max-width: $maxmobile) {
     .not-on-mobile {
       display: none;
     }
@@ -173,6 +185,40 @@ $planted-gray: #2b232f;
     color: #ffffff;
     text-decoration: none;
     padding: 10px;
+  }
+
+  .card-wrapper {
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-gap: 20px;
+    flex-direction: row;
+    place-content: space-evenly;
+    flex-basis: 30%;
+  }
+
+  @media screen and (max-width: $maxmobile) {
+    .card-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background-color: $planted-green;
+    padding: 20px;
+    border-radius: 20px;
+
+    &:nth-child(2) {
+      background-color: $planted-orange;
+    }
+    &:nth-child(3) {
+      background-color: $planted-pink;
+    }
+
+    & > img {
+      max-width: 90%;
+      height: auto;
+    }
   }
 }
 </style>

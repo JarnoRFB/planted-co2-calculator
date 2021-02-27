@@ -21,13 +21,14 @@
             <a 
               href="#trees-details"
               v-on:click="showTreesDetails = !showTreesDetails"
+              class="openclose"
             >+</a>
             <div
               v-show="showTreesDetails"
               class="details"
             >
               Kartenausschnit mit Polygon
-              <a v-on:click="showTreesDetails = false">-</a>
+              <a v-on:click="showTreesDetails = false" class="openclose">-</a>
             </div>
           </div>
         </div>
@@ -43,13 +44,14 @@
             <a 
               href="#trees-details"
               v-on:click="showTonsDetails = !showTonsetails"
+              class="openclose"
               >+</a>
             <div
               v-show="showTonsDetails"
               class="details"
               >
               Details zu Windkraft
-              <a v-on:click="showTonsDetails = false">-</a>
+              <a v-on:click="showTonsDetails = false" class="openclose">-</a>
             </div>
           </div>
       </div>
@@ -114,25 +116,27 @@ export default defineComponent({
       margin: 0 auto;
     }
 
-    .details-container {
-      position: relative;
+    a.openclose {
+      display: block;
+      margin: 0 auto;
+      border: solid 2px black;
+      border-radius: 100%;
+      width: 44px;
+      height: 44px;
+      color: black;
+      text-decoration: none;
     }
 
     .details {
-      position: absolute;
+      position: fixed;
       transition: transform 1s ease-out;
-      top: -10px;
-      left: -10px;
-      width: 500px;
-      height: 300px;
+      top: 5%;
+      left: 5%;
+      width: 90vw;
+      height: 90vh;
       background-color: $planted-blue;
       color: white;
       border-radius: 5px;
-
-      & a {
-        display: block;
-        text-align: center;
-      }
     }
   }
 </style>

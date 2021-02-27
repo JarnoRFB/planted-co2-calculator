@@ -132,12 +132,12 @@ export default defineComponent({
     // googleSat.addTo(map)
 
     const baseLayers: L.Control.LayersObject = {
-      "2020": googleSat,
+      "2021": googleSat,
       street: OpenStreetMap_DE,
     }
 
     const overlays = {
-      "2030": Esri_WorldImagery,
+      "2031": Esri_WorldImagery,
     }
     L.control
       .layers(baseLayers, overlays, {

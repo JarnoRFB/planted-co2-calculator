@@ -84,8 +84,20 @@
       </div>
     </div>
 
+    <!--
     <div class="earth">
       <img src="../assets/erde-pointing.svg" alt="earth poiting" />
+    </div>
+-->
+    <div class="facts-container">
+      <div class="earth">
+        <img src="../assets/erde-facts.svg" alt="earth teaching" />
+      </div>
+      <h2>Did you know?</h2>
+      <p>
+        Cut your basil on the uppers sprig, and you will never need to buy a new basil plant again.
+        Nature regrows by itself. Happy cooking.
+      </p>
     </div>
   </section>
 </template>

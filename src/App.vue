@@ -500,10 +500,10 @@ body {
   margin: 0 10px;
 }
 
-#questions,
-#result {
-  background-color: #ffffff;
-}
+// #questions,
+// #result {
+//   background-color: #ffffff;
+// }
 
 @media screen and (min-width: 1100px) {
   #app {
@@ -544,7 +544,7 @@ h1 {
   padding-bottom: 0;
 
 
-  background-color: rgb(255, 255, 255);
+  background-color: $planted-background;
 
   // top left corner should start at leftmost spot
   //left: 0
@@ -569,7 +569,7 @@ h1 {
   margin-right: 2%;
 }
 .total {
-  background-color: rgb(255, 255, 255);
+  background-color: $planted-background;
   padding-top: 5%;
   padding-bottom: 2%;
 

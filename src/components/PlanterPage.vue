@@ -11,11 +11,7 @@
         <h3>25</h3>
         Trees
         <div class="details-container">
-          <a
-            href="#trees-details"
-            v-on:click="showTreesDetails = !showTreesDetails"
-            class="openclose"
-          >
+          <a v-on:click="showTreesDetails = !showTreesDetails" class="openclose">
             <img
               src="../assets/add_circle_outline-black-18dp.svg"
               width="24"
@@ -45,7 +41,7 @@
         <h3>8,3</h3>
         CO<sub>2</sub> t
         <div class="details-container">
-          <a href="#trees-details" v-on:click="showTonsDetails = !showTonsetails" class="openclose">
+          <a v-on:click="showTonsDetails = !showTonsetails" class="openclose">
             <img
               src="../assets/add_circle_outline-black-18dp.svg"
               width="24"

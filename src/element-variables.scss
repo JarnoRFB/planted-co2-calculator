@@ -33,6 +33,10 @@ $font-size-3: 1.1em;
   padding: 0px;
 }
 
+.el-divider--horizontal {
+  background-color: $planted-gray;
+}
+
 .el-divider__text {
   font-size: $font-size-1;
   background-color: $planted-background;
@@ -40,6 +44,7 @@ $font-size-3: 1.1em;
 
 .el-form-item__label {
   font-size: $font-size-2;
+  color: $planted-gray;
 }
 
 .el-input__inner {
@@ -62,4 +67,30 @@ $font-size-3: 1.1em;
 
 .el-collapse-item__header {
   font-size: $font-size-3;
+  padding-left: 10px;
+  background-color: $planted-orange;
+  border: solid 1px #ffffff;
+  color: #ffffff;
+}
+
+.el-collapse-item__wrap,
+.el-input__inner {
+  background-color: $planted-orange;
+  border: solid 1px #ffffff;
+  color: #ffffff;
+}
+
+.el-input-number__increase,
+.el-input-number__decrease {
+  background-color: $planted-orange;
+  color: #ffffff;
+}
+
+.el-switch__core {
+  background-color: $planted-orange;
+  border: solid 1px #ffffff;
+}
+
+.el-switch.is-checked .el-switch__core {
+  border: solid 1px #ffffff;
 }

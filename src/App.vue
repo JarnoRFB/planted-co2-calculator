@@ -563,6 +563,7 @@ h1 {
 
   margin-top: 4%;
   margin-bottom: 4%;
+  color: $planted-gray;
 }
 .el-collapse {
   margin-left: 2%;

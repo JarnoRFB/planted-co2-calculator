@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div class="trees-mascots">
+      <div class="trees-mascots not-on-mobile">
         <img src="../assets/tree-toons.svg" width="388" height="313" alt="" loading="lazy" />
       </div>
 
@@ -61,6 +61,20 @@
             </a>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="donate-wrapper">
+      <a href="https://planted.green/" class="btn cta">
+        Donate now
+      </a>
+    </div>
+
+    <h2>Your Impact</h2>
+
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="../assets/erde-pointing.svg" alt="cow farts" />
       </div>
     </div>
   </section>
@@ -123,7 +137,7 @@ $planted-gray: #2b232f;
   }
 
   @media screen and (max-width: 640px) {
-    .contributions .trees-mascots {
+    .not-on-mobile {
       display: none;
     }
   }
@@ -147,6 +161,18 @@ $planted-gray: #2b232f;
     color: white;
     border-radius: 5px;
     z-index: 255;
+  }
+
+  .donate-wrapper {
+    padding: 10px;
+  }
+
+  .btn.cta {
+    background-color: $planted-cta;
+    border-radius: 100px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
   }
 }
 </style>

@@ -122,6 +122,12 @@ $planted-gray: #2b232f;
     margin: 0 auto;
   }
 
+  @media screen and (max-width: 640px) {
+    .contributions .trees-mascots {
+      display: none;
+    }
+  }
+
   a.openclose {
     display: block;
     margin: 0 auto;

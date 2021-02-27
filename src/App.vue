@@ -471,6 +471,7 @@ $planted-gray: #2b232f;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+/* Headlines Vintage Display Font Brule */
 @font-face {
   font-family: 'Brule';
   font-style: normal;
@@ -479,6 +480,27 @@ $planted-gray: #2b232f;
   src:
     local(''),
     url('assets/brule-bold.woff') format('woff');
+}
+
+/* Text Sans Serif Font  */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  src: 
+    local(''),
+    url('assets/inter-v3-latin-ext_latin-regular.woff2') format('woff2'),
+    url('assets/inter-v3-latin-ext_latin-regular.woff') format('woff'),
+}
+/* inter-700 - latin-ext_latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local(''),
+    url('assets/inter-v3-latin-ext_latin-700.woff2') format('woff2'),
+    url('assets/inter-v3-latin-ext_latin-700.woff') format('woff'),
 }
 
 @mixin center {
@@ -499,6 +521,7 @@ html {
 }
 body {
   margin-top: 0;
+  background-color: $planted-background;
 }
 
 #app {

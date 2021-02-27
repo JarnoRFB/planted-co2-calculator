@@ -1,13 +1,19 @@
 
 <template>
-    <main class="planterpage">
-    <h1>Planted</h1>
+  <section class="planterpage">
+    <h1>
+      <img
+        src="../assets/planted-logo-braun.svg"
+        title="Planted"
+        width="250"
+        height="50"
+      >
+      </h1>
     <p>Annika Muster, planter since January 2021</p>
-  </main>
+  </section>
 </template>
 
 <script lang="ts">
-import {LocalizedDescription} from "@/lib/estimation/sources"
 import {defineComponent, PropType} from "vue"
 
 export default defineComponent({
@@ -31,5 +37,6 @@ export default defineComponent({
   .planterpage {
     background-color: $planted-background;
     color: $planted-gray;
+    text-align: center;
   }
 </style>

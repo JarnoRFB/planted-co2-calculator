@@ -1,13 +1,34 @@
 
 <template>
-    <main class="planterpage">
-    <h1>Planted</h1>
-    <p>Annika Muster, planter since January 2021</p>
-  </main>
+  <section class="planterpage">
+    <h1>
+      <img
+        src="../assets/planted-logo-braun.svg"
+        title="Planted"
+        width="250"
+        height="50"
+      >
+      </h1>
+      <img src="../assets/avatar.png" width="150" height="150" alt="Profilbild">
+      <h2>Annika Muster</h2>
+      <p>Planter since January 2021</p>
+      <div class="contributions">
+        <div class="trees-numbers">
+          <h3>25</h3>
+          Trees
+        </div>
+        <div class="trees-mascots">
+          <img src="../assets/tree-toons.svg" width="388" height="313" alt="" loading="lazy">
+        </div>
+        <div class="tons-numbers">
+          <h3>8,3</h3>
+          CO<sub>2</sub> t
+        </div>
+      </div>
+  </section>
 </template>
 
 <script lang="ts">
-import {LocalizedDescription} from "@/lib/estimation/sources"
 import {defineComponent, PropType} from "vue"
 
 export default defineComponent({
@@ -31,5 +52,30 @@ export default defineComponent({
   .planterpage {
     background-color: $planted-background;
     color: $planted-gray;
+    text-align: center;
+
+    h2 {
+      font-size: 30px;
+    }
+
+    .contributions {
+      font-size: 33px;
+      h3 {
+        font-size: 68px;
+        margin-bottom: 0;
+      }
+    }
+
+    p {
+      font-size: 24px;
+    }
+
+    .contributions {
+      display: flex;
+      flex-direction: row;
+      place-content: space-around;
+      max-width: 600px;
+      margin: 0 auto;
+    }
   }
 </style>

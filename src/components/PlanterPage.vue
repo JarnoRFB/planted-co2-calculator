@@ -13,17 +13,46 @@
       <h2>Annika Muster</h2>
       <p>Planter since January 2021</p>
       <div class="contributions">
+
         <div class="trees-numbers">
           <h3>25</h3>
           Trees
+          <div class="details-container">
+            <a 
+              href="#trees-details"
+              v-on:click="showTreesDetails = !showTreesDetails"
+            >+</a>
+            <div
+              v-show="showTreesDetails"
+              class="details"
+            >
+              Kartenausschnit mit Polygon
+              <a v-on:click="showTreesDetails = false">-</a>
+            </div>
+          </div>
         </div>
+
         <div class="trees-mascots">
           <img src="../assets/tree-toons.svg" width="388" height="313" alt="" loading="lazy">
         </div>
-        <div class="tons-numbers">
+
+        <div class="tons-numbers contains-details">
           <h3>8,3</h3>
           CO<sub>2</sub> t
-        </div>
+          <div class="details-container">
+            <a 
+              href="#trees-details"
+              v-on:click="showTonsDetails = !showTonsetails"
+              >+</a>
+            <div
+              v-show="showTonsDetails"
+              class="details"
+              >
+              Details zu Windkraft
+              <a v-on:click="showTonsDetails = false">-</a>
+            </div>
+          </div>
+      </div>
       </div>
   </section>
 </template>
@@ -33,7 +62,14 @@ import {defineComponent, PropType} from "vue"
 
 export default defineComponent({
   name: "PlanterPage",
-  props: {},
+  props: {
+  },
+  data() {
+    return {
+      showTreesDetails: false,
+      showTonsDetails: false,
+    }
+  },
 })
 </script>
 
@@ -76,6 +112,27 @@ export default defineComponent({
       place-content: space-around;
       max-width: 600px;
       margin: 0 auto;
+    }
+
+    .details-container {
+      position: relative;
+    }
+
+    .details {
+      position: absolute;
+      transition: transform 1s ease-out;
+      top: -10px;
+      left: -10px;
+      width: 500px;
+      height: 300px;
+      background-color: $planted-blue;
+      color: white;
+      border-radius: 5px;
+
+      & a {
+        display: block;
+        text-align: center;
+      }
     }
   }
 </style>

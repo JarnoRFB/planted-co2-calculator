@@ -11,20 +11,29 @@
         <h3>25</h3>
         Trees
         <div class="details-container">
-          <a
-            href="#trees-details"
-            v-on:click="showTreesDetails = !showTreesDetails"
-            class="openclose"
-            >+</a
-          >
+          <a v-on:click="showTreesDetails = !showTreesDetails" class="openclose">
+            <img
+              src="../assets/add_circle_outline-black-18dp.svg"
+              width="24"
+              height="24"
+              alt="open"
+            />
+          </a>
           <div v-if="showTreesDetails" class="details">
             <forrest-map />
-            <a v-on:click="showTreesDetails = false" class="openclose">-</a>
+            <a v-on:click="showTreesDetails = false" class="openclose">
+              <img
+                src="../assets/remove_circle_outline-24px.svg"
+                width="24"
+                height="24"
+                alt="close"
+              />
+            </a>
           </div>
         </div>
       </div>
 
-      <div class="trees-mascots">
+      <div class="trees-mascots not-on-mobile">
         <img src="../assets/tree-toons.svg" width="388" height="313" alt="" loading="lazy" />
       </div>
 
@@ -32,15 +41,63 @@
         <h3>8,3</h3>
         CO<sub>2</sub> t
         <div class="details-container">
-          <a href="#trees-details" v-on:click="showTonsDetails = !showTonsetails" class="openclose"
-            >+</a
-          >
+          <a v-on:click="showTonsDetails = !showTonsetails" class="openclose">
+            <img
+              src="../assets/add_circle_outline-black-18dp.svg"
+              width="24"
+              height="24"
+              alt="open"
+            />
+          </a>
           <div v-show="showTonsDetails" class="details">
             Details zu Windkraft
-            <a v-on:click="showTonsDetails = false" class="openclose">-</a>
+            <a v-on:click="showTonsDetails = false" class="openclose">
+              <img
+                src="../assets/remove_circle_outline-24px.svg"
+                width="24"
+                height="24"
+                alt="close"
+              />
+            </a>
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="donate-wrapper">
+      <a href="https://planted.green/" class="btn cta">
+        Donate now
+      </a>
+    </div>
+
+    <h2>Your Impact</h2>
+
+    <div class="card-wrapper">
+      <div class="card">
+        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+      </div>
+      <div class="card">
+        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+      </div>
+      <div class="card">
+        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+      </div>
+    </div>
+
+    <!--
+    <div class="earth">
+      <img src="../assets/erde-pointing.svg" alt="earth poiting" />
+    </div>
+-->
+    <div class="facts-container">
+      <div class="earth">
+        <img src="../assets/erde-facts.svg" alt="earth teaching" />
+      </div>
+      <h2>Did you know?</h2>
+      <p>
+        Cut your basil on the uppers sprig, and you will never need to buy a new basil plant again.
+        Nature regrows by itself. Happy cooking.
+      </p>
     </div>
   </section>
 </template>
@@ -73,6 +130,8 @@ $planted-orange: #fe5902;
 $planted-brown: #926c3d;
 $planted-blue: #4a83f3;
 $planted-gray: #2b232f;
+$planted-green: #00904e;
+$maxmobile: 640px;
 
 .planterpage {
   background-color: $planted-background;
@@ -103,15 +162,18 @@ $planted-gray: #2b232f;
     margin: 0 auto;
   }
 
+  @media screen and (max-width: $maxmobile) {
+    .not-on-mobile {
+      display: none;
+    }
+  }
+
   a.openclose {
     display: block;
     margin: 0 auto;
-    border: solid 2px black;
-    border-radius: 100%;
-    width: 44px;
-    height: 44px;
     color: black;
     text-decoration: none;
+    cursor: pointer;
   }
 
   .details {
@@ -125,6 +187,52 @@ $planted-gray: #2b232f;
     color: white;
     border-radius: 5px;
     z-index: 255;
+  }
+
+  .donate-wrapper {
+    padding: 10px;
+  }
+
+  .btn.cta {
+    background-color: $planted-cta;
+    border-radius: 100px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px;
+  }
+
+  .card-wrapper {
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 30%);
+    grid-gap: 20px;
+    flex-direction: row;
+    place-content: space-evenly;
+    flex-basis: 30%;
+  }
+
+  @media screen and (max-width: $maxmobile) {
+    .card-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    background-color: $planted-green;
+    padding: 20px;
+    border-radius: 20px;
+
+    &:nth-child(2) {
+      background-color: $planted-orange;
+    }
+    &:nth-child(3) {
+      background-color: $planted-pink;
+    }
+
+    & > img {
+      max-width: 90%;
+      height: auto;
+    }
   }
 }
 </style>

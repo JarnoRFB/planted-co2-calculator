@@ -2,12 +2,7 @@
   <planter-page></planter-page>
   <div class="header">
     <h1 class="title">
-      <img
-        src="https://uploads-ssl.webflow.com/5fc25896c145ac50c7d2af7b/5fd092f58ae2717a5d82e8a7_PLANTED_LOGO_WORTBILDMARKE.svg"
-        loading="eager"
-        alt=""
-      />
-      C0<sub>2</sub>&nbsp;Rechner
+      C0<sub>2</sub>&nbsp;<span v-html="t('calculator')"></span>
     </h1>
     <div id="introduction">
        <span v-html="t('introduction')"></span>
@@ -496,7 +491,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $planted-background;
-  color: $color;
+  color: $planted-gray;
   margin: 0 10px;
 }
 
@@ -563,6 +558,7 @@ h1 {
 
   margin-top: 4%;
   margin-bottom: 4%;
+  color: $planted-gray;
 }
 .el-collapse {
   margin-left: 2%;
@@ -593,6 +589,7 @@ h1 {
 }
 #introduction {
   @include text-block;
+  text-align: center;
 }
 #result {
   @include text-block;
@@ -604,6 +601,7 @@ h1 {
 <i18n>
 {
   "en": {
+    "calculator": "Calculator",
     "introduction": "Calculate your carbon footprint!",
     "questionFlying": "How often did you fly in the last 12 month?",
     "shortHauls": "Short hauls",
@@ -660,6 +658,7 @@ h1 {
     },
   },
   "de": {
+    "calculator": "Rechner",
     "introduction": "Willkommen zum planted CO<sub>2</sub> Rechner! Mit Fragen zu 5 Faktoren kannst du ganz schnell Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen. Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf <a href=\"https://github.com/JarnoRFB/planted-co2-calculator\">GitHub</a> verfügbar. <br /> Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub>2</sub> Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!",
     "questionFlying": "Wie oft bist Du in den letzten zwölf Monaten geflogen?",
     "shortHauls": "Kurzstreckenflüge",

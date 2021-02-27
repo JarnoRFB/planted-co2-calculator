@@ -73,7 +73,10 @@ $font-size-3: 1.1em;
   color: #ffffff;
 }
 
-.el-collapse-item__wrap,
+.el-collapse-item__wrap {
+  background-color: #ffffff;
+}
+
 .el-input__inner {
   background-color: $planted-orange;
   border: solid 1px #ffffff;

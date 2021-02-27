@@ -28,7 +28,7 @@ const averageDrivingSpeed = new ValidUntilSource(
   45,
   "https://setis.ec.europa.eu/system/files/Driving_and_parking_patterns_of_European_car_drivers-a_mobility_survey.pdf",
   {
-    english: {title: "Average driving speed (km/h"},
+    english: {title: "Average driving speed (km/h)"},
     german: {title: "Durchschnittliche Fahrgeschwindigkeit (km/h)", body: "Seite 66"},
   },
   new Date("2021/12/25"),

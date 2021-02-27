@@ -449,111 +449,146 @@ export default defineComponent({
 })
 </script>
 
-<style lang="sass">
-$color: #2c3e50
-$font-size-1: 2em
-$font-size-2: 1.4em
-$font-size-3: 1.1em
+<style lang="scss">
+$color: #2c3e50;
+$font-size-1: 2em;
+$font-size-2: 1.4em;
+$font-size-3: 1.1em;
 
-@mixin center
-  margin: auto
-  width: 75%
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-html
-  box-sizing: border-box
-
-*
-  box-sizing: inherit
-*:before
-  box-sizing: inherit
-*:after
-  box-sizing: inherit
-
-body
-  margin-top: 0
+@font-face {
+  font-family: 'Brule';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src:
+    local(''),
+    url('assets/brule-bold.woff') format('woff');
+}
 
 
-#app
-  font-family: Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  color: $color
-  margin: 0 10px
+html, body {
+  font-family: 'Inter', sans-serif;
+  background: var(--planted-background);
+  color: var(--planted-gray);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Brule', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
+@mixin center {
+  margin: auto;
+  width: 75%;
+}
+html {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: inherit;
+}
+*:before {
+  box-sizing: inherit;
+}
+*:after {
+  box-sizing: inherit;
+}
+body {
+  margin-top: 0;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $color;
+  margin: 0 10px;
+}
+
+@media screen and (min-width: 1100px) {
+  #app {
+    width: 1100px;
+    margin: 10px auto;
+  }
+}
+
+.title {
+  div {
+    display: inline;
+  }
+}
+.header {
+  h1 {
+    display: inline;
+    vertical-align: middle;
+  }
+  img {
+    display: inline;
+    height: 4ex;
+    vertical-align: middle;
+  }
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 0;
 
 
-@media screen and (min-width: 1100px)
-  #app
-    width: 1100px
-    margin: 10px auto
-
-.title
-  div
-    display: inline
-.header
-  h1
-    display: inline
-    vertical-align: middle
-  img
-    display: inline
-    height: 4ex
-    vertical-align: middle
-  text-align: center
-  padding-left: 5%
-  padding-right: 5%
-  padding-top: 2%
-  padding-bottom: 0
-
-
-  background-color: rgb(255, 255, 255)
+  background-color: rgb(255, 255, 255);
 
   // top left corner should start at leftmost spot
   //left: 0
 
   // top left corner should start at topmost spot
-  top: 0
+  top: 0;
 
   // take up the full browser width
-  width: 100%
+  width: 100%;
+}
+.question {
+  font-size: $font-size-1;
+  font-weight: 700;
+  margin-left: 2%;
+  margin-right: 2%;
 
-.question
-  font-size: $font-size-1
-  font-weight: 700
-  margin-left: 2%
-  margin-right: 2%
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+.el-collapse {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.total {
+  background-color: rgb(255, 255, 255);
+  padding-top: 5%;
+  padding-bottom: 2%;
 
-  margin-top: 4%
-  margin-bottom: 4%
-
-.el-collapse
-  margin-left: 2%
-  margin-right: 2%
-
-.total
-  background-color: rgb(255, 255, 255)
-  padding-top: 5%
-  padding-bottom: 2%
-
-  position: sticky
+  position: sticky;
   // take up the full browser width
-  width: 100%
+  width: 100%;
 
   // high z index so other content scrolls underneath
-  z-index: 200
-  top: 0
+  z-index: 200;
+  top: 0;
+}
+.options {
+  @include center;
+  text-align: center;
+}
 
-.options
-  @include center
-  text-align: center
-
-
-@mixin text-block
-  text-align: justify
-  font-size: $font-size-2
-  margin: 1% auto
-
-#introduction
-  @include text-block
-#result
-  @include text-block
-  margin: 5% auto
+@mixin text-block {
+  text-align: justify;
+  font-size: $font-size-2;
+  margin: 1% auto;
+}
+#introduction {
+  @include text-block;
+}
+#result {
+  @include text-block;
+  margin: 5% auto;
+}
 </style>

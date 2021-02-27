@@ -1,6 +1,5 @@
 <template>
-  <p>{{ t('hello') }}</p>
-
+  <planter-page></planter-page>
   <div class="header">
     <h1 class="title">
       <img
@@ -225,6 +224,7 @@ import * as electricity from "./lib/estimation/electricity"
 import * as heating from "./lib/estimation/heating"
 import * as consumerism from "./lib/estimation/consumerism"
 
+import PlanterPage from "./components/PlanterPage.vue"
 import SourceCitationList from "./components/SourceCitationList.vue"
 import IntermediateEmissionDisplay from "./components/IntermediateEmissionDisplay.vue"
 const numberFormat = new Intl.NumberFormat("de-DE", {
@@ -446,6 +446,7 @@ export default defineComponent({
   components: {
     SourceCitationList,
     IntermediateEmissionDisplay,
+    PlanterPage,
   },
 })
 </script>
@@ -455,6 +456,17 @@ $color: #2c3e50;
 $font-size-1: 2em;
 $font-size-2: 1.4em;
 $font-size-3: 1.1em;
+
+/* TODO refactor redundant styles */
+$planted-background: #bfb8a3;
+$planted-yellow: #c9f967;
+$planted-cta: #ae35e1;
+$planted-pink: #fe61c9;
+$planted-amber: #8a231c;
+$planted-orange: #fe5902;
+$planted-brown: #926c3d;
+$planted-blue: #4a83f3;
+$planted-gray: #2b232f;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
@@ -466,19 +478,6 @@ $font-size-3: 1.1em;
   src:
     local(''),
     url('assets/brule-bold.woff') format('woff');
-}
-
-
-html, body {
-  font-family: 'Inter', sans-serif;
-  background: var(--planted-background);
-  color: var(--planted-gray);
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: 'Brule', cursive;
-  font-weight: 400;
-  text-transform: uppercase;
 }
 
 @mixin center {
@@ -502,11 +501,17 @@ body {
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Inter', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $planted-background;
   color: $color;
   margin: 0 10px;
+}
+
+#questions,
+#result {
+  background-color: #ffffff;
 }
 
 @media screen and (min-width: 1100px) {
@@ -521,6 +526,13 @@ body {
     display: inline;
   }
 }
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Brule', cursive;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+
 .header {
   h1 {
     display: inline;

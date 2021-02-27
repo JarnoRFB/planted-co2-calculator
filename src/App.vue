@@ -554,6 +554,9 @@ body {
 h1, h2, h3, h4, h5 {
   font-family: 'Brule', cursive;
   font-weight: 400;
+}
+
+h1 {
   text-transform: uppercase;
 }
 

@@ -9,7 +9,9 @@
         height="50"
       >
       </h1>
-    <p>Annika Muster, planter since January 2021</p>
+      <img src="../assets/avatar.png" width="150" height="150" alt="Profilbild">
+      <h2>Annika Muster</h2>
+      <p>Planter since January 2021</p>
   </section>
 </template>
 
@@ -38,5 +40,13 @@ export default defineComponent({
     background-color: $planted-background;
     color: $planted-gray;
     text-align: center;
+
+    h2 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 24px;
+    }
   }
 </style>

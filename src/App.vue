@@ -1,4 +1,6 @@
 <template>
+  <p>{{ t('hello') }}</p>
+
   <div class="header">
     <h1 class="title">
       <img
@@ -6,19 +8,10 @@
         loading="eager"
         alt=""
       />
-      C0<sub>2</sub>&nbsp;Recher
+      C0<sub>2</sub>&nbsp;Rechner
     </h1>
     <div id="introduction">
-      Willkommen zum planted CO<sub>2</sub> Rechner! Mit Fragen zu 5 Faktoren kannst du ganz schnell
-      Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen.
-      Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die
-      Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf
-      <a href="https://github.com/JarnoRFB/planted-co2-calculator">GitHub</a> verfügbar.
-      <br />
-      Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub
-        >2</sub
-      >
-      Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!
+       <span v-html="t('introduction')"></span>
     </div>
   </div>
   <div class="total">
@@ -36,7 +29,7 @@
   <div id="questions">
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
-      <p class="question">Wie oft bist Du in den letzten zwölf Monaten geflogen?</p>
+      <p class="question">{{ t("questionFlying") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item label="Kurzstreckenflüge">
@@ -221,6 +214,7 @@
 <script lang="ts">
 import {defineComponent} from "vue"
 import _ from "lodash"
+import { useI18n } from 'vue-i18n'
 
 import {EstimationResponse, Units} from "./lib/estimation"
 // import * as base from "./estimation/base"
@@ -240,6 +234,13 @@ const numberFormat = new Intl.NumberFormat("de-DE", {
 
 export default defineComponent({
   name: "App",
+    setup() {
+    const { t } = useI18n({
+      inheritLocale: true,
+      useScope: 'local'
+    })
+    return { t }
+  },
   mounted() {
     this.windowWidth = window.innerWidth
     window.addEventListener("resize", () => {
@@ -592,3 +593,29 @@ body {
   margin: 5% auto;
 }
 </style>
+
+
+<i18n>
+{
+  "en": {
+    "hello": "Hello i18n in SFC!",
+    "introduction": "Calculate your carbon footprint",
+    "questionFlying": "How often did you fly in the last 12 month?",
+    
+  },
+  "de": {
+    "hello": "Hallo Freunde!",
+    // "introduction": `Willkommen zum planted CO<sub>2</sub> Rechner! Mit Fragen zu 5 Faktoren kannst du ganz schnell
+    //   Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen.
+    //   Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die
+    //   Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf
+    //   <a href="https://github.com/JarnoRFB/planted-co2-calculator">GitHub</a> verfügbar.
+    //   <br />
+    //   Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub
+    //     >2</sub
+    //   >
+    //   Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!`,
+    "questionFlying": "Wie oft bist Du in den letzten zwölf Monaten geflogen?",
+  }
+}
+</i18n>

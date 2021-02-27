@@ -1,6 +1,5 @@
 <template>
-  before planter page
-  <planter-page>planter page</planter-page> after
+  <planter-page></planter-page>
   <div class="header">
     <h1 class="title">
       <img
@@ -448,6 +447,7 @@ export default defineComponent({
   components: {
     SourceCitationList,
     IntermediateEmissionDisplay,
+    PlanterPage,
   },
 })
 </script>
@@ -458,6 +458,7 @@ $font-size-1: 2em;
 $font-size-2: 1.4em;
 $font-size-3: 1.1em;
 
+/* TODO refactor redundant styles */
 $planted-background: #bfb8a3;
 $planted-yellow: #c9f967;
 $planted-cta: #ae35e1;
@@ -504,8 +505,14 @@ body {
   font-family: 'Inter', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $planted-background;
   color: $color;
   margin: 0 10px;
+}
+
+#questions,
+#result {
+  background-color: #ffffff;
 }
 
 @media screen and (min-width: 1100px) {

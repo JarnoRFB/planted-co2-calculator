@@ -7,7 +7,8 @@
 </template>
 
 <script lang="ts">
-import defineComponent from "vue"
+import {LocalizedDescription} from "@/lib/estimation/sources"
+import {defineComponent, PropType} from "vue"
 
 export default defineComponent({
   name: "PlanterPage",
@@ -16,8 +17,19 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
+  /* TODO refactor redundant styles */
+  $planted-background: #bfb8a3;
+  $planted-yellow: #c9f967;
+  $planted-cta: #ae35e1;
+  $planted-pink: #fe61c9;
+  $planted-amber: #8a231c;
+  $planted-orange: #fe5902;
+  $planted-brown: #926c3d;
+  $planted-blue: #4a83f3;
+  $planted-gray: #2b232f;
+
   .planterpage {
-    background: $planted-background;
+    background-color: $planted-background;
     color: $planted-gray;
   }
 </style>

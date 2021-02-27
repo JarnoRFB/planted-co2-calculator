@@ -17,8 +17,8 @@
             class="openclose"
             >+</a
           >
-          <div v-show="showTreesDetails" class="details">
-            Kartenausschnit mit Polygon
+          <div v-if="showTreesDetails" class="details">
+            <forrest-map />
             <a v-on:click="showTreesDetails = false" class="openclose">-</a>
           </div>
         </div>
@@ -47,6 +47,7 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue"
+import ForrestMap from "./ForrestMap.vue"
 
 export default defineComponent({
   name: "PlanterPage",
@@ -57,6 +58,7 @@ export default defineComponent({
       showTonsDetails: false,
     }
   },
+  components: {ForrestMap},
 })
 </script>
 

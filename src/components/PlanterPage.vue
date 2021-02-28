@@ -85,7 +85,7 @@
       <div class="card">
         <div>
           <h3>450</h3>
-          hours of electricity
+          hours of electric lighting
         </div>
         <div>
           <img src="../assets/icon-gluehbirne.svg" width="186" height="150" alt="cow farts" />
@@ -97,7 +97,7 @@
           km driven by car
         </div>
         <div>
-          <img src="../assets/erde-elvis.svg" width="186" height="150" alt="cow farts" />
+          <img src="../assets/icon-auto.svg" width="186" height="150" alt="cow farts" />
         </div>
       </div>
     </div>
@@ -245,7 +245,7 @@ $maxmobile: 640px;
     padding: 20px 20px 0 20px;
     border-radius: 25%;
     color: #ffffff;
-    font-size: 29px;
+    font-size: 25px;
 
     & h3 {
       font-size: 88px;

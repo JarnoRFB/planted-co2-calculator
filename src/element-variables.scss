@@ -3,7 +3,19 @@ Write your variables here. All available variables can be
 found in element-plus/packages/theme-chalk/src/common/var.scss.
 For example, to overwrite the theme color:
 */
-$--color-primary: #088a08;
+
+$planted-background: #bfb8a3;
+$planted-yellow: #c9f967;
+$planted-cta: #ae35e1;
+$planted-pink: #fe61c9;
+$planted-amber: #8a231c;
+$planted-orange: #fe5902;
+$planted-brown: #926c3d;
+$planted-blue: #4a83f3;
+$planted-gray: #2b232f;
+$border-color: black;
+
+$--color-primary: black;
 
 /* icon font path, required */
 $--font-path: "~element-plus/lib/theme-chalk/fonts";
@@ -19,16 +31,28 @@ $font-size-3: 1.1em;
   width: 75%;
 }
 
+@mixin border {
+  border: solid 1px $border-color;
+}
+
 .el-form--label-top .el-form-item__label {
   padding: 0px;
 }
 
+.el-divider--horizontal {
+  background-color: $planted-gray;
+  margin-bottom: 10%;
+  margin-top: 10%;
+}
+
 .el-divider__text {
   font-size: $font-size-1;
+  background-color: $planted-background;
 }
 
 .el-form-item__label {
   font-size: $font-size-2;
+  color: $planted-gray;
 }
 
 .el-input__inner {
@@ -45,10 +69,66 @@ $font-size-3: 1.1em;
 }
 
 .el-tag {
+  @include border;
   margin: 5% 0;
   font-size: $font-size-3;
+  background-color: $planted-background;
+}
+
+.el-collapse {
+  border-top: 0px solid $border-color;
+  border-bottom: 0px solid $border-color;
 }
 
 .el-collapse-item__header {
+  border-top: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
   font-size: $font-size-3;
+  padding-left: 10px;
+  background-color: $planted-background;
+  color: black;
+}
+
+.el-collapse-item__wrap {
+  background-color: $planted-background;
+  border-bottom: 1px solid $border-color;
+}
+
+.el-input__inner {
+  @include border;
+  background-color: $planted-background;
+  color: $border-color;
+}
+
+.el-input-number__decrease {
+  border-right: solid 1px $border-color;
+  background-color: $planted-background;
+  color: $border-color;
+}
+
+.el-input-number__increase {
+  border-left: solid 1px $border-color;
+  background-color: $planted-background;
+  color: $border-color;
+}
+
+.el-input-number__decrease.is-disabled {
+  color: $border-color;
+}
+
+.el-switch__core {
+  @include border;
+  background-color: $planted-background;
+}
+
+.el-switch.is-checked .el-switch__core {
+  @include border;
+}
+
+.el-progress-bar__outer {
+  background: linear-gradient(90deg, rgba(0, 144, 78, 1) 0%, rgba(237, 99, 43, 1) 100%);
+}
+
+.el-progress-bar__inner {
+  background: transparent;
 }

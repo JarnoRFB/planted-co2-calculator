@@ -201,9 +201,24 @@
     </div>
   </div>
   <div id="result" >
+    <h2 class="uppercase">{{ t('yourResult') }}</h2>
+    <div class="summary-illustration">
+      <img src="@/assets/twerky.gif" width="300" height="300" alt="">
+    </div>
     <div id="summary" v-html="t('result', {totalEmissions: formatEmissions(totalEmissions), relationToAverage})"></div>
+
+    <h2 class="uppercase mt50">{{ t('improveNow') }}</h2>
     <div id="suggestion">
       {{ suggestion }}
+    </div>
+    <div class="suggestions-illustration">
+      <img src="@/assets/erde-baum-high5.svg" width="404" height="300" alt="">
+    </div>
+    <p>{{ t('likeWhatYouSee') }}</p>
+    <div class="cta-wrapper">
+      <a href="https://planted.green/" class="btn cta">
+        {{ t('referAFriend') }}
+      </a>
     </div>
   </div>
 
@@ -464,6 +479,10 @@ $maxmobile: 640px;
   .not-on-mobile {
     display: none;
   }
+
+  img {
+    max-width: 99%;
+  }
 }
 
 html {
@@ -547,6 +566,11 @@ h1, .uppercase {
   // take up the full browser width
   width: 100%;
 }
+
+.mt50 {
+  margin-top: 50px;
+}
+
 .question {
   font-size: $font-size-1;
   font-weight: 100;
@@ -592,11 +616,27 @@ h1, .uppercase {
 #result {
   @include text-block;
   margin: 5% auto;
+  text-align: center;
 }
 
 .aside-illustration {
   position: absolute;
   right: 0;
+}
+
+/* TODO move all CTA buttons to a common component */
+.cta-wrapper {
+  padding: 50px;
+}
+
+/* primary call to action button ("donate") */
+.btn.cta {
+  background-color: $planted-cta;
+  border-radius: 100px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 20px;
+  font-weight: bold;
 }
 </style>
 
@@ -659,6 +699,10 @@ h1, .uppercase {
       "over": "above",
       "farAbove": "far above",
     },
+    "yourResult": "Your result",
+    "improveNow": "Improve now",
+    "likeWhatYouSee": "Do you like what you see?",
+    "referAFriend": "Refer a friend",
   },
   "de": {
     "calculator": "Rechner",
@@ -716,6 +760,10 @@ h1, .uppercase {
       "over": "über",
       "farAbove": "weit über",
     },
+    "yourResult": "Dein Ergebnis",
+    "improveNow": "Werde jetzt besser",
+    "likeWhatYouSee": "Gefällt Dir, was Du hier siehst?",
+    "referAFriend": "weiterempfehlen",
   }
 }
 </i18n>

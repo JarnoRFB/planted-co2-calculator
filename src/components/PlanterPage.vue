@@ -34,7 +34,7 @@
       </div>
 
       <div class="trees-mascots not-on-mobile">
-        <img src="../assets/tree-toons.svg" width="388" height="313" alt="" loading="lazy" />
+        <img src="../assets/baum02.gif" width="300" height="360" alt="" loading="lazy" />
       </div>
 
       <div class="tons-numbers contains-details">
@@ -177,6 +177,11 @@ $maxmobile: 640px;
     margin: 0 auto;
   }
 
+  /* workaround: cut empty room in gif above growing tree */
+  .trees-mascots img {
+    margin-top: -65px;
+  }
+
   @media screen and (max-width: $maxmobile) {
     .not-on-mobile {
       display: none;
@@ -206,7 +211,7 @@ $maxmobile: 640px;
   }
 
   .donate-wrapper {
-    padding: 10px;
+    padding: 50px;
   }
 
   /* primary call to action button ("donate") */
@@ -219,6 +224,7 @@ $maxmobile: 640px;
     font-weight: bold;
   }
 
+  /* cards "your impact" */
   /* grid overrides flex fallback in modern browsers */
   .card-wrapper {
     display: flex;
@@ -277,10 +283,12 @@ $maxmobile: 640px;
 
   /* grid / flex override float fallback in modern browsers */
   .facts-container {
+    display: flex;
+    margin-top: 50px;
+
     & .earth {
       float: left;
     }
-    display: flex;
   }
 
   /* self clearing after float fallback */

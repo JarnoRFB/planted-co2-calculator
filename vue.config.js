@@ -9,10 +9,13 @@ module.exports = {
       compositionOnly: false,
       fullInstall: true,
     },
-    pwa: {
-      name: "planted",
-      themeColor: "#bfb8a3",
-      appleMobileWebAppCapable: "yes",
+  },
+  pwa: {
+    name: "planted",
+    themeColor: "#BFB8A3",
+    appleMobileWebAppCapable: "yes",
+    manifestOptions: {
+      background_color: "#BFB8A3",
     },
   },
 }

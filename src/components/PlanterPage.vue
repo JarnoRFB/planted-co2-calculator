@@ -74,21 +74,34 @@
 
     <div class="card-wrapper">
       <div class="card">
-        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+        <div>
+          <h3>200</h3>
+          cow farts
+        </div>
+        <div>
+          <img src="../assets/kuh2.gif" width="300" height="300" alt="cow farts" />
+        </div>
       </div>
       <div class="card">
-        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+        <div>
+          <h3>450</h3>
+          hours of electricity
+        </div>
+        <div>
+          <img src="../assets/icon-gluehbirne.svg" width="186" height="150" alt="cow farts" />
+        </div>
       </div>
       <div class="card">
-        <img src="../assets/cow.svg" width="420" height="338" alt="cow farts" />
+        <div>
+          <h3>950</h3>
+          km driven by car
+        </div>
+        <div>
+          <img src="../assets/erde-elvis.svg" width="186" height="150" alt="cow farts" />
+        </div>
       </div>
     </div>
 
-    <!--
-    <div class="earth">
-      <img src="../assets/erde-pointing.svg" alt="earth poiting" />
-    </div>
--->
     <div class="facts-container">
       <div class="earth">
         <img src="../assets/erde-facts.svg" alt="earth teaching" />
@@ -224,20 +237,41 @@ $maxmobile: 640px;
   }
 
   .card {
-    background-color: $planted-green;
-    padding: 20px;
-    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 20px 0 20px;
+    border-radius: 25%;
+    color: #ffffff;
+    font-size: 29px;
+
+    & h3 {
+      font-size: 88px;
+      margin: 0;
+    }
+
+    & img {
+      max-width: 90%;
+      width: 300px;
+      height: auto;
+    }
+
+    & > div {
+      position: relative;
+    }
+
+    &:nth-child(1) {
+      background-color: $planted-green;
+    }
 
     &:nth-child(2) {
       background-color: $planted-orange;
     }
+
     &:nth-child(3) {
       background-color: $planted-pink;
-    }
-
-    & > img {
-      max-width: 90%;
-      height: auto;
     }
   }
 

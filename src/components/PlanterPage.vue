@@ -80,7 +80,7 @@
           cow farts
         </div>
         <div>
-          <img src="../assets/kuh-gruen.gif" width="300" height="300" alt="farting cow" />
+          <img src="../assets/kuh-gruen.gif" width="400" height="400" alt="farting cow" />
         </div>
       </div>
       <div class="card">

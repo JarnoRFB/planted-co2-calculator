@@ -107,7 +107,7 @@
     <!-- <p>Your daily CO<sub>2</sub> life hack</p> -->
 
     <div class="facts-container">
-      <div class="earth">
+      <div class="earth not-on-mobile">
         <img src="../assets/erde-facts.svg" alt="earth teaching" />
       </div>
       <div class="fact headfont">
@@ -157,7 +157,7 @@ $planted-brown: #926c3d;
 $planted-blue: #4a83f3;
 $planted-gray: #2b232f;
 $planted-green: #00904e;
-$maxmobile: 640px;
+$maxmobile: 720px;
 
 .planterpage {
   background-color: $planted-background;
@@ -311,6 +311,13 @@ $maxmobile: 640px;
     & .fact {
       color: #ffffff;
       font-size: 45px;
+    }
+  }
+
+  @media screen and (max-width: $maxmobile) {
+    .facts-container {
+      width: 90%;
+      padding: 7%;
     }
   }
 

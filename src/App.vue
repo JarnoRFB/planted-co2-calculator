@@ -23,7 +23,7 @@
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
       <p class="question">{{ t("questionFlying") }}</p>
-      <div class="aside-illustration">
+      <div class="aside-illustration-right">
         <img src="@/assets/erde-fahrrad.svg" width="420" height="339" alt="">
       </div>
       <div class="options">
@@ -87,6 +87,9 @@
     <div id="housing" class="topic">
       <el-divider>🏠</el-divider>
       <p class="question">{{ t("housingQuestion") }}</p>
+      <div class="aside-illustration-left">
+        <img src="@/assets/erde-booty.svg" width="420" height="339" alt="">
+      </div>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item :label="t('householdSize')">
@@ -154,6 +157,9 @@
       <el-divider>🍜</el-divider>
 
       <p class="question">{{ t("nutritionQuestion") }}</p>
+      <div class="aside-illustration-right">
+        <img src="@/assets/erde-go-vegan.svg" width="420" height="339" alt="">
+      </div>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>
@@ -619,7 +625,12 @@ h1, .uppercase {
   text-align: center;
 }
 
-.aside-illustration {
+.aside-illustration-left {
+  position: absolute;
+  left: 0;
+}
+
+.aside-illustration-right {
   position: absolute;
   right: 0;
 }

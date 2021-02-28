@@ -102,9 +102,9 @@
       </div>
     </div>
 
-    <h2 class="uppercase">Did you know?</h2>
+    <h2 class="uppercase">Your daily CO<sub>2</sub> life hack</h2>
 
-    <p>Your daily CO<sub>2</sub> life hack</p>
+    <!-- <p>Your daily CO<sub>2</sub> life hack</p> -->
 
     <div class="facts-container">
       <div class="earth not-on-mobile">
@@ -163,6 +163,7 @@ $maxmobile: 720px;
   background-color: $planted-background;
   color: $planted-gray;
   text-align: center;
+  margin-bottom: 80px;
 
   h2 {
     font-size: 30px;
@@ -240,6 +241,7 @@ $maxmobile: 720px;
     flex-direction: row;
     place-content: space-evenly;
     flex-basis: 30%;
+    margin-bottom: 80px;
   }
 
   @media screen and (max-width: $maxmobile) {

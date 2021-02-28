@@ -671,7 +671,7 @@ h1, .uppercase {
 {
   "en": {
     "calculator": "Calculator",
-    "introduction": "Calculate your carbon footprint!",
+    "introduction": "Keep track of your carbon footprint",
     "questionFlying": "How often did you fly in the last 12 month?",
     "shortHauls": "Short hauls",
     "mediumHauls": "Medium hauls",

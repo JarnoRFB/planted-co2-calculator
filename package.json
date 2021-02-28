@@ -1,5 +1,5 @@
 {
-  "name": "planted-co2-calculator",
+  "name": "planted",
   "version": "0.1.0",
   "private": true,
   "author": "rbusche",
@@ -23,6 +23,7 @@
     "io-ts": "^2.2.14",
     "leaflet": "^1.7.1",
     "leaflet.control.opacity": "^1.4.2",
+    "register-service-worker": "^1.7.1",
     "tailwindcss": "^2.0.3",
     "vue": "^3.0.0",
     "vue-class-component": "^8.0.0-0",
@@ -44,6 +45,7 @@
     "@typescript-eslint/parser": "^2.33.0",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-pwa": "~4.5.0",
     "@vue/cli-plugin-typescript": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0",

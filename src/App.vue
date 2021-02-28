@@ -14,7 +14,6 @@
       :show-text="true"
       :stroke-width="50"
       :percentage="percentageOfReferenceEmissions"
-      :color="colorGradient"
     >
       <b> <span v-html="formatEmissions(totalEmissions)"> </span> </b>&nbsp;&nbsp;
     </el-progress>

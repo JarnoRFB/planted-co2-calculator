@@ -21,7 +21,9 @@
 
   <div id="questions">
     <div id="flying" class="topic">
-      <el-divider>✈️</el-divider>
+      <el-divider>
+        <img src="@/assets/icon-flugzeug.svg" class="divider-icon" alt="">
+      </el-divider>
       <p class="question">{{ t("questionFlying") }}</p>
       <div class="aside-illustration-right">
         <img src="@/assets/erde-fahrrad.svg" width="420" height="339" alt="">
@@ -62,7 +64,9 @@
     </div>
 
     <div id="driving" class="topic">
-      <el-divider>🚗</el-divider>
+      <el-divider>
+        <img src="@/assets/icon-auto.svg" class="divider-icon" alt="">
+      </el-divider>
       <p class="question">{{ t("drivingQuestion") }}</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
@@ -85,7 +89,9 @@
     </div>
 
     <div id="housing" class="topic">
-      <el-divider>🏠</el-divider>
+      <el-divider>
+        <img src="@/assets/icon-haus.svg" class="divider-icon" alt="">
+      </el-divider>
       <p class="question">{{ t("housingQuestion") }}</p>
       <div class="aside-illustration-left">
         <img src="@/assets/erde-booty.svg" width="420" height="339" alt="">
@@ -154,7 +160,9 @@
     </div>
 
     <div id="nutrition" class="topic">
-      <el-divider>🍜</el-divider>
+      <el-divider>
+        <img src="@/assets/icon-essen.svg" class="divider-icon" alt="">
+      </el-divider>
 
       <p class="question">{{ t("nutritionQuestion") }}</p>
       <div class="aside-illustration-right">
@@ -183,7 +191,9 @@
     </div>
 
     <div id="consumerism" class="topic">
-      <el-divider>🛍️</el-divider>
+      <el-divider>
+        <img src="@/assets/icon-konsum.svg" class="divider-icon" alt="">
+      </el-divider>
       <p class="question">{{ t('consumerismQuestion') }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
@@ -609,6 +619,12 @@ h1, .uppercase {
   position: absolute;
   right: 0;
 }
+
+.divider-icon {
+  width: 100px;
+  height: 100px;
+}
+
 </style>
 
 

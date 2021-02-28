@@ -11,7 +11,7 @@
         <h3>25</h3>
         Trees
         <div class="details-container">
-          <a v-on:click="showTreesDetails = !showTreesDetails" class="openclose">
+          <a @click="showTreesDetails = !showTreesDetails" class="openclose">
             <img
               src="../assets/add_circle_outline-black-18dp.svg"
               width="24"
@@ -20,8 +20,8 @@
             />
           </a>
           <div v-if="showTreesDetails" class="details">
-            <forrest-map />
-            <a v-on:click="showTreesDetails = false" class="openclose">
+            <forrest-map v-click-outside="closeTreesDetails" />
+            <a @click="closeTreesDetails" class="openclose">
               <img
                 src="../assets/remove_circle_outline-24px.svg"
                 width="24"
@@ -41,7 +41,7 @@
         <h3>8,3</h3>
         CO<sub>2</sub> t
         <div class="details-container">
-          <a v-on:click="showTonsDetails = !showTonsetails" class="openclose">
+          <a @click="showTonsDetails = !showTonsDetails" class="openclose">
             <img
               src="../assets/add_circle_outline-black-18dp.svg"
               width="24"
@@ -49,10 +49,11 @@
               alt="open"
             />
           </a>
-          <div v-show="showTonsDetails" class="details">
+          <div v-if="showTonsDetails" class="details">
             Details zu Windkraft
-            <a v-on:click="showTonsDetails = false" class="openclose">
+            <a @click="closeTonsDetails" class="openclose">
               <img
+                v-click-outside="closeTonsDetails"
                 src="../assets/remove_circle_outline-24px.svg"
                 width="24"
                 height="24"
@@ -120,6 +121,7 @@
 <script lang="ts">
 import {defineComponent, PropType} from "vue"
 import ForrestMap from "./ForrestMap.vue"
+import vClickOutside from "@/lib/v-click-outside"
 
 export default defineComponent({
   name: "PlanterPage",
@@ -130,7 +132,16 @@ export default defineComponent({
       showTonsDetails: false,
     }
   },
+  methods: {
+    closeTreesDetails() {
+      this.showTreesDetails = false
+    },
+    closeTonsDetails() {
+      this.showTonsDetails = false
+    },
+  },
   components: {ForrestMap},
+  directives: {clickOutside: vClickOutside},
 })
 </script>
 

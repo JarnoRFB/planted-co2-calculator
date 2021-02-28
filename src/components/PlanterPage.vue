@@ -66,7 +66,7 @@
 
     <div class="donate-wrapper">
       <a href="https://planted.green/" class="btn cta">
-        Donate now
+        Increase impact
       </a>
     </div>
 
@@ -79,7 +79,7 @@
           cow farts
         </div>
         <div>
-          <img src="../assets/kuh2.gif" width="300" height="300" alt="cow farts" />
+          <img src="../assets/kuh2.gif" width="300" height="300" alt="farting cow" />
         </div>
       </div>
       <div class="card">
@@ -88,7 +88,7 @@
           hours of electric lighting
         </div>
         <div>
-          <img src="../assets/icon-gluehbirne.svg" width="186" height="150" alt="cow farts" />
+          <img src="../assets/icon-gluehbirne.svg" width="186" height="150" alt="light bulb" />
         </div>
       </div>
       <div class="card">
@@ -97,21 +97,21 @@
           km driven by car
         </div>
         <div>
-          <img src="../assets/icon-auto.svg" width="186" height="150" alt="cow farts" />
+          <img src="../assets/icon-auto.svg" width="186" height="150" alt="automobile" />
         </div>
       </div>
     </div>
+
+    <h2 class="uppercase">Did you know?</h2>
+
+    <p>Your daily CO<sub>2</sub> life hack</p>
 
     <div class="facts-container">
       <div class="earth">
         <img src="../assets/erde-facts.svg" alt="earth teaching" />
       </div>
-      <div class="fact">
-        <h2>Did you know?</h2>
-        <p>
-          Cut your basil on the uppers sprig, and you will never need to buy a new basil plant
-          again. Nature regrows by itself. Happy cooking.
-        </p>
+      <div class="fact headfont">
+        Showering 5 instead of 10 minutes will save an extra 20 cow farts.
       </div>
     </div>
   </section>
@@ -284,10 +284,25 @@ $maxmobile: 640px;
   /* grid / flex override float fallback in modern browsers */
   .facts-container {
     display: flex;
-    margin-top: 50px;
+    margin: 0 auto;
+    width: 80%;
+    background-color: $planted-orange;
+    border-radius: 50px;
+    align-items: center;
 
     & .earth {
       float: left;
+      padding: 20px;
+
+      & img {
+        width: 250px;
+        height: auto;
+      }
+    }
+
+    & .fact {
+      color: #ffffff;
+      font-size: 45px;
     }
   }
 

@@ -93,11 +93,13 @@
       <div class="earth">
         <img src="../assets/erde-facts.svg" alt="earth teaching" />
       </div>
-      <h2>Did you know?</h2>
-      <p>
-        Cut your basil on the uppers sprig, and you will never need to buy a new basil plant again.
-        Nature regrows by itself. Happy cooking.
-      </p>
+      <div class="fact">
+        <h2>Did you know?</h2>
+        <p>
+          Cut your basil on the uppers sprig, and you will never need to buy a new basil plant
+          again. Nature regrows by itself. Happy cooking.
+        </p>
+      </div>
     </div>
   </section>
 </template>
@@ -198,7 +200,8 @@ $maxmobile: 640px;
     border-radius: 100px;
     color: #ffffff;
     text-decoration: none;
-    padding: 10px;
+    padding: 20px;
+    font-weight: bold;
   }
 
   .card-wrapper {
@@ -233,6 +236,19 @@ $maxmobile: 640px;
       max-width: 90%;
       height: auto;
     }
+  }
+
+  .facts-container {
+    & .earth {
+      float: left;
+    }
+    display: flex;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
   }
 }
 </style>

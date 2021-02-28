@@ -498,12 +498,12 @@ body {
   }
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, .headfont {
   font-family: 'Brule', cursive;
   font-weight: 400;
 }
 
-h1 {
+h1, .uppercase {
   text-transform: uppercase;
 }
 

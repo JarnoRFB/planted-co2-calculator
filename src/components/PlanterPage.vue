@@ -34,7 +34,7 @@
       </div>
 
       <div class="trees-mascots not-on-mobile">
-        <img src="../assets/baum02.gif" width="300" height="360" alt="" loading="lazy" />
+        <img src="../assets/baum-bege.gif" width="300" height="323" alt="" loading="lazy" />
       </div>
 
       <div class="tons-numbers contains-details">
@@ -80,7 +80,7 @@
           cow farts
         </div>
         <div>
-          <img src="../assets/kuh2.gif" width="300" height="300" alt="farting cow" />
+          <img src="../assets/kuh-gruen.gif" width="300" height="300" alt="farting cow" />
         </div>
       </div>
       <div class="card">
@@ -98,7 +98,7 @@
           km driven by car
         </div>
         <div>
-          <img src="../assets/icon-auto.svg" width="186" height="150" alt="automobile" />
+          <img src="../assets/erde-auto-19.svg" width="420" height="339" alt="automobile" />
         </div>
       </div>
     </div>
@@ -186,11 +186,6 @@ $maxmobile: 640px;
     place-content: space-around;
     max-width: 600px;
     margin: 0 auto;
-  }
-
-  /* workaround: cut empty room in gif above growing tree */
-  .trees-mascots img {
-    margin-top: -65px;
   }
 
   @media screen and (max-width: $maxmobile) {

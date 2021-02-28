@@ -450,7 +450,7 @@ $planted-brown: #926c3d;
 $planted-blue: #4a83f3;
 $planted-gray: #2b232f;
 $planted-green: #00904e;
-$maxmobile: 640px;
+$maxmobile: 720px;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 

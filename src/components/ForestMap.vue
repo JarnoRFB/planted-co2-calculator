@@ -1,7 +1,5 @@
 <template>
-  <div id="forrestMap">
-    <div id="map"></div>
-  </div>
+  <div id="forest-map" class="map"></div>
 </template>
 
 <script lang="ts">
@@ -16,7 +14,7 @@ const avatar3 = require("../assets/avatar3.png")
 const avatar4 = require("../assets/avatar4.jpg")
 
 export default defineComponent({
-  name: "ForrestMap",
+  name: "ForestMap",
   data() {
     return {
       polygons: {
@@ -38,7 +36,7 @@ export default defineComponent({
                 ],
               ],
             },
-            properties: {id: "1", name: "My Forrest", imgSrc: avatar},
+            properties: {id: "1", name: "My Forest", imgSrc: avatar},
           },
           {
             type: "Feature",
@@ -59,7 +57,7 @@ export default defineComponent({
                 ],
               ],
             },
-            properties: {id: "2", name: "Lisa's Forrest", imgSrc: avatar3},
+            properties: {id: "2", name: "Lisa's Forest", imgSrc: avatar3},
           },
           {
             type: "Feature",
@@ -79,7 +77,7 @@ export default defineComponent({
                 ],
               ],
             },
-            properties: {id: "3", name: "Ingos Forrest", imgSrc: avatar2},
+            properties: {id: "3", name: "Ingos Forest", imgSrc: avatar2},
           },
           {
             type: "Feature",
@@ -95,7 +93,7 @@ export default defineComponent({
                 ],
               ],
             },
-            properties: {id: "4", name: "Heinrichs Forrest", imgSrc: avatar4},
+            properties: {id: "4", name: "Heinrichs Forest", imgSrc: avatar4},
           },
         ],
       } as geojson.GeoJsonObject,
@@ -103,7 +101,7 @@ export default defineComponent({
   },
 
   mounted() {
-    const map = L.map("map").setView([50.10951, 8.13669], 16)
+    const map = L.map("forest-map").setView([50.10951, 8.13669], 16)
     const Esri_WorldImagery = L.tileLayer(
       "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
       {
@@ -186,7 +184,7 @@ export default defineComponent({
 @import "~leaflet/dist/leaflet.css";
 @import "~leaflet.control.opacity/dist/L.Control.Opacity.css";
 
-#map {
+.map {
   width: 100%;
   height: 400px;
 }

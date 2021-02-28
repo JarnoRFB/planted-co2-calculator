@@ -42,12 +42,12 @@
               :label="t('mediumHauls')"
             ></el-input-number>
           </el-form-item>
-          <el-form-item :label="t('mediumHauls')">
+          <el-form-item :label="t('longHauls')">
             <el-input-number
               id="nLongHauls-option"
               v-model="flying.nLongHauls"
               :min="0"
-              :label="t('mediumHauls')"
+              :label="t('longHauls')"
             ></el-input-number>
           </el-form-item>
         </el-form>
@@ -552,13 +552,14 @@ h1 {
 }
 .question {
   font-size: $font-size-1;
-  font-weight: 700;
+  font-weight: 100;
   margin-left: 2%;
   margin-right: 2%;
 
   margin-top: 4%;
   margin-bottom: 4%;
   color: $planted-gray;
+  font-family: "brule";
 }
 .el-collapse {
   margin-left: 2%;

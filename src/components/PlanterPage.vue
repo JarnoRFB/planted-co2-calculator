@@ -178,6 +178,7 @@ $maxmobile: 640px;
     cursor: pointer;
   }
 
+  /* card overlays */
   .details {
     position: fixed;
     transition: transform 1s ease-out;
@@ -195,6 +196,7 @@ $maxmobile: 640px;
     padding: 10px;
   }
 
+  /* primary call to action button ("donate") */
   .btn.cta {
     background-color: $planted-cta;
     border-radius: 100px;
@@ -204,6 +206,7 @@ $maxmobile: 640px;
     font-weight: bold;
   }
 
+  /* grid overrides flex fallback in modern browsers */
   .card-wrapper {
     display: flex;
     display: grid;
@@ -238,6 +241,7 @@ $maxmobile: 640px;
     }
   }
 
+  /* grid / flex override float fallback in modern browsers */
   .facts-container {
     & .earth {
       float: left;
@@ -245,6 +249,7 @@ $maxmobile: 640px;
     display: flex;
   }
 
+  /* self clearing after float fallback */
   &::after {
     content: "";
     display: block;

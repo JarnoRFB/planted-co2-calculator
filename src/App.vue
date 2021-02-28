@@ -597,6 +597,7 @@ h1, .uppercase {
   margin-bottom: 4%;
   color: $planted-gray;
   font-family: "brule";
+  z-index: 100;
 }
 .el-collapse {
   margin-left: 2%;
@@ -646,8 +647,11 @@ h1, .uppercase {
 }
 
 .divider-icon {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  background-color: transparent;
+  fill: transparent;
 }
 
 /* TODO move all CTA buttons to a common component */

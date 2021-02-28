@@ -25,7 +25,7 @@
         <img src="@/assets/icon-flugzeug.svg" class="divider-icon" alt="">
       </el-divider>
       <p class="question">{{ t("questionFlying") }}</p>
-      <div class="aside-illustration-right">
+      <div class="aside-illustration-right not-on-mobile">
         <img src="@/assets/erde-fahrrad.svg" width="420" height="339" alt="">
       </div>
       <div class="options">
@@ -93,7 +93,7 @@
         <img src="@/assets/icon-haus.svg" class="divider-icon" alt="">
       </el-divider>
       <p class="question">{{ t("housingQuestion") }}</p>
-      <div class="aside-illustration-left">
+      <div class="aside-illustration-left not-on-mobile">
         <img src="@/assets/erde-mathe.svg" width="420" height="339" alt="">
       </div>
       <div class="options">
@@ -165,7 +165,7 @@
       </el-divider>
 
       <p class="question">{{ t("nutritionQuestion") }}</p>
-      <div class="aside-illustration-right">
+      <div class="aside-illustration-right not-on-mobile">
         <img src="@/assets/erde-go-vegan.svg" width="420" height="339" alt="">
       </div>
       <div class="options">
@@ -647,11 +647,11 @@ h1, .uppercase {
 }
 
 .divider-icon {
-  width: 80px;
-  height: 80px;
-  background: transparent;
-  background-color: transparent;
-  fill: transparent;
+  width: 100px;
+  height: 100px;
+  margin-bottom: -20px;
+  margin-top: -20px;
+  background-color: $planted-background;
 }
 
 /* TODO move all CTA buttons to a common component */

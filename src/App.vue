@@ -23,6 +23,9 @@
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
       <p class="question">{{ t("questionFlying") }}</p>
+      <div class="aside-illustration">
+        <img src="@/assets/erde-fahrrad.svg" width="420" height="339" alt="">
+      </div>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item :label="t('shortHauls')">
@@ -415,6 +418,8 @@ $planted-orange: #fe5902;
 $planted-brown: #926c3d;
 $planted-blue: #4a83f3;
 $planted-gray: #2b232f;
+$planted-green: #00904e;
+$maxmobile: 640px;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
@@ -454,6 +459,13 @@ $planted-gray: #2b232f;
   margin: auto;
   width: 75%;
 }
+
+@media screen and (max-width: $maxmobile) {
+  .not-on-mobile {
+    display: none;
+  }
+}
+
 html {
   box-sizing: border-box;
 }
@@ -580,6 +592,11 @@ h1, .uppercase {
 #result {
   @include text-block;
   margin: 5% auto;
+}
+
+.aside-illustration {
+  position: absolute;
+  right: 0;
 }
 </style>
 

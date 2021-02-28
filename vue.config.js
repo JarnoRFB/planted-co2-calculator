@@ -11,7 +11,7 @@ module.exports = {
     },
   },
   pwa: {
-    name: "planted",
+    name: "PLANTED",
     themeColor: "#BFB8A3",
     appleMobileWebAppCapable: "yes",
     manifestOptions: {

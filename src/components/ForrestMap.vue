@@ -139,17 +139,17 @@ export default defineComponent({
     const overlays = {
       "2031": Esri_WorldImagery,
     }
-    L.control
-      .layers(baseLayers, overlays, {
-        collapsed: false,
-      })
-      .addTo(map)
+    // L.control
+    //   .layers(baseLayers, overlays, {
+    //     collapsed: true,
+    //   })
+    //   .addTo(map)
 
     L.control
       // @ts-ignore
       .opacity(overlays, {
         label: "timelapse",
-        // collapsed: true,
+        collapsed: true,
       })
       .addTo(map)
 

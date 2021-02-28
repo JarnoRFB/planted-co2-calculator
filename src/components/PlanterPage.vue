@@ -111,7 +111,7 @@
         <img src="../assets/erde-facts.svg" alt="earth teaching" />
       </div>
       <div class="fact headfont">
-        Showering 5 instead of 10 minutes will save an extra 20 cow farts.
+        Showering 5 instead of 10 minutes will save 20 cow farts.
       </div>
     </div>
   </section>

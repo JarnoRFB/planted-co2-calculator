@@ -20,7 +20,7 @@
             />
           </a>
           <div v-if="showTreesDetails" class="details">
-            <forrest-map v-click-outside="closeTreesDetails" />
+            <forest-map v-click-outside="closeTreesDetails" />
             <a @click="closeTreesDetails" class="openclose">
               <img
                 src="../assets/remove_circle_outline-24px.svg"
@@ -50,10 +50,9 @@
             />
           </a>
           <div v-if="showTonsDetails" class="details">
-            Details zu Windkraft
+            <wind-map v-click-outside="closeTonsDetails" />
             <a @click="closeTonsDetails" class="openclose">
               <img
-                v-click-outside="closeTonsDetails"
                 src="../assets/remove_circle_outline-24px.svg"
                 width="24"
                 height="24"
@@ -120,7 +119,8 @@
 
 <script lang="ts">
 import {defineComponent, PropType} from "vue"
-import ForrestMap from "./ForrestMap.vue"
+import ForestMap from "./ForestMap.vue"
+import WindMap from "./WindMap.vue"
 import vClickOutside from "@/lib/v-click-outside"
 
 export default defineComponent({
@@ -140,7 +140,7 @@ export default defineComponent({
       this.showTonsDetails = false
     },
   },
-  components: {ForrestMap},
+  components: {ForestMap, WindMap},
   directives: {clickOutside: vClickOutside},
 })
 </script>

@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts">
-import {LocalizedDescription} from "@/lib/estimation/sources"
-import {defineComponent, PropType} from "vue"
+import {defineComponent} from "vue"
 
 export default defineComponent({
   name: "IntermediateEmissionDisplay",

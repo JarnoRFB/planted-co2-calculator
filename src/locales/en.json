@@ -1,0 +1,57 @@
+{
+  "introduction": "Calculate your carbon footprint!",
+  "questionFlying": "How often did you fly in the last 12 month?",
+  "shortHauls": "Short hauls",
+  "mediumHauls": "Medium hauls",
+  "longHauls": "Long hauls",
+  "drivingQuestion": "How many kilometers do you drive by car every week?",
+  "kilometersPerWeek": "Kilometers per Week",
+  "housingQuestion": "Heating and Electricity",
+  "householdSize": "People in your household",
+  "apartmentSize": "Apartment size",
+  "apartmentAge": "Year of construction",
+  "energySource": "Energy source",
+  "greenEnergy": "Green Energy",
+  "housing": {
+    "type": "Type of housing",
+    "options": {
+      "oil": "Oil",
+      "naturalGas": "Gas",
+      "longDistanceHeating": "Long distance heating",
+      "heatingPump": "Heating pump",
+      "woodPellets": "Wood pellets",
+      "house": "House",
+      "apartment": "Apartment",
+    }
+  },
+  "nutritionQuestion": "What does your diet look like?",
+  "nutrition": {
+    "options": {
+      "CARNIVORE": "Lots of meat",
+      "FLEXITARIAN": "Plant based",
+      "VEGETARIAN": "Vegetarian",
+      "VEGAN": "Vegan",
+    },
+  },
+  "consumerismQuestion": "How do you shop?",
+  "consumerism": {
+    "options": {
+      "frugal": "Frugal",
+      "normal": "Normal",
+      "lush": "Lush",
+    },
+  },
+  "sources": "Sources",
+  "tonsCarbon": "tons CO<sub>2</sub>e",
+  "result": "With a footprint of {totalEmissions} you are {relationToAverage} the average of 11 tons.",
+  "relation": {
+    "farBelow": "far below",
+    "below": "below",
+    "over": "above",
+    "farAbove": "far above",
+  },
+  "sources": "Sources",
+  "value": "Value",
+  "thisSourceIsValid": "This source is up to date.",
+  "thisSourceIsInvalid": "This source is no longer up to date.",
+}

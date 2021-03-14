@@ -5,7 +5,7 @@
       <b>{{ publicationMetadata.author }} ({{ publicationMetadata.year }})</b>
     </p>
     <p>
-      {{ description.german.title }}
+      {{ description[languageKey].title }}
       <el-tooltip
         class="item"
         :content="tooltipContent"
@@ -16,9 +16,9 @@
         ><span v-if="valid">✅</span><span v-else>❌</span>
       </el-tooltip>
     </p>
-    <p v-if="value">Wert: <span v-html="jsonValue"></span></p>
+    <p v-if="value">{{ t("value") }}: <span v-html="jsonValue"></span></p>
     <p>
-      Siehe <a :href="url">{{ url }}</a>
+      <a :href="url">{{ url }}</a>
     </p>
   </div>
 </template>
@@ -26,9 +26,17 @@
 <script lang="ts">
 import {LocalizedDescription, PublicationMetadata} from "@/lib/estimation/sources"
 import {defineComponent, PropType} from "vue"
+import {useI18n} from "vue-i18n"
 
 export default defineComponent({
   name: "SourceCitation",
+  setup() {
+    const {t, locale} = useI18n({
+      inheritLocale: true,
+      useScope: "global",
+    })
+    return {t, locale}
+  },
   props: {
     value: null,
     description: {type: Object as PropType<LocalizedDescription>, required: true},
@@ -46,24 +54,31 @@ export default defineComponent({
     jsonValue(): any {
       if (typeof this.value === "object") {
         return `<pre><code>${JSON.stringify(this.value, null, 2)}</code></pre>`
-        // return JSON.stringify(this.value, null, 2)
       } else {
         return this.value
       }
     },
     tooltipContent(): string {
-      return this.valid
-        ? "Diese Quelle ist auf dem neusten Stand."
-        : "Diese Quelle ist nicht mehr auf dem neusten Stand."
+      return this.valid ? this.t("thisSourceIsValid") : this.t("thisSourceIsInvalid")
+    },
+    languageKey(): string {
+      switch (this.locale) {
+        case "en":
+          return "english"
+        case "de":
+          return "german"
+        default:
+          return "english"
+      }
     },
   },
 })
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="sass">
-.source-citation
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  text-align: left
+<style scoped lang="scss">
+.source-citation {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: left;
+}
 </style>

@@ -1,24 +1,17 @@
 <template>
   <div class="header">
     <h1 class="title">
-      <img
-        src="https://uploads-ssl.webflow.com/5fc25896c145ac50c7d2af7b/5fd092f58ae2717a5d82e8a7_PLANTED_LOGO_WORTBILDMARKE.svg"
-        loading="eager"
-        alt=""
-      />
-      C0<sub>2</sub>&nbsp;Recher
+      <a href="https://planted.green">
+        <img
+          src="https://uploads-ssl.webflow.com/5fc25896c145ac50c7d2af7b/5fd092f58ae2717a5d82e8a7_PLANTED_LOGO_WORTBILDMARKE.svg"
+          loading="eager"
+          alt=""
+        />
+      </a>
+      C0<sub>2</sub>&nbsp;Rechner
     </h1>
     <div id="introduction">
-      Willkommen zum planted CO<sub>2</sub> Rechner! Mit Fragen zu 5 Faktoren kannst du ganz schnell
-      Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen.
-      Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die
-      Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf
-      <a href="https://github.com/JarnoRFB/planted-co2-calculator">GitHub</a> verfügbar.
-      <br />
-      Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub
-        >2</sub
-      >
-      Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!
+      <span v-html="t('introduction')"></span>
     </div>
   </div>
   <div class="total">
@@ -36,31 +29,31 @@
   <div id="questions">
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
-      <p class="question">Wie oft bist Du in den letzten zwölf Monaten geflogen?</p>
+      <p class="question">{{ t("questionFlying") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
-          <el-form-item label="Kurzstreckenflüge">
+          <el-form-item :label="t('shortHauls')">
             <el-input-number
               id="nShortHauls-option"
               v-model="flying.nShortHauls"
               :min="0"
-              :label="'Kurzstreckenflüge'"
+              :label="t('shortHauls')"
             ></el-input-number>
           </el-form-item>
-          <el-form-item label="Mittelstreckenflüge">
+          <el-form-item :label="t('mediumHauls')">
             <el-input-number
               id="nMediumHauls-option"
               v-model="flying.nMediumHauls"
               :min="0"
-              :label="'Mittelstreckenflüge'"
+              :label="t('mediumHauls')"
             ></el-input-number>
           </el-form-item>
-          <el-form-item label="Langstreckenflüge">
+          <el-form-item :label="t('longHauls')">
             <el-input-number
               id="nLongHauls-option"
               v-model="flying.nLongHauls"
               :min="0"
-              :label="'Langstreckenflüge'"
+              :label="t('mediumHauls')"
             ></el-input-number>
           </el-form-item>
         </el-form>
@@ -74,16 +67,16 @@
 
     <div id="driving" class="topic">
       <el-divider>🚗</el-divider>
-      <p class="question">Wie viele Kilometer fährst Du pro Woche mit dem Auto?</p>
+      <p class="question">{{ t("drivingQuestion") }}</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
-          <el-form-item label="Kilometer in der Woche">
+          <el-form-item :label="t('kilometersPerWeek')">
             <el-input-number
               v-model.number="driving.weeklyAverageDistance"
               id="driving-option"
               :min="0"
               :step="10"
-              :label="'Kilometer in der Woche'"
+              :label="t('kilometersPerWeek')"
             ></el-input-number>
           </el-form-item>
         </el-form>
@@ -97,38 +90,38 @@
 
     <div id="housing" class="topic">
       <el-divider>🏠</el-divider>
-      <p class="question">Heizung und Strom</p>
+      <p class="question">{{ t("housingQuestion") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
-          <el-form-item label="Personen im Haushalt">
+          <el-form-item :label="t('householdSize')">
             <el-input-number
               v-model.number="housing.householdSize"
               id="housing-household-size-option"
               :min="1"
-              :label="'Personen im Haushalt'"
+              :label="t('householdSize')"
             />
           </el-form-item>
-          <el-form-item label="Wohnfläche">
+          <el-form-item :label="t('apartmentSize')">
             <el-input-number
               v-model.number="housing.apartmentSize"
               id="housing-apartment-size-option"
               :min="0"
               :step="10"
-              :label="'Wohnfläche'"
+              :label="t('apartmentSize')"
             />
           </el-form-item>
-          <el-form-item label="Baujahr">
+          <el-form-item :label="t('apartmentAge')">
             <el-input-number
               v-model.number="housing.apartmentAge"
               id="housing-apartment-age-option"
               :min="1900"
               :max="2021"
               :step="10"
-              :label="'Baujahr'"
+              :label="t('apartmentAge')"
             />
           </el-form-item>
 
-          <el-form-item label="Art des Haushalts">
+          <el-form-item :label="t('housing.type')">
             <el-select v-model="housing.housing" id="housing-housing-option">
               <el-option
                 v-for="item in housingOptions"
@@ -138,7 +131,7 @@
               />
             </el-select>
           </el-form-item>
-          <el-form-item label="Energiequelle">
+          <el-form-item :label="t('energySource')">
             <el-select v-model="heating.energySource">
               <el-option
                 v-for="item in energySourceOptions"
@@ -149,7 +142,7 @@
             </el-select>
           </el-form-item>
 
-          <el-form-item label="Ökostrom">
+          <el-form-item :label="t('greenEnergy')">
             <el-switch v-model="electricity.greenEnergy" id="electricity-green-energy-option2">
             </el-switch>
           </el-form-item>
@@ -164,7 +157,7 @@
     <div id="nutrition" class="topic">
       <el-divider>🍜</el-divider>
 
-      <p class="question">Wie ernährst Du Dich?</p>
+      <p class="question">{{ t("nutritionQuestion") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>
@@ -189,7 +182,7 @@
 
     <div id="consumerism" class="topic">
       <el-divider>🛍️</el-divider>
-      <p class="question">Wie schätzt Du Deinen Konsum ein?</p>
+      <p class="question">{{ t("consumerismQuestion") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>
@@ -212,14 +205,17 @@
     </div>
   </div>
   <div id="result">
-    Mit einem Fußabdruck von <span v-html="formatEmissions(totalEmissions)"> </span> liegts Du
-    {{ relationToAverage }} dem deutschen Durchschnitt von 11 Tonnen. Kompensiere Deinen Fußabdruck
-    jetzt einfach bei <a href="https://planted.green/">planted.green</a>.
+    <div
+      id="summary"
+      v-html="t('result', {totalEmissions: formatEmissions(totalEmissions), relationToAverage})"
+    ></div>
   </div>
 </template>
 
 <script lang="ts">
 import {defineComponent} from "vue"
+import {useI18n} from "vue-i18n"
+
 import _ from "lodash"
 
 import {EstimationResponse, Units} from "./lib/estimation"
@@ -233,13 +229,32 @@ import * as consumerism from "./lib/estimation/consumerism"
 
 import SourceCitationList from "./components/SourceCitationList.vue"
 import IntermediateEmissionDisplay from "./components/IntermediateEmissionDisplay.vue"
-const numberFormat = new Intl.NumberFormat("de-DE", {
-  minimumFractionDigits: 2,
-  maximumFractionDigits: 2,
-})
 
 export default defineComponent({
   name: "App",
+  setup() {
+    const {t, n, locale} = useI18n({
+      inheritLocale: true,
+      useScope: "global",
+      numberFormats: {
+        en: {
+          co2e: {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          },
+        },
+        de: {
+          co2e: {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          },
+        },
+      },
+    })
+
+    locale.value = window.location.pathname.replace("/", "")
+    return {t, n, locale}
+  },
   mounted() {
     this.windowWidth = window.innerWidth
     window.addEventListener("resize", () => {
@@ -248,79 +263,27 @@ export default defineComponent({
   },
   data() {
     return {
-      tableData: [
-        {yearRange: {low: 0, high: 1977}, specificHeatDemand: 320},
-        {yearRange: {low: 1977, high: 1983}, specificHeatDemand: 230},
-        {yearRange: {low: 1984, high: 1994}, specificHeatDemand: 160},
-        {yearRange: {low: 1995, high: 2001}, specificHeatDemand: 110},
-        {yearRange: {low: 2002, high: 2030}, specificHeatDemand: 75},
-      ],
-
       windowWidth: 0,
-      energySourceOptions: [
-        {
-          value: "oil",
-          label: "Heizöl",
-        },
-        {
-          value: "naturalGas",
-          label: "Gas",
-        },
-        {
-          value: "longDistanceHeating",
-          label: "Fernwärme",
-        },
-        {
-          value: "heatingPump",
-          label: "Heizpumpe",
-        },
-        {
-          value: "woodPellets",
-          label: "Holzpellets",
-        },
-      ],
-      housingOptions: [
-        {
-          value: "house",
-          label: "Haus",
-        },
-        {
-          value: "apartment",
-          label: "Wohnung",
-        },
-      ],
-      consumerismOptions: [
-        {
-          value: "frugal",
-          label: "sparsam",
-        },
-        {
-          value: "normal",
-          label: "normal",
-        },
-        {
-          value: "lush",
-          label: "hoch",
-        },
-      ],
-      nutritionOptions: [
-        {
-          value: "CARNIVORE",
-          label: "fleischreich",
-        },
-        {
-          value: "FLEXITARIAN",
-          label: "flexitarisch",
-        },
-        {
-          value: "VEGETARIAN",
-          label: "vegetarisch",
-        },
-        {
-          value: "VEGAN",
-          label: "vegan",
-        },
-      ],
+      energySourceOptions: this.i18nOptions([
+        "housing.options.oil",
+        "housing.options.naturalGas",
+        "housing.options.longDistanceHeating",
+        "housing.options.heatingPump",
+        "housing.options.woodPellets",
+      ]),
+
+      housingOptions: this.i18nOptions(["housing.options.house", "housing.options.apartment"]),
+      consumerismOptions: this.i18nOptions([
+        "consumerism.options.frugal",
+        "consumerism.options.normal",
+        "consumerism.options.lush",
+      ]),
+      nutritionOptions: this.i18nOptions([
+        "nutrition.options.CARNIVORE",
+        "nutrition.options.FLEXITARIAN",
+        "nutrition.options.VEGETARIAN",
+        "nutrition.options.VEGAN",
+      ]),
       flying: {
         nShortHauls: 4,
         nMediumHauls: 2,
@@ -421,16 +384,16 @@ export default defineComponent({
     },
     relationToAverage(): string {
       if (this.percentageOfReferenceAverageEmissions < 65) {
-        return "weit unter"
+        return this.t("relation.farBelow")
       } else if (this.percentageOfReferenceAverageEmissions < 100) {
-        return "unter"
+        return this.t("relation.below")
       } else if (
         this.percentageOfReferenceAverageEmissions >= 100 &&
         this.percentageOfReferenceAverageEmissions < 150
       ) {
-        return "über"
+        return this.t("relation.above")
       } else {
-        return "weit über"
+        return this.t("relation.farAbove")
       }
     },
     labelPosition(): string {
@@ -439,7 +402,10 @@ export default defineComponent({
   },
   methods: {
     formatEmissions(emissions) {
-      return `${numberFormat.format(emissions / 1000)} Tonnen CO<sub>2</sub>e`
+      return `${this.n(emissions / 1000, "co2e")} ${this.t("tonsCarbon")}`
+    },
+    i18nOptions(options) {
+      return options.map(opt => ({value: opt.split(".").pop(), label: this.t(opt)}))
     },
   },
   components: {

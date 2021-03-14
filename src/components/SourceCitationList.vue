@@ -23,16 +23,16 @@
 import {defineComponent, PropType} from "vue"
 import {SourceSchema} from "../lib/estimation/sources"
 import SourceCitation from "./SourceCitation.vue"
-import { useI18n } from 'vue-i18n'
+import {useI18n} from "vue-i18n"
 
 export default defineComponent({
   name: "SourceCitationList",
-    setup() {
-    const { t } = useI18n({
+  setup() {
+    const {t} = useI18n({
       inheritLocale: true,
-      useScope: 'local'
+      useScope: "global",
     })
-    return { t }
+    return {t}
   },
   props: {
     sources: {
@@ -43,16 +43,3 @@ export default defineComponent({
   components: {SourceCitation},
 })
 </script>
-
-<i18n>
-{
-    "en": {
-          "sources": "Sources",
-
-    },
-    "de": {
-          "sources": "Quellen",
-
-    }
-}
-</i18n>

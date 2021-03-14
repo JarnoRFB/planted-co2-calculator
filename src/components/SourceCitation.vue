@@ -5,7 +5,7 @@
       <b>{{ publicationMetadata.author }} ({{ publicationMetadata.year }})</b>
     </p>
     <p>
-      {{ description.english.title }}
+      {{ description[languageKey].title }}
       <el-tooltip
         class="item"
         :content="tooltipContent"
@@ -26,16 +26,16 @@
 <script lang="ts">
 import {LocalizedDescription, PublicationMetadata} from "@/lib/estimation/sources"
 import {defineComponent, PropType} from "vue"
-import { useI18n } from 'vue-i18n'
+import {useI18n} from "vue-i18n"
 
 export default defineComponent({
   name: "SourceCitation",
-      setup() {
-    const { t } = useI18n({
+  setup() {
+    const {t, locale} = useI18n({
       inheritLocale: true,
-      useScope: 'local'
+      useScope: "global",
     })
-    return { t }
+    return {t, locale}
   },
   props: {
     value: null,
@@ -59,9 +59,17 @@ export default defineComponent({
       }
     },
     tooltipContent(): string {
-      return this.valid
-        ? this.t("thisSourceIsValid")
-        : this.t("thisSourceIsInvalid")
+      return this.valid ? this.t("thisSourceIsValid") : this.t("thisSourceIsInvalid")
+    },
+    languageKey(): string {
+      switch (this.locale) {
+        case "en":
+          return "english"
+        case "de":
+          return "german"
+        default:
+          return "english"
+      }
     },
   },
 })
@@ -74,18 +82,3 @@ export default defineComponent({
   text-align: left;
 }
 </style>
-
-<i18n>
-{
-    "en": {
-          "value": "Value",
-          "thisSourceIsValid": "This source is up to date.",
-          "thisSourceIsInvalid": "This source is no longer up to date.",
-    },
-    "de": {
-          "value": "Wert",
-          "thisSourceIsValid": "Diese Quelle ist auf dem neusten Stand.",
-          "thisSourceIsInvalid": "Diese Quelle ist nicht mehr auf dem neusten Stand.",
-    }
-}
-</i18n>

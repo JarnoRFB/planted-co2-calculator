@@ -1,4 +1,4 @@
-![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=planted-co2-calculator)
+![CI status](https://github.com/JarnoRFB/planted-co2-calculator/actions/workflows/ci.yml/badge.svg) ![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=planted-co2-calculator)
 
 # planted-co2-calculator
 

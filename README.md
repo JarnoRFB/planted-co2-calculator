@@ -1,6 +1,11 @@
+![Vercel](https://therealsujitk-vercel-badge.vercel.app/?app=planted-co2-calculator)
+
 # planted-co2-calculator
 
 A transparency-first carbon footprint calculator for quickly estimating your personal carbon footprint.
+
+Try it out in the [German version](https://planted-co2-calculator-git-main-jarnorfb.vercel.app/de) or the
+[English version](https://planted-co2-calculator-git-main-jarnorfb.vercel.app/en)!
 
 ## Design principles
 

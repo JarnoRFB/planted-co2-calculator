@@ -42,7 +42,7 @@
     },
   },
   "tonsCarbon": "Tonnen CO<sub>2</sub>e",
-  "result": "Mit einem Fußabdruck von {totalEmissions} liegts Du dem {relationToAverage} deutschen Durchschnitt von 11 Tonnen. Kompensiere Deinen Fußabdruck jetzt einfach bei <a href='https://planted.green/'>planted.green</a>.",
+  "result": "Mit einem Fußabdruck von {totalEmissions} liegts Du dem {relationToAverage} deutschen Durchschnitt von 11 Tonnen. Kompensiere Deinen Fußabdruck jetzt, z.B. bei <a href='https://planted.green/'>planted.green</a>.",
   "relation": {
     "farBelow": "weit unter",
     "below": "unter",

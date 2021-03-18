@@ -1,5 +1,5 @@
 {
-  "introduction": "Calculate your carbon footprint!",
+  "introduction": "Welcome to the PLANTEdCO<sub>2</sub> calculator! With questions to only five factors you can quickly estimate your footprint in CO<sub>2</sub> equivalents (CO<sub>2</sub>e). Your footprint is interactively computed for each factor as well as overall. The sources for the estimation of each factor are linked and the source code is available on GitHub <a href='https: //github.com/JarnoRFB/planted-co2-calculator'>GitHub</a>. <br /> All options are preset to for a big footprint. Find out how much CO<sub>2</sub> you already save and where you can still improve. Have fun!",
   "questionFlying": "How often did you fly in the last 12 month?",
   "shortHauls": "Short hauls",
   "mediumHauls": "Medium hauls",
@@ -41,9 +41,8 @@
       "lush": "Lush",
     },
   },
-  "sources": "Sources",
   "tonsCarbon": "tons CO<sub>2</sub>e",
-  "result": "With a footprint of {totalEmissions} you are {relationToAverage} the average of 11 tons.",
+  "result": "With a footprint of {totalEmissions} you are {relationToAverage} the German average of 11 tons. Compensate your footprint now, for example at <a href='https://planted.green/'>planted.green</a>.",
   "relation": {
     "farBelow": "far below",
     "below": "below",

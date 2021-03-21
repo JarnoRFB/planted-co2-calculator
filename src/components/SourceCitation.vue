@@ -62,6 +62,7 @@ export default defineComponent({
       return this.valid ? this.t("thisSourceIsValid") : this.t("thisSourceIsInvalid")
     },
     languageKey(): string {
+      // TODO adapt keys in code.
       switch (this.locale) {
         case "en":
           return "english"

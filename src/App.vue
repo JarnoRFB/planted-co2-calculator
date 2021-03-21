@@ -4,7 +4,7 @@
       <a href="https://planted.green">
         <img src="@/assets/Planted_Logo_Sand.png" loading="eager" alt="" />
       </a>
-      CO<sub>2</sub>&nbsp;Rechner
+      <span v-html="t('co2Calculator')" />
     </h1>
     <div id="introduction">
       <span v-html="t('introduction')"></span>

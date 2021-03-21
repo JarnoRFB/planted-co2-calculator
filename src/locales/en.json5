@@ -1,4 +1,5 @@
 {
+  "co2Calculator": "CO<sub>2</sub>&nbsp;Calculator",
   "introduction": "With five factors you can quickly estimate your footprint in CO<sub>2</sub> equivalents (CO<sub>2</sub>e). Your footprint is interactively computed for each factor as well as overall. The sources for the estimation of each factor are linked and the source code is available on <a href='https: //github.com/JarnoRFB/planted-co2-calculator'>GitHub</a>. <br /> All options are preset to a big footprint. Find out how much CO<sub>2</sub> you already save and where you can still improve. Have fun!",
   "questionFlying": "How often did you fly in the last 12 month?",
   "shortHauls": "Short hauls",

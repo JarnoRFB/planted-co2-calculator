@@ -4,7 +4,7 @@
       <a href="https://planted.green">
         <img src="@/assets/Planted_Logo_Sand.png" loading="eager" alt="" />
       </a>
-      C0<sub>2</sub>&nbsp;Rechner
+      CO<sub>2</sub>&nbsp;Rechner
     </h1>
     <div id="introduction">
       <span v-html="t('introduction')"></span>

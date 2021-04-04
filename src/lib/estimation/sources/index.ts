@@ -9,8 +9,8 @@ export interface PublicationMetadata {
 }
 
 export interface LocalizedDescription {
-  english: Description
-  german: Description
+  en: Description
+  de: Description
 }
 
 export interface SourceSchema<T> {

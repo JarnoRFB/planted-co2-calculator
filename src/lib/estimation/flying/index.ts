@@ -27,8 +27,8 @@ const durationOfShortHaulFlight = new ValidUntilSource<string>(
   "<3 h",
   "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
   {
-    english: {title: "durations which count as short haul flights"},
-    german: {title: "Dauer eines Kurzstreckenflugs"},
+    en: {title: "durations which count as short haul flights"},
+    de: {title: "Dauer eines Kurzstreckenflugs"},
   },
   new Date("2021-12-25"),
 )
@@ -37,8 +37,8 @@ const durationOfMediumHaulFlight = new ValidUntilSource<string>(
   "3-6 h",
   "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
   {
-    english: {title: "durations which count as medium haul flights"},
-    german: {title: "Dauer eines Mittelstreckenflugs"},
+    en: {title: "durations which count as medium haul flights"},
+    de: {title: "Dauer eines Mittelstreckenflugs"},
   },
   new Date("2021-12-25"),
 )
@@ -47,8 +47,8 @@ const durationOfLongHaulFlight = new ValidUntilSource<string>(
   "6 - 12 h",
   "https://www.pointhacks.com.au/differences-short-medium-long-haul-flights/",
   {
-    english: {title: "durations which count as long haul flights"},
-    german: {title: "Dauer eines Langstreckenflugs"},
+    en: {title: "durations which count as long haul flights"},
+    de: {title: "Dauer eines Langstreckenflugs"},
   },
   new Date("2021-12-25"),
 )
@@ -59,8 +59,8 @@ const averageShortHaulFlightDistance = Estimate.of(
     "https://en.wikipedia.org/wiki/Flight_length",
 
     {
-      english: {title: "average distance of short haul flight (km)"},
-      german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
+      en: {title: "average distance of short haul flight (km)"},
+      de: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
     },
     new Date("2021-12-25"),
   ),
@@ -71,8 +71,8 @@ const averageLongHaulFlightDistance = Estimate.of(
     (4100 + 4800) / 2,
     "https://en.wikipedia.org/wiki/Flight_length",
     {
-      english: {title: "average distance of long haul flight (km)"},
-      german: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
+      en: {title: "average distance of long haul flight (km)"},
+      de: {title: "Mittlere Distanz eines Kurzstreckenflugs (km)"},
     },
     new Date("2021-12-25"),
   ),
@@ -84,8 +84,8 @@ const averageMediumHaulFlightDistance = Estimate.of(
       (averageLongHaulFlightDistance.value - averageShortHaulFlightDistance.value) / 2,
     "https://en.wikipedia.org/wiki/Flight_length",
     {
-      english: {title: "average distance of medium haul flight (km)"},
-      german: {title: "Mittlere Distanz eines Mittelstreckenflugs (km)"},
+      en: {title: "average distance of medium haul flight (km)"},
+      de: {title: "Mittlere Distanz eines Mittelstreckenflugs (km)"},
     },
     new Date("2021/12/25"),
   ),
@@ -95,8 +95,8 @@ const estimationMethods = new ValidUntilSource(
   null,
   "https://www.myclimate.org/fileadmin/user_upload/myclimate_-_home/01_Information/01_About_myclimate/09_Calculation_principles/Documents/myclimate-flight-calculator-documentation_EN.pdf",
   {
-    english: {title: "Methods for calculating flight emissions"},
-    german: {title: "Methoden der Flugemissionsberechnung"},
+    en: {title: "Methods for calculating flight emissions"},
+    de: {title: "Methoden der Flugemissionsberechnung"},
   },
   new Date("2021/12/25"),
   {
@@ -109,8 +109,8 @@ const estimationMethods2 = new ValidUntilSource(
   null,
   "https://theicct.org/sites/default/files/publications/ICCT_CO2-commercl-aviation-2018_20190918.pdf",
   {
-    english: {title: "CO2 emissions from commercial aviation"},
-    german: {title: "CO2-Emissionen aus der kommerziellen Luftfahrt"},
+    en: {title: "CO2 emissions from commercial aviation"},
+    de: {title: "CO2-Emissionen aus der kommerziellen Luftfahrt"},
   },
   new Date("2021/12/25"),
   {

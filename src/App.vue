@@ -2,13 +2,9 @@
   <div class="header">
     <h1 class="title">
       <a href="https://planted.green">
-        <img
-          src="https://uploads-ssl.webflow.com/5fc25896c145ac50c7d2af7b/5fd092f58ae2717a5d82e8a7_PLANTED_LOGO_WORTBILDMARKE.svg"
-          loading="eager"
-          alt=""
-        />
+        <img src="@/assets/Planted_Logo_Sand.png" loading="eager" alt="" />
       </a>
-      C0<sub>2</sub>&nbsp;Rechner
+      <span v-html="t('co2Calculator')" />
     </h1>
     <div id="introduction">
       <span v-html="t('introduction')"></span>
@@ -29,7 +25,7 @@
   <div id="questions">
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
-      <p class="question">{{ t("questionFlying") }}</p>
+      <p class="question">{{ t("flying.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item :label="t('shortHauls')">
@@ -67,7 +63,7 @@
 
     <div id="driving" class="topic">
       <el-divider>🚗</el-divider>
-      <p class="question">{{ t("drivingQuestion") }}</p>
+      <p class="question">{{ t("driving.question") }}</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
           <el-form-item :label="t('kilometersPerWeek')">
@@ -90,7 +86,7 @@
 
     <div id="housing" class="topic">
       <el-divider>🏠</el-divider>
-      <p class="question">{{ t("housingQuestion") }}</p>
+      <p class="question">{{ t("housing.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item :label="t('householdSize')">
@@ -157,7 +153,7 @@
     <div id="nutrition" class="topic">
       <el-divider>🍜</el-divider>
 
-      <p class="question">{{ t("nutritionQuestion") }}</p>
+      <p class="question">{{ t("nutrition.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>
@@ -182,7 +178,7 @@
 
     <div id="consumerism" class="topic">
       <el-divider>🛍️</el-divider>
-      <p class="question">{{ t("consumerismQuestion") }}</p>
+      <p class="question">{{ t("consumerism.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>
@@ -315,27 +311,26 @@ export default defineComponent({
       referenceAverageEmissions: 11_170,
       // Styling.
       colorGradient: [
-        "#57bb8a",
-        "#63b682",
-        "#73b87e",
-        "#84bb7b",
-        "#94bd77",
-        "#a4c073",
-        "#b0be6e",
-        "#c4c56d",
-        "#d4c86a",
-        "#e2c965",
-        "#f5ce62",
-        "#f3c563",
-        "#e9b861",
-        "#e6ad61",
-        "#ecac67",
-        "#e9a268",
-        "#e79a69",
-        "#e5926b",
-        "#e2886c",
-        "#e0816d",
-        "#dd776e",
+        "#B4FA64",
+        "#B8F260",
+        "#BCEA5C",
+        "#C0E258",
+        "#C4DA54",
+        "#C8D350",
+        "#CCCB4C",
+        "#D0C348",
+        "#D4BB44",
+        "#D8B340",
+        "#DBAB3D",
+        "#DFA339",
+        "#E39B35",
+        "#E79331",
+        "#EB8B2D",
+        "#EF8429",
+        "#F37C25",
+        "#F77421",
+        "#FB6C1D",
+        "#FF6419",
       ],
     }
   },
@@ -415,111 +410,127 @@ export default defineComponent({
 })
 </script>
 
-<style lang="sass">
-$color: #2c3e50
-$font-size-1: 2em
-$font-size-2: 1.4em
-$font-size-3: 1.1em
+<style lang="scss">
+$font-size-1: 2em;
+$font-size-2: 1.4em;
+$font-size-3: 1.1em;
+$color: #2c3e50;
+$background-color: rgb(35, 45, 50);
+$font-color: #d2c8be;
+$planted-lime: #b4fa64;
+$planted-green: #009150;
 
-@mixin center
-  margin: auto
-  width: 75%
+@mixin center {
+  margin: auto;
+  width: 75%;
+}
 
-html
-  box-sizing: border-box
+@mixin text-block {
+  text-align: justify;
+  font-size: $font-size-2;
+  margin: 1% auto;
+}
 
-*
-  box-sizing: inherit
-*:before
-  box-sizing: inherit
-*:after
-  box-sizing: inherit
+html {
+  box-sizing: border-box;
+}
+* {
+  box-sizing: inherit;
+}
+*:before {
+  box-sizing: inherit;
+}
+*:after {
+  box-sizing: inherit;
+}
 
-body
-  margin-top: 0
+body {
+  margin-top: 0;
+  background-color: $background-color;
+}
 
+a {
+  color: $planted-green;
+  text-decoration: none;
+}
 
-#app
-  font-family: Avenir, Helvetica, Arial, sans-serif
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  color: $color
-  margin: 0 10px
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $font-color;
+  margin: 0 10px;
+}
 
+@media screen and (min-width: 1100px) {
+  #app {
+    width: 1100px;
+    margin: 10px auto;
+  }
+}
 
-@media screen and (min-width: 1100px)
-  #app
-    width: 1100px
-    margin: 10px auto
+.title {
+  div {
+    display: inline;
+  }
+}
+.header {
+  h1 {
+    display: inline;
+    vertical-align: middle;
+  }
+  img {
+    display: inline;
+    height: 4ex;
+    vertical-align: middle;
+  }
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 0;
 
-.title
-  div
-    display: inline
-.header
-  h1
-    display: inline
-    vertical-align: middle
-  img
-    display: inline
-    height: 4ex
-    vertical-align: middle
-  text-align: center
-  padding-left: 5%
-  padding-right: 5%
-  padding-top: 2%
-  padding-bottom: 0
-
-
-  background-color: rgb(255, 255, 255)
-
-  // top left corner should start at leftmost spot
-  //left: 0
+  background-color: $background-color;
 
   // top left corner should start at topmost spot
-  top: 0
+  top: 0;
 
   // take up the full browser width
-  width: 100%
+  width: 100%;
+}
+.question {
+  font-size: $font-size-1;
+  font-weight: 700;
+  margin-left: 2%;
+  margin-right: 2%;
 
-.question
-  font-size: $font-size-1
-  font-weight: 700
-  margin-left: 2%
-  margin-right: 2%
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
 
-  margin-top: 4%
-  margin-bottom: 4%
+.total {
+  background-color: $background-color;
+  padding-top: 5%;
+  padding-bottom: 2%;
 
-.el-collapse
-  margin-left: 2%
-  margin-right: 2%
-
-.total
-  background-color: rgb(255, 255, 255)
-  padding-top: 5%
-  padding-bottom: 2%
-
-  position: sticky
+  position: sticky;
   // take up the full browser width
-  width: 100%
+  width: 100%;
 
   // high z index so other content scrolls underneath
-  z-index: 200
-  top: 0
+  z-index: 200;
+  top: 0;
+}
+.options {
+  @include center;
+  text-align: center;
+}
 
-.options
-  @include center
-  text-align: center
-
-
-@mixin text-block
-  text-align: justify
-  font-size: $font-size-2
-  margin: 1% auto
-
-#introduction
-  @include text-block
-#result
-  @include text-block
-  margin: 5% auto
+#introduction {
+  @include text-block;
+}
+#result {
+  @include text-block;
+  margin: 5% auto;
+}
 </style>

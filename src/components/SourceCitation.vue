@@ -5,7 +5,7 @@
       <b>{{ publicationMetadata.author }} ({{ publicationMetadata.year }})</b>
     </p>
     <p>
-      {{ description[languageKey].title }}
+      {{ description[locale].title }}
       <el-tooltip
         class="item"
         :content="tooltipContent"
@@ -60,16 +60,6 @@ export default defineComponent({
     },
     tooltipContent(): string {
       return this.valid ? this.t("thisSourceIsValid") : this.t("thisSourceIsInvalid")
-    },
-    languageKey(): string {
-      switch (this.locale) {
-        case "en":
-          return "english"
-        case "de":
-          return "german"
-        default:
-          return "english"
-      }
     },
   },
 })

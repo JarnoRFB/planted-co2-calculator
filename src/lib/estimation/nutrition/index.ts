@@ -51,8 +51,8 @@ const dietImpacts = new ValidUntilSource(
   "",
   "https://www.nature.com/articles/s41598-017-06466-8",
   {
-    english: {title: "Environmental impact of omnivorous, ovo-lacto-vegetarian, and vegan diet"},
-    german: {
+    en: {title: "Environmental impact of omnivorous, ovo-lacto-vegetarian, and vegan diet"},
+    de: {
       title: "Umweltauswirkungen von omnivorer, ovo-lacto-vegetarischer und veganer Ernährung",
     },
   },

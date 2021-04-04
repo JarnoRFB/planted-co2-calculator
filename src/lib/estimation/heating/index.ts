@@ -38,8 +38,8 @@ const carbonIntensityOfEnergySources = Estimate.of(
     },
     "https://www.heizspiegel.de/heizkosten-verstehen/brennstoffe-energietraeger-im-vergleich/#c156311",
     {
-      english: {title: "Carbon intensity of different energy sources in Germany (g/kWh)"},
-      german: {
+      en: {title: "Carbon intensity of different energy sources in Germany (g/kWh)"},
+      de: {
         title: "CO2 Intensität verschiedener Engerieträger in Deutschland (g/kWh)",
       },
     },
@@ -52,8 +52,8 @@ const specificHeatDemandByYear = Estimate.of(
     specificHeatDemandByYearData,
     "http://energieberatung.ibs-hlk.de/eb_begr.htm",
     {
-      english: {title: "Specific heat demand by year (kWh/m²a)"},
-      german: {
+      en: {title: "Specific heat demand by year (kWh/m²a)"},
+      de: {
         title: "Spezifischer Wärmebedarf nach Jahren (kWh/m²a)",
       },
     },

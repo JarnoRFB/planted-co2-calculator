@@ -32,8 +32,8 @@ const carbonIntensityGermany = Estimate.of(
     427 / 1000,
     "https://www.carbonfootprint.com/docs/2019_06_emissions_factors_sources_for_2019_electricity.pdf",
     {
-      english: {title: "Average carbon intensity of energy in Germany (kg / kWh)"},
-      german: {title: "Durchschnittliche CO2 Intensität von Strom in Deutschland (kg / kWh)"},
+      en: {title: "Average carbon intensity of energy in Germany (kg / kWh)"},
+      de: {title: "Durchschnittliche CO2 Intensität von Strom in Deutschland (kg / kWh)"},
     },
     new Date("2022-01-07"),
   ),
@@ -44,8 +44,8 @@ const carbonIntensityGermanyGreenEnergy = Estimate.of(
     0.035 / 1000,
     "https://www.stromspiegel.de/stromverbrauch-verstehen/was-ist-echter-oekostrom/",
     {
-      english: {title: "Carbon intensity of green energy in Germany (kg / kWh)"},
-      german: {title: "CO2 Intensität von Ökostrom in Deutschland (kg / kWh)"},
+      en: {title: "Carbon intensity of green energy in Germany (kg / kWh)"},
+      de: {title: "CO2 Intensität von Ökostrom in Deutschland (kg / kWh)"},
     },
     new Date("2022-01-07"),
   ),
@@ -56,8 +56,8 @@ const sourcedElectricityData = Estimate.of(
     electricityData,
     "https://www.stromspiegel.de/stromverbrauch-verstehen/stromverbrauch-im-haushalt/#c120951",
     {
-      english: {title: "Average electricity consumption of households in Germany (kWh/a)"},
-      german: {title: "Durchschnittlicher Stromverbrauch von Haushalten in Deutschland (kWh/Jahr)"},
+      en: {title: "Average electricity consumption of households in Germany (kWh/a)"},
+      de: {title: "Durchschnittlicher Stromverbrauch von Haushalten in Deutschland (kWh/Jahr)"},
     },
     new Date("2022-01-07"),
   ),

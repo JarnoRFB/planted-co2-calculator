@@ -31,8 +31,8 @@ const energyConsumptionForProductsInGermany = Estimate.of(
     1.424,
     "https://www.umweltbundesamt.de/indikator-energieverbrauch-co2-emissionen-des",
     {
-      english: {title: "Energy consumption for other products in Germany in (petajoule)"},
-      german: {title: "Gesamtenergieverbrauch für weitere Produkte in Deutschland (Petajoule)"},
+      en: {title: "Energy consumption for other products in Germany in (petajoule)"},
+      de: {title: "Gesamtenergieverbrauch für weitere Produkte in Deutschland (Petajoule)"},
     },
     new Date("2022-01-24"),
   ),
@@ -43,8 +43,8 @@ const energyConsumptionForServiceInGermany = Estimate.of(
     1.424,
     "https://www.umweltbundesamt.de/indikator-energieverbrauch-co2-emissionen-des",
     {
-      english: {title: "Energy consumption for other services in Germany (petajoule)"},
-      german: {
+      en: {title: "Energy consumption for other services in Germany (petajoule)"},
+      de: {
         title: "Gesamtenergieverbrauch für weitere Dienstleistungen in Deutschland (Petajoule)",
       },
     },
@@ -57,8 +57,8 @@ const energyConsumptionForConsumerismInGermany = Estimate.of(
     9.486,
     "https://www.umweltbundesamt.de/indikator-energieverbrauch-co2-emissionen-des",
     {
-      english: {title: "Total energy consumption in Germany (petajoule)"},
-      german: {title: "Gesamtenergieverbrauch für Konsum in Deutschland (Petajoule)"},
+      en: {title: "Total energy consumption in Germany (petajoule)"},
+      de: {title: "Gesamtenergieverbrauch für Konsum in Deutschland (Petajoule)"},
     },
     new Date("2022-01-24"),
   ),
@@ -69,8 +69,8 @@ const carbonEmissionsForConsumerismInGermany = Estimate.of(
     667e6,
     "https://www.umweltbundesamt.de/indikator-energieverbrauch-co2-emissionen-des",
     {
-      english: {title: "Carbon emissions for consumerism in Germany (tons)"},
-      german: {title: "CO2 Emissionen für Konsum in Deutschland (Tonnen)"},
+      en: {title: "Carbon emissions for consumerism in Germany (tons)"},
+      de: {title: "CO2 Emissionen für Konsum in Deutschland (Tonnen)"},
     },
     new Date("2022-01-24"),
   ),
@@ -81,9 +81,8 @@ const populationGermany = Estimate.of(
     82_521_700,
     "https://www.destatis.de/DE/Themen/Gesellschaft-Umwelt/Bevoelkerung/Bevoelkerungsstand/Tabellen/liste-zensus-geschlecht-staatsangehoerigkeit.html",
     {
-      english: {title: "German total population 2016"},
-      // TODO check the year
-      german: {title: "Gesamtbevölkerung Detschland 2016"},
+      en: {title: "German total population 2016"},
+      de: {title: "Gesamtbevölkerung Detschland 2016"},
     },
     new Date("2022-01-24"),
   ),
@@ -98,8 +97,8 @@ const intensityFactors = Estimate.of(
     },
     "https://en.wikipedia.org/wiki/68%E2%80%9395%E2%80%9399.7_rule",
     {
-      english: {title: "Factors of consumerism"},
-      german: {title: "Einflussfaktoren von Konsumverhalten"},
+      en: {title: "Factors of consumerism"},
+      de: {title: "Einflussfaktoren von Konsumverhalten"},
     },
     new Date("2022-01-24"),
   ),

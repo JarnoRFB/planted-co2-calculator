@@ -76,6 +76,11 @@ $--color-primary: $planted-green;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.el-popper {
+  @include light;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .el-input__inner,
 .el-progress-bar__innerText {
   font-size: $font-size-2;

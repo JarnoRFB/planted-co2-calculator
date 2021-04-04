@@ -1,47 +1,6 @@
 {
   co2Calculator: "CO<sub>2</sub>&nbsp;Rechner",
   introduction: "Mit Fragen zu 5 Faktoren kannst du ganz schnell Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen. Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf <a href='https://github.com/JarnoRFB/planted-co2-calculator'>GitHub</a> verfügbar. <br /> Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub>2</sub> Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!",
-  questionFlying: "Wie oft bist Du in den letzten zwölf Monaten geflogen?",
-  shortHauls: "Kurzstreckenflüge",
-  mediumHauls: "Mittelstreckenflüge",
-  longHauls: "Langstreckenflüge",
-  drivingQuestion: "Wie viele Kilometer fährst Du pro Woche mit dem Auto?",
-  kilometersPerWeek: "Kilometer in der Woche",
-  housingQuestion: "Heizung und Strom",
-  householdSize: "Personen im Haushalt",
-  apartmentSize: "Wohnfläche",
-  apartmentAge: "Baujahr",
-  energySource: "Energiequelle",
-  greenEnergy: "Ökostrom",
-  housing: {
-    type: "Art des Haushalts",
-    options: {
-      oil: "Heizöl",
-      naturalGas: "Gas",
-      longDistanceHeating: "Fernwärme",
-      heatingPump: "Heizpumpe",
-      woodPellets: "Holzpellets",
-      house: "Haus",
-      apartment: "Wohnung",
-    },
-  },
-  nutritionQuestion: "Wie ernährst Du Dich?",
-  nutrition: {
-    options: {
-      CARNIVORE: "fleischreich",
-      FLEXITARIAN: "flexitarisch",
-      VEGETARIAN: "vegetarisch",
-      VEGAN: "vegan",
-    },
-  },
-  consumerismQuestion: "Wie schätzt Du Deinen Konsum ein?",
-  consumerism: {
-    options: {
-      frugal: "sparsam",
-      normal: "normal",
-      lush: "hoch",
-    },
-  },
   tonsCarbon: "Tonnen CO<sub>2</sub>e",
   result: "Mit einem Fußabdruck von {totalEmissions} liegts Du dem {relationToAverage} deutschen Durchschnitt von 11 Tonnen. Kompensiere Deinen Fußabdruck jetzt, z.B. bei <a href='https://planted.green/'>planted.green</a>.",
   relation: {
@@ -54,4 +13,49 @@
   value: "Wert",
   thisSourceIsValid: "Diese Quelle ist auf dem neusten Stand.",
   thisSourceIsInvalid: "Diese Quelle ist nicht mehr auf dem neusten Stand.",
+  shortHauls: "Kurzstreckenflüge",
+  mediumHauls: "Mittelstreckenflüge",
+  longHauls: "Langstreckenflüge",
+  kilometersPerWeek: "Kilometer in der Woche",
+  householdSize: "Personen im Haushalt",
+  apartmentSize: "Wohnfläche",
+  apartmentAge: "Baujahr",
+  energySource: "Energiequelle",
+  greenEnergy: "Ökostrom",
+  flying: {
+    question: "Wie oft bist Du in den letzten zwölf Monaten geflogen?",
+  },
+  driving: {
+    question: "Wie viele Kilometer fährst Du pro Woche mit dem Auto?",
+  },
+  housing: {
+    question: "Heizung und Strom",
+    type: "Art des Haushalts",
+    options: {
+      oil: "Heizöl",
+      naturalGas: "Gas",
+      longDistanceHeating: "Fernwärme",
+      heatingPump: "Heizpumpe",
+      woodPellets: "Holzpellets",
+      house: "Haus",
+      apartment: "Wohnung",
+    },
+  },
+  nutrition: {
+    question: "Wie ernährst Du Dich?",
+    options: {
+      CARNIVORE: "fleischreich",
+      FLEXITARIAN: "flexitarisch",
+      VEGETARIAN: "vegetarisch",
+      VEGAN: "vegan",
+    },
+  },
+  consumerism: {
+    question: "Wie schätzt Du Deinen Konsum ein?",
+    options: {
+      frugal: "sparsam",
+      normal: "normal",
+      lush: "hoch",
+    },
+  },
 }

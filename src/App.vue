@@ -25,7 +25,7 @@
   <div id="questions">
     <div id="flying" class="topic">
       <el-divider>✈️</el-divider>
-      <p class="question">{{ t("questionFlying") }}</p>
+      <p class="question">{{ t("flying.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item :label="t('shortHauls')">
@@ -63,7 +63,7 @@
 
     <div id="driving" class="topic">
       <el-divider>🚗</el-divider>
-      <p class="question">{{ t("drivingQuestion") }}</p>
+      <p class="question">{{ t("driving.question") }}</p>
       <div class="options">
         <el-form :labelPosition="labelPosition" label-width="auto">
           <el-form-item :label="t('kilometersPerWeek')">
@@ -86,7 +86,7 @@
 
     <div id="housing" class="topic">
       <el-divider>🏠</el-divider>
-      <p class="question">{{ t("housingQuestion") }}</p>
+      <p class="question">{{ t("housing.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item :label="t('householdSize')">
@@ -153,7 +153,7 @@
     <div id="nutrition" class="topic">
       <el-divider>🍜</el-divider>
 
-      <p class="question">{{ t("nutritionQuestion") }}</p>
+      <p class="question">{{ t("nutrition.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>
@@ -178,7 +178,7 @@
 
     <div id="consumerism" class="topic">
       <el-divider>🛍️</el-divider>
-      <p class="question">{{ t("consumerismQuestion") }}</p>
+      <p class="question">{{ t("consumerism.question") }}</p>
       <div class="options">
         <el-form :label-position="labelPosition" label-width="auto">
           <el-form-item>

@@ -11,7 +11,7 @@ $font-size-1: 2em;
 $font-size-2: 1.4em;
 $font-size-3: 1.1em;
 $background-color: rgb(35, 45, 50);
-$font-color: #d2c8be;
+$font-color-light: #d2c8be;
 $planted-green: #009150;
 
 $--color-primary: $planted-green;
@@ -20,12 +20,28 @@ $--color-primary: $planted-green;
 
 @mixin dark {
   background-color: $background-color;
-  color: $font-color;
+  color: $font-color-light;
+}
+
+@mixin light {
+  background-color: $font-color-light;
+  color: $background-color;
 }
 
 @mixin center {
   margin: auto;
   width: 75%;
+}
+
+.el-collapse {
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.el-collapse-item__header,
+.el-collapse-item__content,
+.el-collapse-item__wrap {
+  @include dark;
 }
 
 .el-form--label-top .el-form-item__label {
@@ -44,33 +60,23 @@ $--color-primary: $planted-green;
 
 .el-select-dropdown__list,
 .el-input__inner,
-.el-select-dropdown__item,
 .el-select-dropdown__wrap,
 .el-scrollbar__view {
-  background-color: $font-color;
-}
-.el-input__inner,
-.el-select-dropdown__item {
-  font-size: $font-size-2;
-  background-color: $font-color;
+  @include light;
 }
 
 .el-input-number__increase,
 .el-input-number__decrease {
-  // background-color: $font-color;
-  // color: $planted-green;
+  color: $background-color;
 }
 
-// .el-icon-plus {
-//   font-weight: 1500;
-//   font-style: bold;
-// }
-
 .el-select-dropdown__item {
+  @include light;
   font-size: $font-size-2;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.el-input__inner,
 .el-progress-bar__innerText {
   font-size: $font-size-2;
 }
@@ -79,16 +85,4 @@ $--color-primary: $planted-green;
   margin: 5% 0;
   font-size: $font-size-3;
   background-color: $background-color;
-}
-
-.el-collapse-item__header {
-  @include dark;
-}
-
-.el-collapse-item__content {
-  @include dark;
-}
-
-.el-collapse-item__wrap {
-  @include dark;
 }

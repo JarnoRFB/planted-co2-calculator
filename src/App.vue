@@ -418,20 +418,19 @@ $color: #2c3e50;
 $background-color: rgb(35, 45, 50);
 $font-color: #d2c8be;
 $planted-lime: #b4fa64;
-
-body {
-  background-color: $background-color;
-}
-
-a {
-  color: $planted-lime;
-  text-decoration: none;
-}
+$planted-green: #009150;
 
 @mixin center {
   margin: auto;
   width: 75%;
 }
+
+@mixin text-block {
+  text-align: justify;
+  font-size: $font-size-2;
+  margin: 1% auto;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -444,8 +443,15 @@ html {
 *:after {
   box-sizing: inherit;
 }
+
 body {
   margin-top: 0;
+  background-color: $background-color;
+}
+
+a {
+  color: $planted-green;
+  text-decoration: none;
 }
 
 #app {
@@ -501,10 +507,7 @@ body {
   margin-top: 4%;
   margin-bottom: 4%;
 }
-.el-collapse {
-  margin-left: 2%;
-  margin-right: 2%;
-}
+
 .total {
   background-color: $background-color;
   padding-top: 5%;
@@ -523,11 +526,6 @@ body {
   text-align: center;
 }
 
-@mixin text-block {
-  text-align: justify;
-  font-size: $font-size-2;
-  margin: 1% auto;
-}
 #introduction {
   @include text-block;
 }

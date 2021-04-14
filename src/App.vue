@@ -248,7 +248,10 @@ export default defineComponent({
       },
     })
 
-    locale.value = window.location.pathname.replace("/", "")
+    const localeFromPath = window.location.pathname.replace("/", "")
+    if (localeFromPath) {
+      locale.value = localeFromPath
+    }
     return {t, n, locale}
   },
   mounted() {
@@ -419,6 +422,7 @@ $background-color: rgb(35, 45, 50);
 $font-color: #d2c8be;
 $planted-lime: #b4fa64;
 $planted-green: #009150;
+$planted-pink: #f091ff;
 
 @mixin center {
   margin: auto;
@@ -450,7 +454,7 @@ body {
 }
 
 a {
-  color: $planted-green;
+  color: $planted-pink;
   text-decoration: none;
 }
 

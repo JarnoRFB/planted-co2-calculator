@@ -4,8 +4,8 @@
 
 A transparency-first carbon footprint calculator for quickly estimating your personal carbon footprint.
 
-Try it out in the [German version](https://planted-co2-calculator-git-main-jarnorfb.vercel.app/de) or the
-[English version](https://planted-co2-calculator-git-main-jarnorfb.vercel.app/en)!
+Try out the [German version](https://calculator.planted.green/de) or the
+[English version](https://calculator.planted.green/en)!
 
 ## Design principles
 

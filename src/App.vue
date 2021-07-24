@@ -203,9 +203,17 @@
   <div id="result">
     <div
       id="summary"
-      v-html="t('result', {totalEmissions: formatEmissions(totalEmissions), relationToAverage})"
+      v-html="
+        t('result', {
+          totalEmissions: formatEmissions(totalEmissions),
+          relationToAverage,
+          recommendedPackage,
+        })
+      "
     ></div>
   </div>
+  <compensation-packages />
+  <p class="vspace"></p>
 </template>
 
 <script lang="ts">
@@ -225,6 +233,7 @@ import * as consumerism from "./lib/estimation/consumerism"
 
 import SourceCitationList from "./components/SourceCitationList.vue"
 import IntermediateEmissionDisplay from "./components/IntermediateEmissionDisplay.vue"
+import CompensationPackages from "./components/CompensationPackages.vue"
 
 export default defineComponent({
   name: "App",
@@ -394,6 +403,14 @@ export default defineComponent({
         return this.t("relation.farAbove")
       }
     },
+    recommendedPackage(): string {
+      console.log(this.totalEmissions)
+      if (this.totalEmissions <= this.referenceAverageEmissions) {
+        return "Gardener"
+      } else {
+        return "Planter"
+      }
+    },
     labelPosition(): string {
       return this.windowWidth > 800 ? "right" : "top"
     },
@@ -409,6 +426,7 @@ export default defineComponent({
   components: {
     SourceCitationList,
     IntermediateEmissionDisplay,
+    CompensationPackages,
   },
 })
 </script>
@@ -536,5 +554,9 @@ a {
 #result {
   @include text-block;
   margin: 5% auto;
+}
+
+.vspace {
+  margin-bottom: 1cm;
 }
 </style>

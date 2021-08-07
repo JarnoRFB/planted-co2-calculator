@@ -2,7 +2,7 @@
   co2Calculator: "CO<sub>2</sub>&nbsp;Rechner",
   introduction: "Mit Fragen zu 5 Faktoren kannst du ganz schnell Deinen persönlichen Fußabdruck in CO<sub>2</sub> Äquivalenten (CO<sub>2</sub>e) abschätzen. Dein Fußabdruck wird interaktiv für sowohl jeden Faktor, als auch insgesamt berechnet. Die Quellen zu jedem Faktor sind angegeben und der Quellcode ist auf <a href='https://github.com/JarnoRFB/planted-co2-calculator'>GitHub</a> verfügbar. <br /> Alle Optionen sind auf einen großen Fußabdruck voreingestellt. Finde heraus wie viel CO<sub>2</sub> Du bereits sparst und wo noch Verbesserungspotenziale bestehen. Viel Spaß!",
   tonsCarbon: "Tonnen CO<sub>2</sub>e",
-  result: "Mit einem Fußabdruck von {totalEmissions} liegst Du {relationToAverage} dem deutschen Durchschnitt von 11 Tonnen. Kompensiere Deinen Fußabdruck jetzt, z.B. bei <a href='https://planted.green?utm_source=calculator&utm_medium=press&utm_campaign=calculator_launch'>planted.green</a>.",
+  result: "Mit einem Fußabdruck von {totalEmissions} liegst Du {relationToAverage} dem deutschen Durchschnitt von 11,17 Tonnen. Um deinen Fußabdruck zu kompensieren empfehlen wir dir das <strong>{recommendedPackage}</strong> Paket. Wähle dein Paket gleich hier 🖣 </a>",
   relation: {
     farBelow: "weit unter",
     below: "unter",

@@ -87,6 +87,11 @@ npm run build
 npm run lint
 ```
 
+## In the news
+
+- The planted CO2 calculator was features in a [newspaper article](https://www.welt.de/regionales/nrw/article233822136/Koelner-Start-up-entwickelt-neuen-CO2-Rechner.html) in WELT.
+  WELT.
+
 ## Acknowledgments
 
 Thanks to [PLANTED](https://planted.green) for supporting the development of this project by giving it a concrete use case.

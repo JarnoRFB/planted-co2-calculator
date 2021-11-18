@@ -59,13 +59,13 @@
           </ul>
           <div class="margin-top">
             <a
-              href="https://www.planted.green/de/gardener-paket-zahlungsart-auswahl-klima-retten"
+              href="https://spende.planted.green/a/subscriptions/checkout/39800111202349:1:577765421"
               class="button button-block bg-gray-4 w-button"
               target="_blank"
               >Spenden</a
             ><link
               rel="prefetch"
-              href="https://www.planted.green/de/gardener-paket-zahlungsart-auswahl-klima-retten"
+              href="https://spende.planted.green/a/subscriptions/checkout/39800111202349:1:577765421"
             />
             <div class="text-pakete-leicht">monatlich kündbar</div>
           </div>
@@ -139,11 +139,11 @@
           </ul>
           <div class="margin-top">
             <a
-              href="https://www.planted.green/de/planter-zahlungsart-auswahl"
+              href="https://spende.planted.green/a/subscriptions/checkout/39800114249773:1:577765421"
               class="button button-block w-button"
               target="_blank"
               >Spenden</a
-            ><link rel="prefetch" href="https://www.planted.green/de/planter-zahlungsart-auswahl" />
+            ><link rel="prefetch" href="https://spende.planted.green/a/subscriptions/checkout/39800114249773:1:577765421" />
             <div class="text-pakete-leicht">monatlich kündbar</div>
           </div>
         </div>
@@ -231,11 +231,11 @@
           </ul>
           <div class="margin-top">
             <a
-              href="https://www.planted.green/de/forester-paket-zahlung"
+              href="https://spende.planted.green/a/subscriptions/checkout/39799982456877:1:577765421"
               class="button button-block bg-gray-4 w-button"
               target="_blank"
               >Spenden</a
-            ><link rel="prefetch" href="https://www.planted.green/de/forester-paket-zahlung" />
+            ><link rel="prefetch" href="https://spende.planted.green/a/subscriptions/checkout/39799982456877:1:577765421" />
             <div class="text-pakete-leicht">monatlich kündbar</div>
           </div>
         </div>
@@ -254,8 +254,7 @@
 </template>
 
 <script lang="ts">
-import {LocalizedDescription, PublicationMetadata} from "@/lib/estimation/sources"
-import {defineComponent, PropType} from "vue"
+import {defineComponent} from "vue"
 import {useI18n} from "vue-i18n"
 
 export default defineComponent({
